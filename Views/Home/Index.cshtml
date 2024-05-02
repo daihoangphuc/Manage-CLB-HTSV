@@ -1,8 +1,189 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿  <!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center" style="margin-top: -40px">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <h1 data-aos="fade-up" style="color:  #ff64c5">TUỔI TRẺ</h1>
+                <h1 data-aos="fade-up" data-aos-delay="400" style="color: #38b7fd; padding-left: 40px; margin-left: 60px">LÀ ĐỂ </h1>
+                <h1 data-aos="fade-up" data-aos-delay="600" style="color: #ff64c5; padding-left: 40px; margin-left: 100px">CỐNG HIẾN</h1>
+
+                <div data-aos="fade-up" data-aos-delay="800">
+                    <a href="#section2" class="btn-get-started scrollto">Khám phá</a>
+                </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+                <img src="/assets/img/banner1.png" class="pl-10 img-fluid animated" alt="">
+            </div>
+        </div>
+    </div>
+
+</section><!-- End Hero -->
+
+<div class="section-title" id="section2" style="margin-bottom: 0" data-aos="fade-up" data-aos-delay="200">
+    <h2 class="gt" style="color: #38b7fd; font-size: 25px;">GIỚI THIỆU</h2>
 </div>
+<div class="d-flex h-70 justify-content-between ">
+    <iframe class="responsive-iframe shadow-lg rounded-4" src="https://drive.google.com/file/d/1t6A1gRrx9ULccY7Db9NX0NAA1qy0HcG3/preview" allow="autoplay"></iframe>
+    <div class="section-title" id="content" style="width: 600px;  height: 400px; padding: 0 20px; margin-bottom: 0" data-aos="fade-up" data-aos-delay="200">
+        <p id="typed-text" style="margin-top: 0"></p>
+    </div>
+</div>
+<style>
+
+        /* Thiết lập font size cho điện thoại */
+    @@media only screen and (max-width: 600px) {
+        #typed-text {
+            font-size: 17px;
+        }
+    }
+
+    /* Thiết lập font size cho laptop */
+    @@media only screen and (min-width: 601px) {
+        #typed-text {
+            font-size: 23px;
+        }
+    }
+
+
+    .section-title {
+        font-size: 20px;
+        padding-bottom: 20px;
+        white-space: pre-wrap;
+        overflow: hidden;
+    }
+
+    @@media (max-width: 991.98px) {
+        .pl-lg-4 {
+            padding-left: 0 !important;
+        }
+    }
+  .d-flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .responsive-iframe {
+    width: 100%;
+    height: 200px;
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+  @@media only screen and (min-width: 600px) {
+    .responsive-iframe {
+      width: 50%;
+      height: 400px;
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      width: 50%;
+      margin: auto;
+      text-align: left;
+    }
+
+        .content {
+            padding-left: 10px; /* Đặt padding bên trái */
+            padding-right: 1c0px; /* Đặt padding bên phải */
+            box-sizing: border-box;
+        }
+  }
+
+</style>
+<script>
+    var text = "Đây là một buổi đồng diễn của CLB chúng ta. CLB Hành Trình Sinh Viên, không chỉ là nơi để gặp gỡ bạn bè mới và chia sẻ sở thích chung, mà còn là một cộng đồng đầy sức mạnh, sự sáng tạo và lòng nhiệt huyết. Chúng tôi tin rằng mỗi sinh viên đều có khả năng vượt qua mình và phát triển không ngừng trong hành trình của mình, và chúng tôi sẵn sàng đồng hành cùng bạn trên con đường đó.";
+    var speed = 70;
+    var i = 0;
+    var scrolled = false;
+
+    function startTyping() {
+        var contentPosition = document.getElementById("content").getBoundingClientRect().top;
+        var screenPosition = window.innerHeight;
+
+        if (contentPosition < screenPosition && !scrolled) {
+            scrolled = true;
+            typeWriter();
+        }
+    }
+
+    function typeWriter() {
+        if (i < text.length) {
+            document.getElementById("typed-text").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    window.addEventListener('scroll', startTyping);
+</script>
+@await Component.InvokeAsync("ListTinTuc")
+@await Component.InvokeAsync("ListBanChuNhiem")
+
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" style="padding-top: 0; padding-bottom:0" class="contact">
+    <div class="container">
+
+        <div class="section-title" style="margin-bottom: 0" data-aos="fade-up">
+            <h2>Liên hệ</h2>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-about">
+@*                     <h3> Mạng Xã Hội</h3> *@
+                    @* <p>Hãy đến và trải nghiệm sự phấn khích của việc tham gia vào CLB Hành Trình Sinh Viên! Chúng tôi sẽ giúp bạn tạo ra những kỷ niệm đáng nhớ và hỗ trợ bạn trong mọi bước đi trên con đường học tập và phát triển cá nhân.</p> *@
+                    <div class="social-links text-center" >
+                        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="https://web.facebook.com/clbhanhtrinhsinhvientvu" class="facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                <div class="info">
+                    <div>
+                        <i class="ri-map-pin-line"></i>
+                        <p>126 Nguyễn Thiện Thành <br>Phường 5, Thành phố Trà Vinh, Tỉnh Trà Vinh</p>
+                    </div>
+
+                    <div>
+                        <i class="ri-mail-send-line"></i>
+                        <p>clbhanhtrinhsinhvien@gmail.com</p>
+                    </div>
+
+                    <div>
+                        <i class="ri-phone-line"></i>
+                        <p>+84 366999999</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.1260734410125!2d106.34394437491011!3d9.923456874347416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0175ea296facb%3A0x55ded92e29068221!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBUcsOgIFZpbmg!5e0!3m2!1svi!2s!4v1712308302283!5m2!1svi!2s" width="500" height="300" style="border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
+
+<style>
+  @@media only screen and (max-width: 600px) {
+    iframe {
+        width: 310px; /* Đặt chiều rộng là 300px */
+        height: 400px; /* Đặt chiều cao là 400px */
+    }
+}
+</style>
+              

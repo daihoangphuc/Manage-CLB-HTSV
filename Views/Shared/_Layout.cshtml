@@ -1,18 +1,259 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManagers
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Câu Lạc Bộ Hành Trình Sinh Viên</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicons -->
+@*     <link href="/assets/img/icon-logo.png" rel="icon">
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon"> *@
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <link rel="icon" href="/assets/img/icon-logo.png" type="image/png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+
+    <!-- Add this line for SignalR script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.9/signalr.min.js"></script>
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center h-13">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <div class="logo">
+                <h1><a href="/">
+                        <img src="\assets\img\Banner.png" style="width: 190px; height: 100%"/>
+                </a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="/">Trang chủ</a></li>
+                    <li><a class="nav-link scrollto " href="https://zalo.me/g/dqqnrd829">Nhóm hổ trợ</a></li>
+                    <li><a class="nav-link scrollto " href="https://www.youtube.com/">Hướng dẫn sử dụng</a></li>
+               
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+                            <a href="#"><span>Chức năng</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/HoatDongs">Hoạt Động</a></li>
+                                <li><a href="/DangKyHoatDongs">Hoạt Động Đã Đăng Ký</a></li>
+                                 <li><a href="/ThamGiaHoatDongs">Hoạt Động Đã Tham Gia</a></li>
+                                @if (User.IsInRole("Users"))
+                                {
+                                    <li><a href="/Sinhviens/UpdateProfile">Cập nhật thông tin</a></li>
+                                }
+                                <li><a href="/Chat">Chat</a></li>
+
+                                @if (User.IsInRole("Administrators"))
+                                {
+                                    <li><a href="/Admin">Quyền Admin</a></li>   
+                                }
+
+
+                            </ul>
+                        </li>
+                    }
+
+                    @* <li><a class="nav-link scrollto" href="/ThanhViens">Thành viên</a></li> *@
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li><a class="getstarted scrollto" asp-area="Identity" asp-page="/Account/Manage/Index">Tài khoản của tôi</a></li>
+                        @*    <li class="nav-item">
+                            <a class="nav-link scrollto" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+
+                        </li> *@
+                        <li class="avt ml-2">
+                            @await Component.InvokeAsync("Avatar")
+                        </li>
+                        if (User.IsInRole("Administrators"))
+                        {
+                            <form class="form-inline d-flex" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button type="submit" style="margin-left: 20px; padding-top: 8px; font-size: 20px;border: none" class="fa-solid fa-right-from-bracket bg-transparent" title="Đăng xuất"></button>
+                                @*  <button type="submit" class="nav-link scrollto" style="padding-left: 10px">Logout</button> *@
+                            </form>
+                        }
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link scrollto" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="getstarted scrollto" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        </li>
+                    }
+                   
+
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+             
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+  @* Hero *@
+ <section>
+
+  </section> 
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+         @*    <partial name="ListTinTuc" /> *@
+        </main>
+    </div>
+
+    <section>
+    </section>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row d-flex align-items-center">
+                <div class="col-lg-6 text-lg-left text-center">
+                    <div class="copyright">
+                        &copy; Copyright <strong>CLB Hành Trình Sinh Viên</strong>.  Designed by <a href="https://www.facebook.com/iamphuc19/">Nguyễn Đại Hoàng Phúc</a>
+                    </div>
+                    <div class="credits">
+                       
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+
+
+
+
+    <!-- Template Main JS File -->
+    <script src="/assets/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>
+
+
+<style>
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+
+    body {
+        margin: 0;
+        margin-bottom: 100px; /* Khoảng cách dưới cùng tương đương với chiều cao của footer */
+    }
+
+    #footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px; /* Điều chỉnh chiều cao của footer */
+        background-color: #f8f9fa; /* Màu nền của footer */
+    }
+
+    /* Các quy tắc CSS khác cho footer */
+    @@media (max-width: 767px) {
+        .avt {
+            margin-left: 10px; /* Áp dụng margin left 10px cho giao diện điện thoại */
+        }
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Website_CLB_HTSV</title>
+    <title>@ViewData["Title"] - website_CLB_HTSV</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Website_CLB_HTSV.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/website_CLB_HTSV.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Website_CLB_HTSV</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">website_CLB_HTSV</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,6 +265,15 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="SinhViens" asp-action="Index">Sinh Viên</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="LopHocs" asp-action="Index">Lớp Học</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Khoas" asp-action="Khoa">Home</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -39,7 +289,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - Website_CLB_HTSV - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - website_CLB_HTSV - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -48,3 +298,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+ *@
