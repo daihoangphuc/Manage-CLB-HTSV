@@ -1,0 +1,9 @@
+E:\!Học Kì 6\Công nghệ phần mềm\Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Website_CLB_HTSV.csproj.AssemblyReference.cache
+E:\!Học Kì 6\Công nghệ phần mềm\Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Website_CLB_HTSV.GeneratedMSBuildEditorConfig.editorconfig
+E:\!Học Kì 6\Công nghệ phần mềm\Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Website_CLB_HTSV.AssemblyInfoInputs.cache
+E:\!Học Kì 6\Công nghệ phần mềm\Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Website_CLB_HTSV.AssemblyInfo.cs
+E:\!Học Kì 6\Công nghệ phần mềm\Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Website_CLB_HTSV.csproj.CoreCompileInputs.cache
+E:\!Học Kì 6\Công nghệ phần mềm\Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Website_CLB_HTSV.MvcApplicationPartsAssemblyInfo.cs
+E:\!Học Kì 6\Công nghệ phần mềm\Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Website_CLB_HTSV.MvcApplicationPartsAssemblyInfo.cache
+E:\!Học Kì 6\Công nghệ phần mềm\Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Website_CLB_HTSV.RazorAssemblyInfo.cache
+E:\!Học Kì 6\Công nghệ phần mềm\Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Website_CLB_HTSV.RazorAssemblyInfo.cs
