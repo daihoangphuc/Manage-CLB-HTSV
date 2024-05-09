@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj",
         "packagesPath": "C:\\Users\\hang24\\.nuget\\packages\\",
         "outputPath": "D:\\JiRa\\Manage-CLB-HTSV\\obj\\",
+=======
+    "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj": {}
+  },
+  "projects": {
+    "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj",
+        "projectName": "Website_CLB_HTSV",
+        "projectPath": "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage-CLB-HTSV\\obj\\",
+>>>>>>> edc0eb22defd47b2d411295d56371418c0866e7a
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hang24\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -51,19 +65,29 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.21, )"
+              "version": "[6.0.29, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[6.0.21, )"
+              "version": "[6.0.29, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.21, )"
+              "version": "[6.0.29, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[6.0.29, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.21, )"
+              "version": "[6.0.29, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.16, )"
             }
           },
           "imports": [
