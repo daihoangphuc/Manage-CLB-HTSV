@@ -9,45 +9,75 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Website_CLB_HTSV
 build_property.RootNamespace = Website_CLB_HTSV
-build_property.ProjectDir = D:\BAOCAO_JIRA\Website_CLB_HTSV\Website_CLB_HTSV\
+build_property.ProjectDir = D:\JiRa\Manage-CLB-HTSV\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\BAOCAO_JIRA\Website_CLB_HTSV\Website_CLB_HTSV
+build_property.MSBuildProjectDirectory = D:\JiRa\Manage-CLB-HTSV
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/BAOCAO_JIRA/Website_CLB_HTSV/Website_CLB_HTSV/Areas/Identity/Pages/_ViewStart.cshtml]
+[D:/JiRa/Manage-CLB-HTSV/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/BAOCAO_JIRA/Website_CLB_HTSV/Website_CLB_HTSV/Views/Home/Index.cshtml]
+[D:/JiRa/Manage-CLB-HTSV/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/BAOCAO_JIRA/Website_CLB_HTSV/Website_CLB_HTSV/Views/Home/Privacy.cshtml]
+[D:/JiRa/Manage-CLB-HTSV/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/BAOCAO_JIRA/Website_CLB_HTSV/Website_CLB_HTSV/Views/Shared/Error.cshtml]
+[D:/JiRa/Manage-CLB-HTSV/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/BAOCAO_JIRA/Website_CLB_HTSV/Website_CLB_HTSV/Views/Shared/_LoginPartial.cshtml]
+[D:/JiRa/Manage-CLB-HTSV/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/BAOCAO_JIRA/Website_CLB_HTSV/Website_CLB_HTSV/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/JiRa/Manage-CLB-HTSV/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/BAOCAO_JIRA/Website_CLB_HTSV/Website_CLB_HTSV/Views/_ViewImports.cshtml]
+[D:/JiRa/Manage-CLB-HTSV/Views/SinhViens/BanChuNhiem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXEJhbkNodU5oaWVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/JiRa/Manage-CLB-HTSV/Views/SinhViens/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/JiRa/Manage-CLB-HTSV/Views/SinhViens/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/JiRa/Manage-CLB-HTSV/Views/SinhViens/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/JiRa/Manage-CLB-HTSV/Views/SinhViens/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/JiRa/Manage-CLB-HTSV/Views/SinhViens/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/JiRa/Manage-CLB-HTSV/Views/SinhViens/UpdateProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXFVwZGF0ZVByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/JiRa/Manage-CLB-HTSV/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/BAOCAO_JIRA/Website_CLB_HTSV/Website_CLB_HTSV/Views/_ViewStart.cshtml]
+[D:/JiRa/Manage-CLB-HTSV/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/BAOCAO_JIRA/Website_CLB_HTSV/Website_CLB_HTSV/Views/Shared/_Layout.cshtml]
+[D:/JiRa/Manage-CLB-HTSV/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-65yzqfmcgg

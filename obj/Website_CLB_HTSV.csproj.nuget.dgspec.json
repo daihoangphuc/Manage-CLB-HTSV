@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BAOCAO_JIRA\\Website_CLB_HTSV\\Website_CLB_HTSV\\Website_CLB_HTSV.csproj": {}
+    "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj": {}
   },
   "projects": {
-    "D:\\BAOCAO_JIRA\\Website_CLB_HTSV\\Website_CLB_HTSV\\Website_CLB_HTSV.csproj": {
+    "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BAOCAO_JIRA\\Website_CLB_HTSV\\Website_CLB_HTSV\\Website_CLB_HTSV.csproj",
+        "projectUniqueName": "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj",
         "projectName": "Website_CLB_HTSV",
-        "projectPath": "D:\\BAOCAO_JIRA\\Website_CLB_HTSV\\Website_CLB_HTSV\\Website_CLB_HTSV.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\BAOCAO_JIRA\\Website_CLB_HTSV\\Website_CLB_HTSV\\obj\\",
+        "projectPath": "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj",
+        "packagesPath": "C:\\Users\\hang24\\.nuget\\packages\\",
+        "outputPath": "D:\\JiRa\\Manage-CLB-HTSV\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hang24\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -80,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
