@@ -1,0 +1,376 @@
+﻿@model PaginatedList<HoatDong>
+
+@{
+    if (User.IsInRole("Administrators"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+}
+
+<h1></h1>
+@if (User.IsInRole("Administrators"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    @using (Html.BeginForm("UpdateTrangThai", "HoatDongs", FormMethod.Post))
+    {
+        <button type="submit" class="btn btn-danger my-3">Cập nhật Trạng thái</button>
+    }
+}
+<form asp-controller="HoatDongs" asp-action="Index" class="search-form justify-center mb-2">
+        <div class="search-container">
+            <input type="text" class="search-input w-full md:w-80 mb-2 md:mb-0" placeholder="Tìm kiếm" name="SearchString">
+            <button class="search-button ml-2">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </form>
+
+
+
+
+
+
+<main class="container mx-auto py-8" >
+    <section class="bg-white shadow-md p-6 rounded-md">
+        <h2 class="text-2xl font-semibold mb-4 overflow-y-auto" style="max-height: calc(3 * (3.5rem + 1rem));">Hoạt động sắp tới</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            @foreach (var i in Model.Items)
+            {
+                <div class="flex flex-col md:flex-row bg-gradient-to-r from-pink-50 to-blue-100 p-4 items-center" style="border-radius: 10px">
+                    <div class="md:w-3/4">
+                        <h3 class="text-xl font-semibold mb-2">@i.TenHoatDong</h3>
+                        <p class="activity-description text-sm md:text-base">@i.MoTa<br>Thời Gian: <span class="font-semibold">@i.ThoiGian.ToString("HH:mm")</span> ngày <span class="font-semibold">@i.ThoiGian.ToString("dd/MM/yyyy")</span><br>Địa Điểm: <span class="font-semibold">@i.DiaDiem</span><br>Trạng Thái: <span class="font-semibold">@i.TrangThai</span></p>
+                        <!-- Form/Link để đăng ký -->
+                        
+                        @if (!User.IsInRole("Administrators"))
+                        {
+                        <button class="bg-blue-500 text-white font-semibold px-4 py-2 mt-4 rounded hover:bg-blue-600 register-btn" onclick="prepareRegistration('@i.MaHoatDong')">Đăng ký</button>
+                        }
+                    </div>
+                    @if (User.IsInRole("Administrators"))
+                    {
+                        <div>
+                            <a asp-action="Edit" asp-route-id="@i.MaHoatDong">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@i.MaHoatDong">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@i.MaHoatDong">Delete</a>
+                        </div>
+                    }
+                </div>
+
+            }
+
+        </div>
+    </section>
+</main>
+
+    <div id="confirmationModal" class="fixed z-50 inset-0 overflow-y-auto hidden">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-center bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+                <div class="sm:flex sm:items-start">
+                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
+                        <svg class="h-6 w-6 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                           Bạn chắc chắn tham gia hoạt động này chứ?
+                        </h3>
+                        <div class="mt-2">
+                            <p class="text-sm text-gray-500">
+                               @*  Your body text goes here. *@
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+                    <button type="button" onclick="commitForm()" class=" hello w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                        Đăng ký Ngay
+                    </button>
+                    <button type="button" onclick="hideConfirmationModal()" class=" w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:w-auto sm:text-sm">
+                        Hẹn lần sau
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form id="registrationForm" action="/HoatDongs/DangKy" method="post" style="display: none;">
+        <input type="hidden" id="hoatDongId" name="hoatDongId" value="">
+    </form>
+
+    <script>
+        let hoatDongId;
+
+        function prepareRegistration(id) {
+            hoatDongId = id;
+            var modal = document.getElementById('confirmationModal');
+            modal.classList.remove('hidden');
+        }
+
+        function hideConfirmationModal() {
+            var modal = document.getElementById('confirmationModal');
+            modal.classList.add('hidden');
+        }
+
+        function commitForm() {
+            // Đặt giá trị cho input ẩn trong form
+            var hoatDongIdInput = document.getElementById('hoatDongId');
+            hoatDongIdInput.value = hoatDongId;
+
+            // Gửi form
+            var registrationForm = document.getElementById('registrationForm');
+            registrationForm.submit();
+
+            // Ẩn modal
+            hideConfirmationModal();
+        }
+    </script>
+
+<!-- Add Tailwind CSS -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+    .activity-description {
+        max-height: calc(3 * (3.5rem + 1rem)); /* 3 card Hoạt động */
+        overflow-y: auto;
+    }
+
+    /* Transition for smooth effect */
+    .register-btn {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    /* Button hover effect */
+    .register-btn:not(.register-btn-cancel):hover {
+        transform: translateY(-2px);
+        background-color: #10B981;
+        box-shadow: 0 4px 6px rgba(81, 153, 255, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Button cancel state */
+    .register-btn-cancel {
+        background-color: #EF4444;
+    }
+
+    a:hover {
+        color: blue; /* Đổi màu chữ thành màu xanh dương */
+        text-decoration: underline; /* Thêm gạch chân */
+    }
+
+/* Form */
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    position: relative;
+    width: 100%; /* Thanh tìm kiếm sẽ căng toàn bộ chiều rộng của phần tử cha */
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #38b7fd;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    background-color: transparent;
+}
+
+.search-button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding-bottom: 10px;
+}
+
+.search-button i {
+    font-size: 20px;
+}
+
+@@media (min-width: 640px) {
+        .search-container{
+            width: 700px;
+        }
+
+    .search-input {
+        width: 700px; /* Đặt lại kích thước cho trường hợp màn hình lớn hơn 640px */
+        min-width: 200px; /* Đặt kích thước tối thiểu cho ô tìm kiếm */
+    }
+}
+
+</style>
+
+
+
+
+<!-- Add your JavaScript code here -->
+<script>
+    function registerSuccess(button) {
+        button.textContent = 'Hủy đăng ký';
+        button.classList.remove('hover:bg-blue-600');
+        button.classList.add('register-btn-cancel', 'cursor-default');
+    }
+
+    function cancelRegistration(button) {
+        button.textContent = 'Đăng kí tham gia';
+        button.classList.add('hover:bg-blue-600');
+        button.classList.remove('register-btn-cancel');
+    }
+
+    function registerToggle(button) {
+        if (button.textContent === 'Đăng kí tham gia') {
+            registerSuccess(button);
+        } else {
+            cancelRegistration(button);
+        }
+    }
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var modal = document.getElementById('myModal');
+
+        // Function to show modal after delay
+        function showModalWithDelay() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        // Open modal after delay when clicking the button
+        document.querySelectorAll('.hello').forEach(function (button) {
+            button.addEventListener('click', function () {
+                setTimeout(showModalWithDelay, 200); // 800ms delay
+            });
+        });
+
+        // Close modal
+        document.querySelectorAll('.modal-close').forEach(function (button) {
+            button.addEventListener('click', function () {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+            });
+        });
+
+        // Close modal on overlay click
+        modal.querySelector('.modal-overlay').addEventListener('click', function () {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        });
+
+        // Close modal on escape key press
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
+    });
+</script>
+
+@{
+    // Kiểm tra có trang trước hoặc trang sau không
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<main class="container mx-auto">
+    <nav class="flex justify-between">
+        <ul class="pagination">
+            <!-- Liên kết trang trước -->
+            <li class="page-item @prevDisabled">
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageIndex - 1 })">Previous</a>
+            </li>
+            <!-- Liên kết các trang -->
+            @for (var i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { pageNumber = i })">@i</a>
+                </li>
+            }
+            <!-- Liên kết trang tiếp theo -->
+            <li class="page-item @nextDisabled">
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageIndex + 1 })">Next</a>
+            </li>
+        </ul>
+    </nav>
+</main>
+
+
+
+            
+  <!-- Link to Tailwind CSS CDN -->
+  <style>
+    @@keyframes tickAnimation {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .tick {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: #00C851;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: tickAnimation 0.5s ease;
+    }
+
+    .tick svg {
+      width: 50px;
+      height: 50px;
+      stroke: white;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+  </style>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center hidden">
+  <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+  
+  <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+ @*    <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+      <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+        <path d="M18 1.73L16.27 0 9 7.27 1.73 0 0 1.73 7.27 9 0 16.27 1.73 18 9 10.73 16.27 18 18 16.27 10.73 9 18 1.73z"/>
+      </svg>
+      <span class="text-sm">(Esc)</span>
+    </div> *@
+
+    <!-- Success Tick Animation -->
+    <div class="tick mx-auto my-8">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="tick-circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="tick-check" fill="none" d="M14 27l8 8L38 17"/>
+      </svg>
+    </div>
+
+    <!-- Add your modal content here -->
+    <div style="text-align: center;" class="modal-content py-4 text-left px-6">
+      <h1 class="text-2xl font-bold mb-4">Đăng kí thành công!</h1>
+      <p>Nhớ tham gia hoạt động đúng thời gian, bạn nhé!.</p>
+    </div>
+      
+  </div>
+</div>

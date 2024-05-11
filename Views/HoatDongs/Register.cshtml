@@ -1,0 +1,17 @@
+﻿@model website_CLB_HTSV.Models.DangKyHoatDong
+
+@{
+    ViewData["Title"] = "Đăng ký hoạt động";
+}
+
+<h2>Đăng ký hoạt động</h2>
+
+<form asp-action="RegisterConfirmed" method="post">
+    <input type="hidden" asp-for="MaHoatDong" />
+    <input type="hidden" asp-for="NgayDangKy" />
+    <input type="hidden" asp-for="TrangThaiDangKy" />
+
+    @* Thêm các mục nhập cho các trường khác như MaSV, vv. *@
+
+    <input type="submit" value="Đăng ký" />
+</form>
