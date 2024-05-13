@@ -1,0 +1,23 @@
+﻿@model IEnumerable<website_CLB_HTSV.Models.SinhVien>
+@{
+    if (User.IsInRole("Administrators"))
+    {
+         Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    ViewData["Title"] = "Xuất danh sách sinh viên tham gia hoạt động";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="hoatDongId">Chọn hoạt động:</label>
+        <select class="form-control" id="hoatDongId" name="hoatDongId">
+            @foreach (var item in ViewBag.ActivityList)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Xuất Danh Sách</button>
+</form>

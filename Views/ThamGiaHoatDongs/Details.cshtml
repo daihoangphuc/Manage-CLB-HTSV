@@ -1,0 +1,51 @@
+﻿@model website_CLB_HTSV.Models.ThamGiaHoatDong
+
+@{
+    if (User.IsInRole("Administrators"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ThamGiaHoatDong</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaSV)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaSV)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaHoatDong)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaHoatDong)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DaThamGia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DaThamGia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LinkMinhChung)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LinkMinhChung)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DangKyHoatDong)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DangKyHoatDong.MaDangKy)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.MaThamGiaHoatDong">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
