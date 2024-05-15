@@ -1,0 +1,16 @@
+﻿@model IEnumerable<website_CLB_HTSV.Models.TinTuc>
+
+<div class="row">
+    @foreach (var i in Model)
+    {
+        <div class="col-md-6 d-flex align-items-stretch">
+            <div class="card" style='background-image: url("@i.HinhAnh");' data-aos="fade-up" data-aos-delay="100">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="">@i.TieuDe</a></h5>
+                    <p class="card-text">@i.NoiDung</p>
+                    <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Đọc thêm</a></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
