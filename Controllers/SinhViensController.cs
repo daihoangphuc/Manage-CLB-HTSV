@@ -10,8 +10,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using SendGrid.Helpers.Errors.Model;
+using SkiaSharp;
 using website_CLB_HTSV.Data;
 using website_CLB_HTSV.Models;
+using ZXing.QrCode;
+using ZXing;
+using QRCoder;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Png;
+using SixLabors.ImageSharp.Processing;
 
 namespace website_CLB_HTSV.Controllers
 {
@@ -28,48 +35,27 @@ namespace website_CLB_HTSV.Controllers
 
         private async Task CreateOrUpdateQRCodeImageAsync(SinhVien sinhVien)
         {
-            var qrContent = $"{sinhVien.Email.Split('@')[0].ToString()}"; // Thông tin bạn muốn chứa trong mã QR
+            var qrContent = $"{sinhVien.Email.Split('@')[0]}"; // Thông tin bạn muốn chứa trong mã QR
+            var fileName = $"{sinhVien.MaSV}.png";  // Tên tệp cho QR Code
 
-            var qrCodeWriter = new ZXing.BarcodeWriterPixelData
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrContent, QRCodeGenerator.ECCLevel.Q);
+            PngByteQRCode qrCode = new PngByteQRCode(qrCodeData);
+            byte[] qrCodeBytes = qrCode.GetGraphic(20);
+
+            var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "qrcode", fileName); // Đường dẫn lưu file
+
+            using (var image = Image.Load(qrCodeBytes))
             {
-                Format = ZXing.BarcodeFormat.QR_CODE,
-                Options = new ZXing.QrCode.QrCodeEncodingOptions
+                await using (var stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
                 {
-                    Height = 300,
-                    Width = 300
-                }
-            };
-
-            var pixelData = qrCodeWriter.Write(qrContent);
-
-            using (var bitmap = new System.Drawing.Bitmap(pixelData.Width, pixelData.Height, System.Drawing.Imaging.PixelFormat.Format32bppRgb))
-            {
-                using (var ms = new MemoryStream())
-                {
-                    var bitmapData = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, pixelData.Width, pixelData.Height),
-                        System.Drawing.Imaging.ImageLockMode.WriteOnly, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
-                    try
-                    {
-                        // Copy the bytes from the pixel data to the bitmap
-                        System.Runtime.InteropServices.Marshal.Copy(pixelData.Pixels, 0, bitmapData.Scan0,
-                            pixelData.Pixels.Length);
-                    }
-                    finally
-                    {
-                        bitmap.UnlockBits(bitmapData);
-                    }
-
-                    // Tạo tên tệp duy nhất cho hình ảnh mã QR
-                    var fileName = $"{sinhVien.MaSV.ToString()}.png";
-                    var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "qrcode", fileName); // Lưu vào thư mục "qrcode" trong wwwroot
-                    bitmap.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
-
-                    // Lưu tên tệp vào cơ sở dữ liệu
-                    sinhVien.DuongdanQR = fileName;
-                    _context.Update(sinhVien);
-                    await _context.SaveChangesAsync();
+                    image.SaveAsPng(stream);
                 }
             }
+
+            sinhVien.DuongdanQR = fileName;  // Cập nhật đường dẫn mã QR cho sinh viên
+            _context.Update(sinhVien);
+            await _context.SaveChangesAsync();  // Lưu lại thông tin vào cơ sở dữ liệu
         }
 
         public IActionResult UpdateProfile()

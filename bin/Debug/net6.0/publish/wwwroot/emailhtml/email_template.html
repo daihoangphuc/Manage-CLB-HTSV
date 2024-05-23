@@ -1,0 +1,64 @@
+﻿        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Email Template</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                }
+
+                .container {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+
+                .header {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+
+                .content {
+                    margin-bottom: 20px;
+                }
+
+                .footer {
+                    font-size: 12px;
+                    text-align: center;
+                    margin-top: 20px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h1>Kính chào quý anh chị thành viên Câu lạc bộ!</h1>
+                    <p>Ban chủ nhiệm Câu lạc bộ xin chân thành cảm ơn anh chị đã tin tưởng tham gia sinh hoạt tại Câu lạc bộ Hành trình sinh viên</p>
+                </div>
+                <div class="content">
+                    <p>Anh chị đã tham gia hoạt động:</p>
+                    <ul>
+                        <li><strong>Tên hoạt động:</strong> {{TenHoatDong}}</li>
+                        <li><strong>Thời gian diễn ra:</strong> {{ThoiGian}}</li>
+                        <li><strong>Ngày tổ chức:</strong> {{NgayToChuc}}</li>
+                        <li><strong>Địa điểm:</strong> {{DiaDiem}}</li>
+                        <li><strong>File minh chứng hiện đã có trên  <a href="https://phucndh.id.vn">Website</a> của Câu Lạc Bộ Hành Trình Sinh Viên</strong></li>
+                    </ul>
+                    <p>Xem chi tiết tại địa chỉ: <a href="https://phucndh.id.vn">https://phucndh.id.vn</a></p>
+                    <p><em>(Vui lòng không trả lời lại tin nhắn này)</em></p>
+                </div>
+                <div class="footer">
+                    <p><strong>CLB HÀNH TRÌNH SINH VIÊN</strong></p>
+                    <p>Số 126, Nguyễn Thiện Thành, phường 5, Tp Trà Vinh, tỉnh Trà Vinh</p>
+                    <p>Liên hệ quản trị web: 0366203505 (Nguyễn Đại Hoàng Phúc)</p>
+                    <p>Website: <a href="https://phucndh.id.vn">https://phucndh.id.vn</a></p>
+                </div>
+            </div>
+        </body>
+        </html>

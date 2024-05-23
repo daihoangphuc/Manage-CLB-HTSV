@@ -182,7 +182,7 @@ namespace website_CLB_HTSV.Controllers
                     {
                         var newAttendanceRecord = new ThamGiaHoatDong
                         {
-                            MaThamGiaHoatDong = "TG" + DateTime.Now.ToString("yyyyMMddHHmmssfff"),
+                            MaThamGiaHoatDong = "TG" + TimeZoneHelper.GetVietNamTime(DateTime.UtcNow).ToString("yyyyMMddHHmmssfff"),
                             MaDangKy = registeredStudent.MaDangKy,
                             DaThamGia = true,
                             MaSV = registeredStudent.MaSV,
@@ -204,7 +204,7 @@ namespace website_CLB_HTSV.Controllers
                     // Nếu sinh viên không khớp, thêm mới một bản ghi vào ThamGiaHoatDong với DaThamGia là false
                     var newAttendanceRecord = new ThamGiaHoatDong
                     {
-                        MaThamGiaHoatDong = "TG" + DateTime.Now.ToString("yyyyMMddHHmmssfff"),
+                        MaThamGiaHoatDong = "TG" + TimeZoneHelper.GetVietNamTime(DateTime.UtcNow).ToString("yyyyMMddHHmmssfff"),
                         MaDangKy = registeredStudent.MaDangKy,
                         DaThamGia = false, // Đánh dấu là chưa tham gia
                         MaSV = registeredStudent.MaSV,

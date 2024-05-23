@@ -24,3 +24,9 @@ else
     </li>
 }
 </ul>
+@if (Context.Items.ContainsKey("SessionExpired"))
+{
+    <div class="alert alert-warning">
+        @Context.Items["SessionExpired"]
+    </div>
+}

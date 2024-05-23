@@ -99,12 +99,14 @@ namespace website_CLB_HTSV.Controllers
             /*int y = LaySoDongTrongBang("DangKyHoatDong");*/
             if (ModelState.IsValid)
             {
+                
+
                 var dangKyHoatDong = new DangKyHoatDong
                 {
                     MaHoatDong = hoatDongId,
                     MaSV = User.Identity.Name.Split('@')[0],
-                    MaDangKy = "DK" + DateTime.Now.ToString("yyyyMMddHHmmssfff"),
-                    NgayDangKy = DateTime.Now,
+                    MaDangKy = "DK" + TimeZoneHelper.GetVietNamTime(DateTime.UtcNow).ToString("yyyyMMddHHmmssfff"),
+                    NgayDangKy = TimeZoneHelper.GetVietNamTime(DateTime.UtcNow),
                     TrangThaiDangKy = true
 
                 };
@@ -206,7 +208,7 @@ namespace website_CLB_HTSV.Controllers
         [Authorize(Roles = "Administrators")]
         public async Task<IActionResult> Create([Bind("MaHoatDong,TenHoatDong,MoTa,ThoiGian,DiaDiem,HocKy,NamHoc,HinhAnh,TrangThai,DaDangKi,DaThamGia,MinhChung")] HoatDong hoatDong)
         {
-            hoatDong.MaHoatDong = "HD" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            hoatDong.MaHoatDong = "HD" + TimeZoneHelper.GetVietNamTime(DateTime.UtcNow).ToString("yyyyMMddHHmmssfff");
             hoatDong.TrangThai = "Sắp diễn ra";
             if (ModelState.IsValid)
             {

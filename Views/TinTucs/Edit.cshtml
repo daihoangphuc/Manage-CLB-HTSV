@@ -34,7 +34,7 @@
             </div>
             <div class="form-group" hidden>
                 <label asp-for="NgayDang" class="control-label"></label>
-                <input asp-for="NgayDang" class="form-control" value="@DateTime.Now.ToString("ddMMyyyy")/>
+                <input asp-for="NgayDang" class="form-control" value="@TimeZoneHelper.GetVietNamTime(DateTime.UtcNow).ToString("ddMMyyyy") />
                 <span asp-validation-for="NgayDang" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -31,6 +31,8 @@ namespace website_CLB_HTSV.Controllers
 
         private IEnumerable<TinTuc> SearchNews(string keyword)
         {
+            // Thực hiện logic tìm kiếm và trả về kết quả
+            // (đây chỉ là một ví dụ, bạn cần thay thế bằng logic thực tế của bạn)
             return _context.TinTuc.Where(t => t.TieuDe.Contains(keyword)).ToList();
         }
         public async Task<IActionResult> Index(string searchString, int? pageNumber)
@@ -82,16 +84,21 @@ namespace website_CLB_HTSV.Controllers
         [Authorize(Roles = "Administrators")]
         public async Task<IActionResult> Create([Bind("MaTinTuc,TieuDe,NoiDung,NgayDang,NguoiDang")] TinTuc tinTuc, IFormFile HinhAnh)
         {
-                tinTuc.MaTinTuc = "TT" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
-                tinTuc.NgayDang = DateTime.Now;
+                tinTuc.MaTinTuc = "TT" + TimeZoneHelper.GetVietNamTime(DateTime.UtcNow).ToString("yyyyMMddHHmmssfff");
+                tinTuc.NgayDang = TimeZoneHelper.GetVietNamTime(DateTime.UtcNow);
                 if (HinhAnh != null && HinhAnh.Length > 0)
                 {
+                    // Tạo tên file duy nhất
                     var fileName = Guid.NewGuid().ToString() + Path.GetExtension(HinhAnh.FileName);
+
+                    // Lưu file vào vị trí chỉ định
                     var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "newsimages", fileName);
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await HinhAnh.CopyToAsync(stream);
                     }
+
+                    // Cập nhật tên file cho tin tức
                     tinTuc.HinhAnh = fileName;
                 }
 
@@ -133,7 +140,7 @@ namespace website_CLB_HTSV.Controllers
             }
 
 
-                tinTuc.NgayDang = DateTime.Now;
+                tinTuc.NgayDang = TimeZoneHelper.GetVietNamTime(DateTime.UtcNow);
                 try
                 {
                     // Xử lý hình ảnh mới

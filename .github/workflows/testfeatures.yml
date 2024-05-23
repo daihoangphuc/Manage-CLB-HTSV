@@ -1,0 +1,42 @@
+name: CI/CD 
+
+on: 
+  push: 
+    branches: 
+      - testfeatures 
+jobs: 
+  build: 
+    runs-on: ubuntu-latest 
+    steps: 
+      - name: Checkout repository 
+        uses: actions/checkout@v2 
+      - name: Setup .NET 
+        uses: actions/setup-dotnet@v1 
+        with: 
+          dotnet-version: '6.0.x' 
+      - name: Restore dependencies 
+        run: dotnet restore 
+      - name: Build project 
+        run: dotnet build --configuration Release 
+      - name: Test project 
+        run: dotnet test 
+      - name: Build Docker image 
+        run: |
+          docker build -t phuchoang1910/webapp_htsv . 
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
+          docker push phuchoang1910/webapp_htsv 
+      - name: Deploy to Production 
+        uses: appleboy/ssh-action@master 
+        with: 
+          host: ${{ secrets.VPS_HOST }} 
+          username: ${{ secrets.VPS_USERNAME }} 
+          key: ${{ secrets.SSH_PRIVATE_KEY }}  
+          port: ${{ secrets.VPS_SSH_PORT }} 
+          script: |
+            docker pull phuchoang1910/webapp_htsv:latest 
+            docker stop webapp_htsv || true 
+            docker rm webapp_htsv || true 
+            docker run --name webapp_htsv -d -p 80:80 -p 443:443 phuchoang1910/webapp_htsv:latest 
+
+
+

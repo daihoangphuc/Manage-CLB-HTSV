@@ -1,0 +1,110 @@
+﻿
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+    <div class="max-w-xl mx-2 bg-white p-6 rounded-lg chart-section" style="padding-left: 10px">
+        <canvas id="participationRateChart" style="width: calc(100vw - 30px); max-width: 500px; height: 300px"></canvas>
+    </div>
+
+    <script>
+        // Hàm kiểm tra xem phần tử có hiển thị trong viewport không
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Tạo một Observer
+        var observer = new IntersectionObserver(function (entries) {
+            // Kiểm tra từng entry
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    // Nếu phần tử trong viewport, hiển thị biểu đồ
+                    updateChart();
+                    entry.target.classList.add('show');
+                    // Ngừng theo dõi phần tử sau khi hiển thị
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Lấy phần tử cần kiểm tra
+        var chartSection = document.querySelector('.chart-section');
+        // Bắt đầu theo dõi phần tử
+        observer.observe(chartSection);
+
+        // Các mã JavaScript khác ở đây...
+
+        var participationRateData = {
+            labels: @Html.Raw(Json.Serialize(ViewBag.MonthlyParticipationLabels)),
+            datasets: [
+                {
+                    label: 'Sinh viên đăng ký',
+                    data: [],
+                    borderColor: 'rgba(74, 163, 223, 1)',
+                    backgroundColor: 'rgba(74, 163, 223, 0.2)',
+                    tension: 0.5,
+                    fill: true,
+                },
+                {
+                    label: 'Sinh viên tham gia',
+                    data: [],
+                    borderColor: 'rgba(255, 102, 197, 1)',
+                    backgroundColor: 'rgba(255, 102, 197, 0.2)',
+                    tension: 0.5,
+                    fill: true,
+                }
+            ]
+        };
+
+        var participationRateCtx = document.getElementById('participationRateChart').getContext('2d');
+        var participationRateChart = new Chart(participationRateCtx, {
+            type: 'line',
+            data: participationRateData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Số lượng'
+                        },
+                        ticks: {
+                            stepSize: 1 // Đặt bước giữa các giá trị trên trục y là 1
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: ''
+                        }
+                    }
+                }
+            }
+        });
+
+        // Dynamic Data
+        const dynamicData1 = @Html.Raw(Json.Serialize(ViewBag.MonthlyRegistrationCounts));
+        const dynamicData2 = @Html.Raw(Json.Serialize(ViewBag.MonthlyParticipationCounts));
+
+        const updateChart = () => {
+            dynamicData1.forEach((value1, index) => {
+                setTimeout(() => {
+                    participationRateChart.data.datasets[0].data.push(value1);
+                    participationRateChart.update();
+
+                    if (index === dynamicData1.length - 1) {
+                        dynamicData2.forEach((value2, index2) => {
+                            setTimeout(() => {
+                                participationRateChart.data.datasets[1].data.push(value2);
+                                participationRateChart.update();
+                            }, 150 * (index2 + 1));
+                        });
+                    }
+                }, 150 * (index + 1));
+            });
+        };
+    </script>

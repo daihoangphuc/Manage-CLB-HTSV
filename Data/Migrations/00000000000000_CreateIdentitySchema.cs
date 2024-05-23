@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace Website_CLB_HTSV.Data.Migrations
+namespace website_CLB_HTSV.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
