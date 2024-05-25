@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "website_CLB_HTSV/1.0.0": {
+      "Website_CLB_HTSV/1.0.0": {
         "dependencies": {
           "AspNetCore.Mvc.Paging": "2.2.1",
           "CsvHelper": "31.0.2",
@@ -40,7 +40,7 @@
           "ZXing.Net.Bindings.SkiaSharp": "0.16.14"
         },
         "runtime": {
-          "website_CLB_HTSV.dll": {}
+          "Website_CLB_HTSV.dll": {}
         }
       },
       "AspNetCore.Mvc.Paging/2.2.1": {
@@ -3776,7 +3776,7 @@
     }
   },
   "libraries": {
-    "website_CLB_HTSV/1.0.0": {
+    "Website_CLB_HTSV/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
