@@ -35,4 +35,10 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 COPY --from=certs /https/aspnetapp.pem /https/aspnetapp.pem
+
+
+# List the contents of the /app directory to ensure the DLL exists
+RUN ls -la /app
+
+
 ENTRYPOINT ["dotnet", "website_CLB_HTSV.dll"]
