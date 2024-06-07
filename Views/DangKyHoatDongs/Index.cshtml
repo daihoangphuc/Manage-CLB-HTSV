@@ -50,6 +50,9 @@
                     </th>
                 }
                 <th scope="col" class="px-6 py-3">
+                    Ngày diễn ra
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Ngày đăng ký
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -68,6 +71,9 @@
                         <td scope="row" class="px-6 py-4 whitespace-nowrap">
                             @i.HoatDong.TenHoatDong
                         </td>
+                    <td scope="row" class="px-6 py-4 whitespace-nowrap">
+                        @i.HoatDong.ThoiGian.ToString("HH:mm dd/MM/yyyy")
+                    </td>
                     @if (User.IsInRole("Administrators"))
                     {
                         <td class="px-6 py-4 whitespace-nowrap">

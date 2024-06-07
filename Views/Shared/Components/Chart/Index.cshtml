@@ -1,4 +1,198 @@
-﻿
+﻿<script src="./assets/js/plugins/chartjs.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="./assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+<!-- Trong phần head của trang web -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<div class="container">
+    <div class="row">
+        <div class="section-title" style="margin-left: 50%; transform: translateX(-50%); padding: 0; margin-bottom: 0" data-aos="fade-up">
+            <h2 class="tt" style="height: 35px;color: #ff5fc3; font-size: 20px; padding: 0">HOẠT ĐỘNG</h2>
+        </div>
+        <div class="section-2 section-2-flex p-0">
+            <div class="col-lg-6 col-md-6 col-12 mb-4 hero-img" data-aos="fade-left" data-aos-delay="200">
+                <img src="/assets/img/activities.png" class="activities-img img-fluid animated" alt="">
+            </div>
+            <div class="col-lg-7 col-md-6 col-12">
+                <div class="z-index-2 h-100">
+                    <div class="card-body">
+                        <div class="chart ">
+                            <canvas id="chart-line" class="chart-canvas" height="350"></canvas>
+                        </div>
+                        <h6 class="d-flex text-capitalize justify-content-center align-items-center">Thống kê tham gia hoạt động</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .d-flex.text-capitalize.justify-content-center.align-items-center {
+        font-family: 'Reddit Mono', sans-serif;
+        color: #38b7fe;
+    }
+
+    @@media only screen and (max-width: 600px)
+    {
+        .activities-img {
+          margin-top: -30px;
+        }
+    }
+/* Thêm flexbox styles cho section-2-flex chỉ trên màn hình lớn hơn */
+@@media (min-width: 992px) {
+        .activities-img{
+            padding: 0 12px;
+        }
+    .section-2-flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+}
+
+</style>
+<script>
+    var ctx1 = document.getElementById("chart-line").getContext("2d");
+
+    var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+    gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
+    gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
+    gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
+
+    var gradientStroke2 = ctx1.createLinearGradient(0, 230, 0, 50);
+    gradientStroke2.addColorStop(1, 'rgba(72, 209, 204, 0.2)');
+    gradientStroke2.addColorStop(0.2, 'rgba(72, 209, 204, 0.0)');
+    gradientStroke2.addColorStop(0, 'rgba(72, 209, 204, 0)');
+
+    var registrationCounts = @Html.Raw(Json.Serialize(ViewBag.MonthlyRegistrationCounts));
+    var participationCounts = @Html.Raw(Json.Serialize(ViewBag.MonthlyParticipationCounts));
+    var labels = @Html.Raw(Json.Serialize(ViewBag.MonthlyParticipationLabels));
+
+    new Chart(ctx1, {
+        type: "line",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Lượt đăng ký",
+                tension: 0.4,
+                borderWidth: 0,
+                pointRadius: 0,
+                borderColor: "#5e72e4",
+                backgroundColor: gradientStroke1,
+                borderWidth: 3,
+                fill: true,
+                data: registrationCounts,
+                maxBarThickness: 6
+            }, {
+                label: "Lượt tham gia",
+                tension: 0.4,
+                borderWidth: 0,
+                pointRadius: 0,
+                borderColor: "#48d1cc",
+                backgroundColor: gradientStroke2,
+                borderWidth: 3,
+                fill: true,
+                data: participationCounts,
+                maxBarThickness: 6
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index',
+            },
+            scales: {
+                y: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5]
+                    },
+                    ticks: {
+                        display: true,
+                        padding: 10,
+                        color: '#fbfbfb',
+                        font: {
+                            size: 11,
+                            family: "Open Sans",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+                x: {
+                    grid: {
+                        drawBorder: false,
+                        display: false,
+                        drawOnChartArea: false,
+                        drawTicks: false,
+                        borderDash: [5, 5]
+                    },
+                    ticks: {
+                        display: true,
+                        color: '#ccc',
+                        padding: 20,
+                        font: {
+                            size: 11,
+                            family: "Open Sans",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+            },
+        },
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
     <div class="max-w-xl mx-2 bg-white p-6 rounded-lg chart-section" style="padding-left: 10px">
@@ -108,3 +302,4 @@
             });
         };
     </script>
+ *@

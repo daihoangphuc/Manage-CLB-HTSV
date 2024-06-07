@@ -1,8 +1,8 @@
 ﻿@{
-    ViewData["Title"] = "Chat Room";
+    ViewData["Title"] = "Diễn Đàn";
 }
 
-<h2 class="mb-4">@ViewData["Title"]</h2>
+<h2 class="mb-4" style="text-align: center">@ViewData["Title"]</h2>
 @if (User.IsInRole("Administrators"))
 {
     <div>
@@ -21,7 +21,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <p class="mb-2">Hello, @User.Identity.Name!</p>
+    <p class="mb-2">Xin chào @User.Identity.Name!</p>
 }
 
 
@@ -39,8 +39,8 @@
         <input type="text" id="userInput" placeholder="Your name" class="form-control mb-2" />
     }
 
-    <input type="text" id="messageInput" placeholder="Your message" class="form-control mb-2" />
-    <button id="sendButton" class="btn btn-primary">Send Message</button>
+    <input type="text" id="messageInput" placeholder="Gửi tin nhắn" class="form-control mb-2" />
+    <button id="sendButton" class="btn btn-primary">Gửi</button>
 </div>
 @section Scripts {
     <!-- Thêm script của SignalR -->

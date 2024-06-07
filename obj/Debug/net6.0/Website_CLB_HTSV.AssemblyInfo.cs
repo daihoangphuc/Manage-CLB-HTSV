@@ -12,11 +12,11 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-Manage_CLB_HTSV-f849b4c9-bdf4-43ad-955e-a1620ca13966")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-website_CLB_HTSV-f849b4c9-bdf4-43ad-955e-a1620ca13966")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("website_CLB_HTSV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0be5e3378fe59bee71e82ffbec8a9134e69912c6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eee5a3109303fe32809a7e505ffd9aa4c21eb169")]
 [assembly: System.Reflection.AssemblyProductAttribute("website_CLB_HTSV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("website_CLB_HTSV")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

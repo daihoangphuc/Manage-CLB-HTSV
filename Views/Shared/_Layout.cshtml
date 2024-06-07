@@ -49,18 +49,18 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <div class="logo">
-                <h1><a href="/">
-                        <img src="\assets\img\Banner.png" style="width: 190px; height: 100%"/>
-                </a></h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="index.html"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+                <h1>
+                    <a href="/">
+                        <img src="\assets\img\banner-club.png" style="width: 180px; height: 70px" />
+                    </a>
+                </h1>
             </div>
 
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="/">Trang chủ</a></li>
                     <li><a class="nav-link scrollto " href="https://zalo.me/g/dqqnrd829">Nhóm hổ trợ</a></li>
-                    <li><a class="nav-link scrollto " href="https://www.youtube.com/">Hướng dẫn sử dụng</a></li>
+                    <li><a class="nav-link scrollto " href="#">Hướng dẫn sử dụng</a></li>
                
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -74,7 +74,7 @@
                                 {
                                     <li><a href="/Sinhviens/UpdateProfile">Cập nhật thông tin</a></li>
                                 }
-                                <li><a href="/Chat">Chat</a></li>
+                                <li><a href="/Chat">Diễn đàn</a></li>
 
                                 @if (User.IsInRole("Administrators"))
                                 {
@@ -108,10 +108,10 @@
                     else
                     {
                         <li class="nav-item">
-                            <a class="nav-link scrollto" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                            <a class="nav-link scrollto" asp-area="Identity" asp-page="/Account/Register">Đăng ký</a>
                         </li>
                         <li class="nav-item">
-                            <a class="getstarted scrollto" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                            <a class="getstarted scrollto" asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a>
                         </li>
                     }
                    
@@ -134,8 +134,6 @@
         </main>
     </div>
 
-    <section>
-    </section>
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
@@ -204,98 +202,3 @@
         }
     }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@* <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Manage_CLB_HTSV</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Manage_CLB_HTSV.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Manage_CLB_HTSV</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="SinhViens" asp-action="Index">Sinh Viên</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="LopHocs" asp-action="Index">Lớp Học</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Khoas" asp-action="Khoa">Home</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Manage_CLB_HTSV - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
- *@

@@ -27,17 +27,13 @@ namespace Manage_CLB_HTSV.Components
                 .Where(h => h.ThoiGian >= vietnamTimeCutOff)
                 .ToListAsync();
 
-            // Khởi tạo dictionary để lưu trữ số lượng đăng ký theo tháng
             var registrationData = new Dictionary<int, int>();
-            // Khởi tạo dictionary để lưu trữ số lượng tham gia theo tháng
             var participationData = new Dictionary<int, int>();
 
-            // Tính toán dữ liệu đăng ký và tham gia theo tháng
             foreach (var activity in activities)
             {
                 var month = activity.ThoiGian.Month;
 
-                // Lấy số lượng đăng ký hoạt động
                 var registrationCount = await _context.DangKyHoatDong
                     .Where(dk => dk.MaHoatDong == activity.MaHoatDong)
                     .CountAsync();
@@ -51,7 +47,6 @@ namespace Manage_CLB_HTSV.Components
                     registrationData.Add(month, registrationCount);
                 }
 
-                // Lấy số lượng sinh viên tham gia hoạt động
                 var studentCount = await _context.ThamGiaHoatDong
                     .Where(shd => shd.MaHoatDong == activity.MaHoatDong)
                     .CountAsync();
@@ -66,9 +61,7 @@ namespace Manage_CLB_HTSV.Components
                 }
             }
 
-            // Tạo mảng chứa tên các tháng bằng tiếng Việt
             var vietnameseCulture = new CultureInfo("vi-VN");
-            // Tạo mảng labels và data cho biểu đồ
             var labels = new string[12];
             var registrationCounts = new int[12];
             var participationCounts = new int[12];
@@ -100,9 +93,9 @@ namespace Manage_CLB_HTSV.Components
                 }
             }
 
-            ViewBag.MonthlyParticipationLabels = labels;
-            ViewBag.MonthlyRegistrationCounts = registrationCounts;
-            ViewBag.MonthlyParticipationCounts = participationCounts;
+            ViewBag.MonthlyParticipationLabels = labels.Reverse().ToArray();
+            ViewBag.MonthlyRegistrationCounts = registrationCounts.Reverse().ToArray();
+            ViewBag.MonthlyParticipationCounts = participationCounts.Reverse().ToArray();
 
             return View("Index");
         }

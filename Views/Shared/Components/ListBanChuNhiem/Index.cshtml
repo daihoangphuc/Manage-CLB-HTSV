@@ -12,8 +12,8 @@
                     <div class="row">
                         <div class="col-md-6 d-md-flex align-items-md-stretch">
                             <div class="count-box">
-                                <i class="bi bi-person"></i>
-                                <span data-purecounter-start="0" data-purecounter-end="@Model.Count()" data-purecounter-duration="1" class="purecounter"></span>
+                                <i class="bi bi-people"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalSinhViens" data-purecounter-duration="1" class="purecounter"></span>
                                 <p>Số lượng thành viên <strong>đông đảo, vui vẻ, hòa đồng, nhiệt huyết.</strong></p>
                             </div>
                         </div>
@@ -34,34 +34,31 @@
                     </div>
                 </div><!-- End .content-->
             </div>
-            <div class="col-xl-5 d-flex align-item- justify-content-center justify-content-xl-start" data-aos="fade-left" data-aos-delay="400">
+            <div data-aos="fade-left" data-aos-delay="400">
                     @await Component.InvokeAsync("Chart")
-               </div>
+            </div>
         </div>
     </div>
 
 
 </section><!-- End Counts Section -->
 
-
 <!-- ======= Testimonials Section ======= -->
 <section id="testimonials" class="testimonials bg-white section-bg" style="padding-top: 0; padding-bottom: 0">
     <div class="container pb-3">
-
         <div class="section-title" style="margin-bottom: 0; padding: 0" data-aos="fade-up">
             <h2 style="color: #38b7fd;font-size: 18px;">Ban Chủ Nhiệm</h2>
         </div>
-
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
             <div class="swiper-wrapper">
                 @if (Model != null)
                 {
                     @foreach (var sinhVien in Model)
                     {
-                        <div class="swiper-slide rounded-3xl" >
-                            <div class=" member-container col-lg-3 col-md-6 d-flex align-items-stretch">
+                        <div class="swiper-slide rounded-3xl">
+                            <div class="member-container col-lg-3 col-md-6 d-flex align-items-stretch">
                                 <div class="member" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="member-img">
+                                    <div class="member-img mt-5">
                                         @if (sinhVien.HinhAnh != null)
                                         {
                                             <img src="@(Url.Content("~/userimages/" + sinhVien.HinhAnh))" alt="Hình ảnh sinh viên" class="img-fluid w-full h-48 object-cover" />
@@ -70,64 +67,71 @@
                                         {
                                             <img src="/assets/img/icon-logo.png" class="img-fluid w-full h-48 object-cover" alt="Avatar">
                                         }
-                                    </div>
-                                    <br />
-                                    <div class="member-info">
-                                        <a href="/SinhViens/Details/?id=@sinhVien.MaSV">  <h4>@sinhVien.HoTen</h4></a>
-                                        @if (sinhVien.ChucVu != null)
-                                        {
-                                            <span>Chức vụ: <strong >@sinhVien.ChucVu.TenChucVu</strong></span>
-                                        }
-                                        else
-                                        {
-                                            <span>Chưa có chức vụ</span>
-                                        }
-                                        <br />
-                                      @*   <a class="btn btn-primary" href="/SinhViens/Details/?id=@sinhVien.MaSV" >Xem thông tin</a> *@
-                                        @* <a href="/SinhVien/Details/?MaSV=@sinhVien.MaSV" class="btn btn-primary">Xem thông tin</a> *@
-                                    </div>
+                                        <div class="mt-10">
+                                            <div class="member-info">
+                                                <a href="/SinhViens/Details/?id=@sinhVien.MaSV">
+                                                    <h4>@sinhVien.HoTen</h4>
+                                                </a>
+                                                @if (sinhVien.ChucVu != null)
+                                                {
+                                                    <span>Chức vụ: <strong>@sinhVien.ChucVu.TenChucVu</strong></span>
+                                                }
+                                                else
+                                                {
+                                                    <span>Chưa có chức vụ</span>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="social-links social-links1 d-flex justify-content-evenly mt-2 social-links-hidden">
+                                            <a href="tel:@sinhVien.DienThoai" class="twitter"><i class="fas fa-phone"></i></a>
+                                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                                        </div>
+                                    </div>         
                                 </div>
                             </div>
                         </div>
                     }
                 }
             </div>
-            @* <div class="swiper-pagination"></div> *@
+            @* <div class="swiper-pagination"></div>  *@
         </div>
     </div>
 </section><!-- End Testimonials Section -->
 
-
 <style>
+    .social-links1 {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
 
-     /* CSS cho phần section-title */
+    .member-img:hover .social-links1 {
+        opacity: 1;
+    }
+
+    /* CSS cho phần section-title */
     .section-title {
-        text-align: center; /* căn giữa tiêu đề */
-        margin-bottom: 45px; /* khoảng cách dưới */
+        text-align: center;
+        margin-bottom: 45px;
     }
 
-    .section-title h2 {
-        font-size: 24px; /* kích thước phông chữ tiêu đề */
-        font-weight: bold; /* đậm */
-        color: #333; /* màu chữ */
-    }
+        .section-title h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
 
     /* Media query cho điện thoại di động */
     @@media only screen and (max-width: 600px) {
         .section-title h2 {
-            font-size: 18px; /* Giảm kích thước phông chữ tiêu đề */
+            font-size: 18px;
         }
 
-        .section-title{
+        .section-title {
             padding: 0;
         }
     }
-
-
-
-
-
-
 
     .swiper-container {
         width: 100%;
@@ -137,15 +141,14 @@
         text-align: center;
         font-size: 18px;
         display: flex;
-
         justify-content: center;
         align-items: center;
-        position: relative; /* Đặt vị trí tương đối để điều chỉnh vị trí phần tử con */
+        position: relative;
     }
 
         .swiper-slide::before {
-            content: ""; /* Thêm một phần tử giả tạo */
-            position: absolute; /* Đặt vị trí tuyệt đối để tạo nền mờ */
+            content: "";
+            position: absolute;
             top: 0;
             left: 0;
             margin-left: 50%;
@@ -153,16 +156,15 @@
             width: 100%;
             height: 100%;
             border-radius: 25px;
-            background: rgb(255,242,254);
-            background: linear-gradient(90deg, rgba(255,242,254,1) 0%, rgba(244,248,255,1) 100%, rgba(233,225,255,1) 100%);
-            filter: blur(5px); /* Áp dụng hiệu ứng mờ */
-            z-index: -1; /* Đảm bảo phần tử này ở phía sau phần tử khác */
+            background: rgb(255, 242, 254);
+            background: linear-gradient(90deg, rgba(255, 242, 254, 1) 0%, rgba(244, 248, 255, 1) 100%, rgba(233, 225, 255, 1) 100%);
+            filter: blur(5px);
+            z-index: -1;
         }
 
     .member-container {
         justify-content: center;
         width: 400px;
-
     }
 
     .member {
@@ -186,22 +188,23 @@
     .member-info {
         text-align: center;
         margin-top: 10px;
-        position: relative; /* Đặt vị trí tương đối để điều chỉnh vị trí */
+        position: relative;
     }
 
         .member-info h4 {
             margin-bottom: 5px;
             font-size: 16px;
             font-weight: bold;
-            white-space: nowrap; /* Ngăn họ tên xuống hàng */
-            position: absolute; /* Đặt vị trí tuyệt đối để điều chỉnh vị trí */
-            top: -25px; /* Điều chỉnh vị trí theo nhu cầu của bạn */
-            left: 50%; /* Điều chỉnh vị trí theo nhu cầu của bạn */
-            transform: translateX(-50%); /* Điều chỉnh vị trí theo nhu cầu của bạn */
-            z-index: 1; /* Đảm bảo phần tử này hiển thị trên phần tử khác */
+            white-space: nowrap;
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
         }
 
         .member-info span {
             font-size: 16px;
         }
 </style>
+
