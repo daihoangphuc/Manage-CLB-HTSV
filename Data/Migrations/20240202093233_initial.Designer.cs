@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using website_CLB_HTSV.Data;
+using Manage_CLB_HTSV.Data;
 
 #nullable disable
 
-namespace website_CLB_HTSV.Data.Migrations
+namespace Manage_CLB_HTSV.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240202093233_initial")]
@@ -226,7 +226,7 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.ChucVu", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.ChucVu", b =>
                 {
                     b.Property<string>("MaChucVu")
                         .HasMaxLength(20)
@@ -242,7 +242,7 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.ToTable("ChucVu");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.DangKyHoatDong", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.DangKyHoatDong", b =>
                 {
                     b.Property<string>("MaDangKy")
                         .HasMaxLength(20)
@@ -273,7 +273,7 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.ToTable("DangKyHoatDong");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.HoatDong", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.HoatDong", b =>
                 {
                     b.Property<string>("MaHoatDong")
                         .HasMaxLength(20)
@@ -312,7 +312,7 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.ToTable("HoatDong");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.Khoa", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.Khoa", b =>
                 {
                     b.Property<string>("MaKhoa")
                         .HasMaxLength(20)
@@ -328,7 +328,7 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.ToTable("Khoa");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.LopHoc", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.LopHoc", b =>
                 {
                     b.Property<string>("MaLop")
                         .HasMaxLength(20)
@@ -351,7 +351,7 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.ToTable("LopHoc");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.SinhVien", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.SinhVien", b =>
                 {
                     b.Property<string>("MaSV")
                         .HasMaxLength(20)
@@ -394,7 +394,7 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.ToTable("SinhVien");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.TaiKhoan", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.TaiKhoan", b =>
                 {
                     b.Property<string>("MaTaiKhoan")
                         .HasMaxLength(20)
@@ -427,7 +427,7 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.ToTable("TaiKhoan");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.ThamGiaHoatDong", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.ThamGiaHoatDong", b =>
                 {
                     b.Property<string>("MaThamGiaHoatDong")
                         .HasMaxLength(20)
@@ -448,7 +448,7 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.ToTable("ThamGiaHoatDong");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.TinTuc", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.TinTuc", b =>
                 {
                     b.Property<string>("MaTinTuc")
                         .HasMaxLength(20)
@@ -529,15 +529,15 @@ namespace website_CLB_HTSV.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.DangKyHoatDong", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.DangKyHoatDong", b =>
                 {
-                    b.HasOne("website_CLB_HTSV.Models.HoatDong", "HoatDong")
+                    b.HasOne("Manage_CLB_HTSV.Models.HoatDong", "HoatDong")
                         .WithMany("DangKyHoatDongs")
                         .HasForeignKey("MaHoatDong")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("website_CLB_HTSV.Models.SinhVien", "SinhVien")
+                    b.HasOne("Manage_CLB_HTSV.Models.SinhVien", "SinhVien")
                         .WithMany("DangKyHoatDongs")
                         .HasForeignKey("MaSV")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -548,9 +548,9 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.Navigation("SinhVien");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.LopHoc", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.LopHoc", b =>
                 {
-                    b.HasOne("website_CLB_HTSV.Models.Khoa", "Khoa")
+                    b.HasOne("Manage_CLB_HTSV.Models.Khoa", "Khoa")
                         .WithMany("LopHocs")
                         .HasForeignKey("MaKhoa")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -559,15 +559,15 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.Navigation("Khoa");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.SinhVien", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.SinhVien", b =>
                 {
-                    b.HasOne("website_CLB_HTSV.Models.ChucVu", "ChucVu")
+                    b.HasOne("Manage_CLB_HTSV.Models.ChucVu", "ChucVu")
                         .WithMany("SinhViens")
                         .HasForeignKey("MaChucVu")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("website_CLB_HTSV.Models.LopHoc", "LopHoc")
+                    b.HasOne("Manage_CLB_HTSV.Models.LopHoc", "LopHoc")
                         .WithMany("SinhViens")
                         .HasForeignKey("MaLop")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -578,9 +578,9 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.Navigation("LopHoc");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.TaiKhoan", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.TaiKhoan", b =>
                 {
-                    b.HasOne("website_CLB_HTSV.Models.SinhVien", "SinhVien")
+                    b.HasOne("Manage_CLB_HTSV.Models.SinhVien", "SinhVien")
                         .WithMany()
                         .HasForeignKey("MaSV")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -589,9 +589,9 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.Navigation("SinhVien");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.ThamGiaHoatDong", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.ThamGiaHoatDong", b =>
                 {
-                    b.HasOne("website_CLB_HTSV.Models.DangKyHoatDong", "DangKyHoatDong")
+                    b.HasOne("Manage_CLB_HTSV.Models.DangKyHoatDong", "DangKyHoatDong")
                         .WithMany()
                         .HasForeignKey("MaDangKy")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -600,9 +600,9 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.Navigation("DangKyHoatDong");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.TinTuc", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.TinTuc", b =>
                 {
-                    b.HasOne("website_CLB_HTSV.Models.SinhVien", "SinhVien")
+                    b.HasOne("Manage_CLB_HTSV.Models.SinhVien", "SinhVien")
                         .WithMany()
                         .HasForeignKey("NguoiDang")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -611,27 +611,27 @@ namespace website_CLB_HTSV.Data.Migrations
                     b.Navigation("SinhVien");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.ChucVu", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.ChucVu", b =>
                 {
                     b.Navigation("SinhViens");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.HoatDong", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.HoatDong", b =>
                 {
                     b.Navigation("DangKyHoatDongs");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.Khoa", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.Khoa", b =>
                 {
                     b.Navigation("LopHocs");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.LopHoc", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.LopHoc", b =>
                 {
                     b.Navigation("SinhViens");
                 });
 
-            modelBuilder.Entity("website_CLB_HTSV.Models.SinhVien", b =>
+            modelBuilder.Entity("Manage_CLB_HTSV.Models.SinhVien", b =>
                 {
                     b.Navigation("DangKyHoatDongs");
                 });

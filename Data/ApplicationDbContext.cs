@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using website_CLB_HTSV.Models;
+using Manage_CLB_HTSV.Models;
 
-namespace website_CLB_HTSV.Data
+namespace Manage_CLB_HTSV.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

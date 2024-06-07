@@ -12,10 +12,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using website_CLB_HTSV.Data;
-using website_CLB_HTSV.Models;
+using Manage_CLB_HTSV.Data;
+using Manage_CLB_HTSV.Models;
 
-namespace website_CLB_HTSV.Controllers
+namespace Manage_CLB_HTSV.Controllers
 {
     public class HoatDongsController : Controller
     {

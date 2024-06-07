@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using System.Configuration;
 using System.Net;
-using website_CLB_HTSV;
-using website_CLB_HTSV.Data;
-using website_CLB_HTSV.Services;
+using Manage_CLB_HTSV;
+using Manage_CLB_HTSV.Data;
+using Manage_CLB_HTSV.Services;
 using static Dropbox.Api.TeamLog.EventCategory;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +26,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 //Dang ky dich vu gui mail
-builder.Services.AddSingleton<website_CLB_HTSV.IEmailSender, EmailSender>();
+builder.Services.AddSingleton<Manage_CLB_HTSV.IEmailSender, EmailSender>();
 
 //Add signalr
 builder.Services.AddSignalR();

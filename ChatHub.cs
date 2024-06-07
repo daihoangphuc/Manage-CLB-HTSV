@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting; // Thêm thư viện này
 
-namespace website_CLB_HTSV
+namespace Manage_CLB_HTSV
 {
     public class ChatHub : Hub
     {

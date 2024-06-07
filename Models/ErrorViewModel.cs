@@ -1,4 +1,4 @@
-namespace website_CLB_HTSV.Models
+namespace Manage_CLB_HTSV.Models
 {
     public class ErrorViewModel
     {

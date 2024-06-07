@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.Xml.Linq;
 
-namespace website_CLB_HTSV
+namespace Manage_CLB_HTSV
 {
 /*    public class AuthMessageSenderOptions
     {

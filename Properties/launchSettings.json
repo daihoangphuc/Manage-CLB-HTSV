@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "website_CLB_HTSV": {
+    "Manage_CLB_HTSV": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

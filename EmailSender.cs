@@ -2,7 +2,7 @@
 using System.Net;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
-namespace website_CLB_HTSV.Services
+namespace Manage_CLB_HTSV.Services
 {
     public class EmailSender : IEmailSender
     {

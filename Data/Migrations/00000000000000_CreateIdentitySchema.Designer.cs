@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
-using website_CLB_HTSV.Data;
+using Manage_CLB_HTSV.Data;
 
-namespace website_CLB_HTSV.Data.Migrations
+namespace Manage_CLB_HTSV.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("00000000000000_CreateIdentitySchema")]

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.UI.Services; // Import để sử dụng IEm
 using System;
 using System.Threading.Tasks;
 
-namespace website_CLB_HTSV.Controllers
+namespace Manage_CLB_HTSV.Controllers
 {
     public class AdminController : Controller
     {

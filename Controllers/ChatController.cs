@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace website_CLB_HTSV.Controllers
+namespace Manage_CLB_HTSV.Controllers
 {
     public class ChatController : Controller
     {

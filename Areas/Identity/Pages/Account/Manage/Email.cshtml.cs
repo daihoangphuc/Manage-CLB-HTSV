@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 
-namespace website_CLB_HTSV.Areas.Identity.Pages.Account.Manage
+namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account.Manage
 {
     public class EmailModel : PageModel
     {

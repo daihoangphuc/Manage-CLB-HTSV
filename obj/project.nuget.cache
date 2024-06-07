@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7g5fss+n7j3RmTAshAv/5bIlLyTtW6ll9XRr6HvZd9f2taxZqQy94WM3E58ubVpmd6xwDppOtmgZVikOUWjUlw==",
+  "dgSpecHash": "J0G6CEwa/GBswRQr1CtOyu2c5eCfLywOSa/E5IOpNySVzGfYw2qWsfXkRgD2RC1dWlmMBn8E6GVrGCp4o3I+2w==",
   "success": true,
-  "projectFilePath": "E:\\!Học Kì 6\\Công nghệ phần mềm\\website_CLB_HTSV\\website_CLB_HTSV\\website_CLB_HTSV.csproj",
+  "projectFilePath": "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage_CLB_HTSV\\Manage_CLB_HTSV.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\aspnetcore.mvc.paging\\2.2.1\\aspnetcore.mvc.paging.2.2.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\csvhelper\\31.0.2\\csvhelper.31.0.2.nupkg.sha512",

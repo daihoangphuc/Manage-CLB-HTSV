@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using website_CLB_HTSV.Models;
+using Manage_CLB_HTSV.Models;
 
-namespace website_CLB_HTSV.Controllers
+namespace Manage_CLB_HTSV.Controllers
 {
     public class HomeController : Controller
     {

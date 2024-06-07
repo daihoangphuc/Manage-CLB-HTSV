@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using website_CLB_HTSV.Data;
+using Manage_CLB_HTSV.Data;
 using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 
-namespace website_CLB_HTSV.Controllers
+namespace Manage_CLB_HTSV.Controllers
 {
     public class StatisticController : Controller
     {

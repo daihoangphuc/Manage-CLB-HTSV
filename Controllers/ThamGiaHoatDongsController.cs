@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
-using website_CLB_HTSV.Data;
-using website_CLB_HTSV.Models;
+using Manage_CLB_HTSV.Data;
+using Manage_CLB_HTSV.Models;
 using System.Globalization;
-namespace website_CLB_HTSV.Controllers
+namespace Manage_CLB_HTSV.Controllers
 {
     public class ThamGiaHoatDongsController : Controller
     {

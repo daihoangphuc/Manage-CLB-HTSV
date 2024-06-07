@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using SendGrid.Helpers.Errors.Model;
 using SkiaSharp;
-using website_CLB_HTSV.Data;
-using website_CLB_HTSV.Models;
+using Manage_CLB_HTSV.Data;
+using Manage_CLB_HTSV.Models;
 using ZXing.QrCode;
 using ZXing;
 using QRCoder;
@@ -20,7 +20,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Png;
 using SixLabors.ImageSharp.Processing;
 
-namespace website_CLB_HTSV.Controllers
+namespace Manage_CLB_HTSV.Controllers
 {
     public class SinhViensController : Controller
     {

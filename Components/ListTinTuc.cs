@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using website_CLB_HTSV.Data;
+using Manage_CLB_HTSV.Data;
 
-namespace website_CLB_HTSV.Components
+namespace Manage_CLB_HTSV.Components
 {
     public class ListTinTuc : ViewComponent
     {

@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
-using website_CLB_HTSV.Data;
+using Manage_CLB_HTSV.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace website_CLB_HTSV.Components
+namespace Manage_CLB_HTSV.Components
 {
     public class Chart : ViewComponent
     {

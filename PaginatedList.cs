@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace website_CLB_HTSV
+namespace Manage_CLB_HTSV
 {
     public class PaginatedList<T>
     {

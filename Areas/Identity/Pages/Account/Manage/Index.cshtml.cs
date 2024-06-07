@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace website_CLB_HTSV.Areas.Identity.Pages.Account.Manage
+namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account.Manage
 {
     public class IndexModel : PageModel
     {

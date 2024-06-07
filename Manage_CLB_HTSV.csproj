@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-website_CLB_HTSV-f849b4c9-bdf4-43ad-955e-a1620ca13966</UserSecretsId>
+    <UserSecretsId>aspnet-Manage_CLB_HTSV-f849b4c9-bdf4-43ad-955e-a1620ca13966</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 

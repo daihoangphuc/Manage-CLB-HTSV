@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace website_CLB_HTSV.Models
+namespace Manage_CLB_HTSV.Models
 {
     public class HoatDong
     {

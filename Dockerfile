@@ -1,4 +1,4 @@
-# Bước 1: Sử dụng image aspnet 6.0
+﻿# Bước 1: Sử dụng image aspnet 6.0
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
@@ -36,9 +36,4 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 COPY --from=certs /https/aspnetapp.pem /https/aspnetapp.pem
 
-
-# List the contents of the /app directory to ensure the DLL exists
-RUN ls -la /app
-
-
-ENTRYPOINT ["dotnet", "website_CLB_HTSV.dll"]
+ENTRYPOINT ["dotnet", "Manage_CLB_HTSV.dll"]

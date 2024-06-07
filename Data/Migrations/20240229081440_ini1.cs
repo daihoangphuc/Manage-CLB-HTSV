@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace website_CLB_HTSV.Data.Migrations
+namespace Manage_CLB_HTSV.Data.Migrations
 {
     public partial class ini1 : Migration
     {

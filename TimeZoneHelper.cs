@@ -1,4 +1,4 @@
-﻿namespace website_CLB_HTSV
+﻿namespace Manage_CLB_HTSV
 {
     public class TimeZoneHelper
     {

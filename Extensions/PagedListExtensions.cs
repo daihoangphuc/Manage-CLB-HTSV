@@ -1,6 +1,6 @@
 ﻿using PagedList;
 
-namespace website_CLB_HTSV.Extensions
+namespace Manage_CLB_HTSV.Extensions
 {
     public static class PagedListExtensions
     {
