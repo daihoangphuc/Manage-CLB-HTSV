@@ -41,4 +41,4 @@ COPY --from=certs /https/aspnetapp.pem /https/aspnetapp.pem
 RUN ls -la /app
 
 
-ENTRYPOINT ["dotnet", "website_CLB_HTSV.dll"]
+ENTRYPOINT ["dotnet", "Manage_CLB_HTSV.dll"]
