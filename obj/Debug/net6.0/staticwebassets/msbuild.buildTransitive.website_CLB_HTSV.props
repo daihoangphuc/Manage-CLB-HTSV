@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\website_CLB_HTSV.props" />
+</Project>

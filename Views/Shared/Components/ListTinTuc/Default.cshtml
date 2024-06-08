@@ -1,0 +1,131 @@
+﻿@using System.Globalization;
+@model IEnumerable<Manage_CLB_HTSV.Models.TinTuc>
+
+<div class="section-title" style="margin-left: 50%;; transform: translateX(-50%); margin-bottom: 0" data-aos="fade-up">
+    <h2 class="tt" style="color: #38b7fd; font-size: 20px; padidng: 0">Tin nóng hổi</h2>
+</div>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<style>
+  
+
+    .swiper-container {
+        width: 100%;
+        height: 400px;
+    }
+
+    .swiper-slide {
+        flex-shrink: 0;
+    }
+
+    .swiper-pagination {
+        position: relative;c
+        bottom: 10px;
+    }
+
+    .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background-color: #888;
+        opacity: 0.5;
+        margin: 0 5px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: #333;
+        opacity: 1;
+    }
+
+    /* Responsive adjustments */
+    @@media (min-width: 640px) {
+        .swiper-slide {
+            width: calc(25% - 20px);
+            margin-right: 20px;
+        }
+
+        .swiper-pagination{
+            display: none;
+        }
+    }
+
+    @@media (max-width: 639px) {
+        .swiper-slide {
+            width: 100%; /* Mỗi slide chỉ hiển thị một mục trên điện thoại */
+            margin-right: 0;
+        }
+
+        .tt {
+            font-size: 40px;
+        }
+    }
+</style>
+<section id="testimonials" class="testimonials bg-white  section-bg p-2">
+    <div class="container">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                @foreach (var item in Model)
+                {
+                    <div class="swiper-slide">
+                        <div class="max-w-xs bg-white border border-gray-200 rounded-3xl p-4">
+                            @if (item.HinhAnh != null)
+                            {
+                                <img class="rounded-2xl w-full h-48 object-cover" src="@(Url.Content("~/newsimages/" + item.HinhAnh))" alt="Hình ảnh" />
+                            }
+                            else
+                            {
+                                <img class="rounded-2xl w-full h-48 object-cover" src="/assets/img/icon-logo.png" alt="" />
+                            }
+
+                            <div class="p-3">
+                                @if(item.TieuDe.Length < 15)
+                                {
+                                    <a href="/Tintucs/Details/?id=@item.MaTinTuc">
+                                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                            @item.TieuDe
+                                        </h5>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="/Tintucs/Details/?id=@item.MaTinTuc"><h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">@item.TieuDe.Substring(0, 15)@(item.TieuDe.Length > 15 ? " ..." : "")</h5></a>
+                                }
+                                @if(item?.NoiDung.Length < 45)
+                                {
+                                    <p class="mb-1 text-sm text-gray-700 dark:text-gray-400">@item.NoiDung</p>
+                                }else
+                                {
+                                    <p class="mb-1 text-sm text-gray-700 dark:text-gray-400">@item.NoiDung.Substring(0, 45)@(item.NoiDung.Length > 45 ? " ..." : "")</p>
+                                }
+                                <a href="/Tintucs/Details/?id=@item.MaTinTuc" class="inline-flex items-center px-2.5 py-1.5 mt-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đọc thêm<svg class="rtl:rotate-180 w-3.5 h-3.5 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" /></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <br />
+
+@*             <div class="swiper-pagination"></div> *@
+        </div>
+    </div>
+</section>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    // JavaScript
+    document.addEventListener('DOMContentLoaded', function () {
+        const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            spaceBetween: 10,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            //allowTouchMove: false,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    });
+</script>

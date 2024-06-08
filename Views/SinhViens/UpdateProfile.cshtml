@@ -1,0 +1,155 @@
+﻿@model Manage_CLB_HTSV.Models.SinhVien
+
+@{
+    ViewData["Title"] = "Cập nhật thông tin";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+    @if(Model != null)
+    {
+    <form asp-action="UpdateProfile" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="MaSV" class="control-label">Mã sinh viên</label>
+            <input asp-for="MaSV" class="form-control" value="@User.Identity.Name.Split('@')[0]" disabled />
+            <span asp-validation-for="MaSV" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HoTen" class="control-label">Họ tên</label>
+            <input asp-for="HoTen" class="form-control" value="@Model.HoTen.ToString()" disabled />
+            <span asp-validation-for="HoTen" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NgaySinh" class="control-label">Ngày sinh</label>
+            <input asp-for="NgaySinh" type="text" class="form-control" value="@Model.NgaySinh.ToString("dd/MM/yyyy")" disabled />
+            <span asp-validation-for="NgaySinh" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DienThoai" class="control-label">Số điện thoại</label>
+            <input asp-for="DienThoai" class="form-control" value="@Model.DienThoai" disabled />
+            <span asp-validation-for="DienThoai" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label">Email</label>
+            <input asp-for="Email" class="form-control" value="@User.Identity.Name" disabled />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MaChucVu" class="control-label">Chức vụ</label>
+            <select asp-for="MaChucVu" class="form-control" asp-items="ViewBag.MaChucVu" disabled></select>
+            <span asp-validation-for="MaChucVu" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MaLop" class="control-label">Mã Lớp</label>
+            <input asp-for="MaLop" class="form-control" value="@Model.MaLop.ToUpper()" disabled />
+            <span asp-validation-for="MaLop" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="maKhoa">Khoa</label>
+            <select class="form-control" id="maKhoa" name="maKhoa" disabled>
+                @foreach (var item in ViewBag.KhoaList)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <div class=" d-flex justify-evenly p-2">
+                @if (Model.HinhAnh != null)
+                {
+                    <img src="@(Url.Content("~/userimages/" + @Model.HinhAnh))" alt="Hình ảnh sinh viên" class="img-thumbnail" style="width: 50px;height: 50px; margin-right: 15px; border-radius: 50%; object-fit: cover"/>
+                }
+                @if (Model.DuongdanQR != null)
+                {
+                    <img src="@(Url.Content("~/qrcode/" + @Model.DuongdanQR))" alt="Hình ảnh sinh viên" class="img-thumbnail" style="width: 50px; height: 50px;margin-right: 15px; border-radius: 20px; object-fit: cover" />
+                }
+         </div>
+            <label asp-for="HinhAnh" class="control-label"></label>
+            <input type="file" name="newImage" class="form-control" accept="image/*" />
+            <span asp-validation-for="HinhAnh" class="text-danger"></span>
+        </div>
+        <li>Cập nhật hình ảnh (Nếu muốn)</li>
+        <button type="submit" class="btn btn-primary pl-20">Cập Nhật</button>
+
+        <a href="/Home" class="btn btn-secondary">Bỏ qua</a>
+    </form>
+    }
+    else
+    {
+    <form id="updateProfileForm" asp-action="UpdateProfile" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="MaSV" class="control-label">Mã Sinh Viên</label>
+            <input asp-for="MaSV" class="form-control" value="@User.Identity.Name.Split('@')[0]" disabled />
+            <span asp-validation-for="MaSV" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HoTen" class="control-label">Họ tên</label>
+            <input asp-for="HoTen" class="form-control" />
+            <span asp-validation-for="HoTen" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NgaySinh" class="control-label">Ngày Sinh</label>
+            <input asp-for="NgaySinh" class="form-control" />
+            <span asp-validation-for="NgaySinh" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DienThoai" class="control-label">Số điện thoại</label>
+            <input asp-for="DienThoai" class="form-control" />
+            <span asp-validation-for="DienThoai" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label">Email</label>
+            <input asp-for="Email" class="form-control" value="@User.Identity.Name" disabled />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MaChucVu" class="control-label">Chức vụ</label>
+            <select asp-for="MaChucVu" class="form-control" asp-items="ViewBag.MaChucVu" disabled></select>
+            <span asp-validation-for="MaChucVu" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MaLop" class="control-label">Mã Lớp</label>
+            <input asp-for="MaLop" class="form-control" />
+            <span asp-validation-for="MaLop" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="maKhoa">Khoa </label>
+            <select class="form-control" id="maKhoa" name="maKhoa">
+                @foreach (var item in ViewBag.KhoaList)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="HinhAnh" class="control-label">Hình ảnh (Không bắt buộc)</label>
+            <input type="file" name="newImage" class="form-control" accept="image/*" />
+            <span asp-validation-for="HinhAnh" class="text-danger"></span>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="commitmentCheckbox" name="commitmentCheckbox">
+            <label class="form-check-label" for="commitmentCheckbox">
+                Tôi cam kết thông tin trên là chính xác
+            </label>
+        </div>
+    <button type="submit" class="btn btn-primary pl-20">Cập Nhật</button>
+    </form>
+    }
+
+<script>
+    document.getElementById("updateProfileForm").addEventListener("submit", function (event) {
+        var isChecked = document.getElementById("commitmentCheckbox").checked;
+        if (!isChecked) {
+            alert("Hãy cam kết thông tin trên là chính xác.");
+            event.preventDefault();
+        }
+    });
+</script>

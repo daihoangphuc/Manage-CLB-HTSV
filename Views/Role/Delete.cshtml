@@ -1,0 +1,19 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+
+@{
+    if (User.IsInRole("Administrators"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+}
+
+<h1>Delete Role</h1>
+
+<p>Are you sure you want to delete this role: <strong>@Model.Name</strong>?</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+<a asp-action="Index">Back to List</a>

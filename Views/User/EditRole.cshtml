@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IdentityUser
+@{
+    if (User.IsInRole("Administrators"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+}
+
+<h1>Đặt lại quyền cho @ViewBag.UserName</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="roleName">Chọn quyền mới:</label>
+        <select class="form-control" id="roleName" name="roleName">
+            @foreach (var role in ViewBag.Roles)
+            {
+                <option value="@role.Value">@role.Text</option>
+            }
+        </select>
+    </div>
+
+    <input type="hidden" id="userId" name="userId" value="@ViewBag.UserId">
+
+    <button type="submit" class="btn btn-primary">Save Role</button>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <p class="text-danger">@ViewBag.Error</p>
+}
+
+<a asp-action="Index">Back to List</a>

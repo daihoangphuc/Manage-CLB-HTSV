@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Manage_CLB_HTSV.Models.Khoa>
+
+@{
+    if (User.IsInRole("Administrators"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Tạo mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenKhoa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKhoa)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaKhoa">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MaKhoa">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaKhoa">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+﻿@model Manage_CLB_HTSV.Models.DangKyHoatDong
+@{
+    if (User.IsInRole("Administrators"))
+    {
+         Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    ViewData["Title"] = "Import Excel";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (!string.IsNullOrEmpty(TempData["ErrorMessage"] as string))
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(TempData["SuccessMessage"] as string))
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<form asp-controller="ExcelImport" asp-action="ImportExcel" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="selectedActivity">Select Activity:</label>
+        <select class="form-control" id="selectedActivity" name="selectedActivity">
+            @foreach (var activity in ViewBag.ActivityList)
+            {
+                <option value="@activity.Value">@activity.Text</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="file">Choose Excel File:</label>
+        <input type="file" class="form-control-file" id="file" name="file">
+    </div>
+    <button type="submit" class="btn btn-primary">Import</button>
+</form>

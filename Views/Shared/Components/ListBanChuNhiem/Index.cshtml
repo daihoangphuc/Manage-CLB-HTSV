@@ -1,0 +1,210 @@
+﻿@model IEnumerable<Manage_CLB_HTSV.Models.SinhVien>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="section-title" style="margin-left: 50%;; transform: translateX(-50%); padding: 0; margin-bottom: 0" data-aos="fade-up">
+    <h2 class="tt" style="color: #38b7fd; font-size: 20px; padding: 0">Thống kê</h2>
+</div>
+<!-- ======= Counts Section ======= -->
+<section id="counts" style="padding-bottom: 0; display: flex" class="counts">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-left" data-aos-delay="300">
+                <div class="content d-flex flex-column justify-content-center">
+                    <div class="row">
+                        <div class="col-md-6 d-md-flex align-items-md-stretch">
+                            <div class="count-box">
+                                <i class="bi bi-people"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalSinhViens" data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Số lượng thành viên <strong>đông đảo, vui vẻ, hòa đồng, nhiệt huyết.</strong></p>
+                            </div>
+                        </div>
+                        @{
+                            DateTime now = TimeZoneHelper.GetVietNamTime(DateTime.UtcNow);
+                            // Lấy năm hiện tại
+                            int currentYear = now.Year;
+                            // Số năm của năm hiện tại trừ đi 2021
+                            int namhd = currentYear - 2021;
+                        }
+                        <div class="col-md-6 d-md-flex align-items-md-stretch">
+                            <div class="count-box">
+                                <i class="bi bi-cake"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="@namhd" data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Tính đến nay <strong>CLB Hành Trình Sinh viên</strong> đã hoạt động được hơn @namhd năm.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End .content-->
+            </div>
+            <div data-aos="fade-left" data-aos-delay="400">
+                    @await Component.InvokeAsync("Chart")
+            </div>
+        </div>
+    </div>
+
+
+</section><!-- End Counts Section -->
+
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials" class="testimonials bg-white section-bg" style="padding-top: 0; padding-bottom: 0">
+    <div class="container pb-3">
+        <div class="section-title" style="margin-bottom: 0; padding: 0" data-aos="fade-up">
+            <h2 style="color: #38b7fd;font-size: 18px;">Ban Chủ Nhiệm</h2>
+        </div>
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
+                @if (Model != null)
+                {
+                    @foreach (var sinhVien in Model)
+                    {
+                        <div class="swiper-slide rounded-3xl">
+                            <div class="member-container col-lg-3 col-md-6 d-flex align-items-stretch">
+                                <div class="member" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="member-img mt-5">
+                                        @if (sinhVien.HinhAnh != null)
+                                        {
+                                            <img src="@(Url.Content("~/userimages/" + sinhVien.HinhAnh))" alt="Hình ảnh sinh viên" class="img-fluid w-full h-48 object-cover" />
+                                        }
+                                        else
+                                        {
+                                            <img src="/assets/img/icon-logo.png" class="img-fluid w-full h-48 object-cover" alt="Avatar">
+                                        }
+                                        <div class="mt-10">
+                                            <div class="member-info">
+                                                <a href="/SinhViens/Details/?id=@sinhVien.MaSV">
+                                                    <h4>@sinhVien.HoTen</h4>
+                                                </a>
+                                                @if (sinhVien.ChucVu != null)
+                                                {
+                                                    <span>Chức vụ: <strong>@sinhVien.ChucVu.TenChucVu</strong></span>
+                                                }
+                                                else
+                                                {
+                                                    <span>Chưa có chức vụ</span>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="social-links social-links1 d-flex justify-content-evenly mt-2 social-links-hidden">
+                                            <a href="tel:@sinhVien.DienThoai" class="twitter"><i class="fas fa-phone"></i></a>
+                                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                                        </div>
+                                    </div>         
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            @* <div class="swiper-pagination"></div>  *@
+        </div>
+    </div>
+</section><!-- End Testimonials Section -->
+
+<style>
+    .social-links1 {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .member-img:hover .social-links1 {
+        opacity: 1;
+    }
+
+    /* CSS cho phần section-title */
+    .section-title {
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+        .section-title h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+    /* Media query cho điện thoại di động */
+    @@media only screen and (max-width: 600px) {
+        .section-title h2 {
+            font-size: 18px;
+        }
+
+        .section-title {
+            padding: 0;
+        }
+    }
+
+    .swiper-container {
+        width: 100%;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+        .swiper-slide::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            background: rgb(255, 242, 254);
+            background: linear-gradient(90deg, rgba(255, 242, 254, 1) 0%, rgba(244, 248, 255, 1) 100%, rgba(233, 225, 255, 1) 100%);
+            filter: blur(5px);
+            z-index: -1;
+        }
+
+    .member-container {
+        justify-content: center;
+        width: 400px;
+    }
+
+    .member {
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 10px;
+    }
+
+    .member-img img {
+        width: 190px;
+        border-radius: 50%;
+        border: 4px solid rgb(72, 191, 255);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .member-img:hover img {
+        border: 5px solid rgb(0, 255, 255);
+        transition: 0.3s;
+    }
+
+    .member-info {
+        text-align: center;
+        margin-top: 10px;
+        position: relative;
+    }
+
+        .member-info h4 {
+            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            white-space: nowrap;
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .member-info span {
+            font-size: 16px;
+        }
+</style>
+

@@ -1,0 +1,84 @@
+﻿@model Manage_CLB_HTSV.Models.HoatDong
+
+@{
+    if (User.IsInRole("Administrators"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+}
+
+<h1>Edit</h1>
+
+<h4>HoatDong</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MaHoatDong" />
+            <div class="form-group">
+                <label asp-for="TenHoatDong" class="control-label"></label>
+                <input asp-for="TenHoatDong" class="form-control" />
+                <span asp-validation-for="TenHoatDong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoTa" class="control-label"></label>
+                <input asp-for="MoTa" class="form-control" />
+                <span asp-validation-for="MoTa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThoiGian" class="control-label"></label>
+                <input asp-for="ThoiGian" class="form-control" />
+                <span asp-validation-for="ThoiGian" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiaDiem" class="control-label"></label>
+                <input asp-for="DiaDiem" class="form-control" />
+                <span asp-validation-for="DiaDiem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HocKy" class="control-label"></label>
+                <input asp-for="HocKy" class="form-control" />
+                <span asp-validation-for="HocKy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NamHoc" class="control-label"></label>
+                <input asp-for="NamHoc" class="form-control" />
+                <span asp-validation-for="NamHoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HinhAnh" class="control-label"></label>
+                <input asp-for="HinhAnh" class="form-control" />
+                <span asp-validation-for="HinhAnh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrangThai" class="control-label"></label>
+                <input asp-for="TrangThai" class="form-control" />
+                <span asp-validation-for="TrangThai" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DaDangKi" /> @Html.DisplayNameFor(model => model.DaDangKi)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DaThamGia" /> @Html.DisplayNameFor(model => model.DaThamGia)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinhChung" class="control-label"></label>
+                <input asp-for="MinhChung" class="form-control" />
+                <span asp-validation-for="MinhChung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

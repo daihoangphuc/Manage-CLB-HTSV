@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Diễn Đàn";
+}
+
+<h2 class="mb-4" style="text-align: center">@ViewData["Title"]</h2>
+@if (User.IsInRole("Administrators"))
+{
+    <div>
+        <form asp-controller="Chat" asp-action="ClearHistory" method="post">
+            <button class="btn btn-danger" type="submit">Xóa nội dung</button>
+        </form>
+    </div>
+
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div>
+            @ViewBag.Message
+        </div>
+    }
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p class="mb-2">Xin chào @User.Identity.Name!</p>
+}
+
+
+<div class="overflow-auto" style="max-height: 300px;">
+    <ul id="messagesList" class="list-group"></ul>
+</div>
+<div class="mb-4">
+    @* Hiển thị tên người dùng nếu đã xác thực *@
+    @if (User.Identity.IsAuthenticated)
+    {
+        <input type="text" id="userInput" placeholder="Your name" class="form-control mb-2" value=" @User.Identity.Name.Split('@')[0]" hidden />
+    }
+    else
+    {
+        <input type="text" id="userInput" placeholder="Your name" class="form-control mb-2" />
+    }
+
+    <input type="text" id="messageInput" placeholder="Gửi tin nhắn" class="form-control mb-2" />
+    <button id="sendButton" class="btn btn-primary">Gửi</button>
+</div>
+@section Scripts {
+    <!-- Thêm script của SignalR -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.9/signalr.min.js"></script>
+    <!-- Tham chiếu đến file script chat.js của bạn -->
+    <script src="~/js/chat.js"></script>
+
+    <script>
+        // Handles the enter key in the messageInput box
+        document.getElementById('messageInput').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                document.getElementById('sendButton').click();
+            }
+        });
+
+        // Clear messageInput after sending message
+        document.getElementById('sendButton').addEventListener('click', function () {
+            var messageInput = document.getElementById('messageInput');
+            messageInput.value = ''; // Clear the input value
+        });
+    </script>
+}

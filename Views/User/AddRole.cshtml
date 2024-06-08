@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+@{
+    if (User.IsInRole("Administrators"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+}
+
+<h1>Add Role</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="roleName">Role Name:</label>
+        <input type="text" class="form-control" id="roleName" name="roleName">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Role</button>
+</form>
+
+<a asp-action="Index">Back to List</a>

@@ -1,0 +1,47 @@
+﻿
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+    <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl text-center font-bold mb-4">Thống kê hoạt động của CLB</h1>
+        <canvas id="participationRateChart" width="400" height="200"></canvas>
+    </div>
+
+    <script>
+        var participationRateData = {
+            labels: @Html.Raw(Json.Serialize(ViewBag.MonthlyParticipationLabels)),
+            datasets: [{
+            label: 'Số lượng hoạt động',
+                data: @Html.Raw(Json.Serialize(ViewBag.MonthlyParticipationCounts)),
+                borderColor: 'rgba(74, 163, 223, 1)',
+                backgroundColor: 'rgba(74, 163, 223, 0.2)',
+                tension: 0.5,
+                fill: true
+            }]
+        };
+
+        var participationRateCtx = document.getElementById('participationRateChart').getContext('2d');
+        var participationRateChart = new Chart(participationRateCtx, {
+            type: 'line',
+            data: participationRateData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: ''
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: ''
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
