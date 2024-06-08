@@ -3,7 +3,7 @@ name: CI/CD
 on: 
   push: 
     branches: 
-      - phuc 
+      - main 
 jobs: 
   build: 
     runs-on: ubuntu-latest 
