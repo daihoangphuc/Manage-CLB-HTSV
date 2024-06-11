@@ -57,4 +57,4 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 COPY --from=certs /https/aspnetapp.pem /https/aspnetapp.pem
 
-ENTRYPOINT ["dotnet", "website_CLB_HTSV.dll"]
+ENTRYPOINT ["dotnet", "Manage_CLB_HTSV.dll"]
