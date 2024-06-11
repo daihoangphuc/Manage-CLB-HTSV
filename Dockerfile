@@ -17,7 +17,7 @@ RUN sed -i 's/TLSv1.2/TLSv1.0 TLSv1.1 TLSv1.2/g' /etc/ssl/openssl.cnf
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS certs
 WORKDIR /app
 
-# Khai báo ARG để truyền biến từ build command
+# Khai báo ARG để truyền biến từ build command 
 ARG PFX_PASSWORD
 
 # Sử dụng biến ARG với lệnh dotnet dev-certs
@@ -29,16 +29,18 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY . .
 
-# Bước 6: Thiết lập biến môi trường trong runtime
+#Khai báo các biến ARG để truyền từ secret của github trong quá trình build docker images
 ARG DB_PASSWORD
 ARG SMTP_PASSWORD
 ARG PFX_PASSWORD
+# Bước 6: Thiết lập biến môi trường trong runtime
 ENV DB_PASSWORD=$DB_PASSWORD
 ENV SMTP_PASSWORD=$SMTP_PASSWORD
 ENV PFX_PASSWORD=$PFX_PASSWORD
 
-# Thay đổi nội dung của tệp appsettings.json
+# Thay thế chuỗi ${secrets.DB_PASSWORD} trong tệp appsettings.json bằng giá trị của biến môi trường $DB_PASSWORD
 RUN sed -i "s|\${secrets.DB_PASSWORD}|$DB_PASSWORD|g" appsettings.json
+
 RUN sed -i "s|\${secrets.SMTP_PASSWORD}|$SMTP_PASSWORD|g" appsettings.json
 RUN sed -i "s|\${secrets.PFX_PASSWORD}|$PFX_PASSWORD|g" appsettings.json
 
@@ -55,4 +57,4 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 COPY --from=certs /https/aspnetapp.pem /https/aspnetapp.pem
 
-ENTRYPOINT ["dotnet", "Manage_CLB_HTSV.dll"]
+ENTRYPOINT ["dotnet", "website_CLB_HTSV.dll"]

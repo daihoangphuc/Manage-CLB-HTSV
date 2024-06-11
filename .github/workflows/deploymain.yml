@@ -32,7 +32,7 @@ jobs:
                        --build-arg SMTP_PASSWORD=${{ secrets.SMTP_PASSWORD }} \
                        --build-arg PFX_PASSWORD=${{ secrets.PFX_PASSWORD }} \
                        -t phuchoang1910/webapp_htsv:latest .
-      
+      #Truyên các biến secret của github vào các tương ứng trong quá trình build docker images
       - name: Login to Docker Hub
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
