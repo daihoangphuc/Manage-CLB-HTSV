@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "E:\\!Học Kì 6\\ASP.NET\\website_CLB_HTSV\\website_CLB_HTSV\\website_CLB_HTSV.csproj": {}
   },
   "projects": {
@@ -12,9 +13,22 @@
         "projectPath": "E:\\!Học Kì 6\\ASP.NET\\website_CLB_HTSV\\website_CLB_HTSV\\website_CLB_HTSV.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
         "outputPath": "E:\\!Học Kì 6\\ASP.NET\\website_CLB_HTSV\\website_CLB_HTSV\\obj\\",
+=======
+    "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj": {}
+  },
+  "projects": {
+    "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj",
+        "projectName": "Website_CLB_HTSV",
+        "projectPath": "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj",
+        "packagesPath": "C:\\Users\\hang24\\.nuget\\packages\\",
+        "outputPath": "D:\\JiRa\\Manage-CLB-HTSV\\obj\\",
+>>>>>>> 62c281bd3001107fc8a6fbd82b8fd8af1bcfdb49
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hang24\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -187,7 +201,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
