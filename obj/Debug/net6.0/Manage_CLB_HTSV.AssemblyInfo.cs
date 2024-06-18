@@ -17,12 +17,16 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36d1a12a3d84ac0b26f1123367af4cffe1d148fc")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f4285060b489d629e1da1a4b53ffee31eb913b9")]
 >>>>>>> 48dfd14148e2b7dc413b4856c0901f16380616a8
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ac642b2a6387b200f06b826dab8da66ec30a48b")]
+>>>>>>> test
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9049af3cf158c69ffd5f2e71bd1ba98169ea911")]
 >>>>>>> test
 [assembly: System.Reflection.AssemblyProductAttribute("Manage_CLB_HTSV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Manage_CLB_HTSV")]
