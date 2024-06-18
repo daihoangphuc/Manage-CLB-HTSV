@@ -15478,27 +15478,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hang24\\.nuget\\packages\\": {}
+    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage_CLB_HTSV\\Manage_CLB_HTSV.csproj",
       "projectName": "Manage_CLB_HTSV",
       "projectPath": "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage_CLB_HTSV\\Manage_CLB_HTSV.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
       "outputPath": "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage_CLB_HTSV\\obj\\",
-=======
-      "projectUniqueName": "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj",
-      "projectName": "Website_CLB_HTSV",
-      "projectPath": "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj",
-      "packagesPath": "C:\\Users\\hang24\\.nuget\\packages\\",
-      "outputPath": "D:\\JiRa\\Manage-CLB-HTSV\\obj\\",
->>>>>>> 62c281bd3001107fc8a6fbd82b8fd8af1bcfdb49
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\hang24\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -15671,11 +15663,17 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
       }
     }
   },
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage_CLB_HTSV\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1701",
       "level": "Warning",
