@@ -15,11 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Manage_CLB_HTSV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+48dfd14148e2b7dc413b4856c0901f16380616a8")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92c73593d5192b03c7fa206292d079ed461beae9")]
->>>>>>> test
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36d1a12a3d84ac0b26f1123367af4cffe1d148fc")]
 [assembly: System.Reflection.AssemblyProductAttribute("Manage_CLB_HTSV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Manage_CLB_HTSV")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
