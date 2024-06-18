@@ -15483,11 +15483,33 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 48dfd14148e2b7dc413b4856c0901f16380616a8
       "projectUniqueName": "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage_CLB_HTSV\\Manage_CLB_HTSV.csproj",
       "projectName": "Manage_CLB_HTSV",
       "projectPath": "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage_CLB_HTSV\\Manage_CLB_HTSV.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
       "outputPath": "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage_CLB_HTSV\\obj\\",
+<<<<<<< HEAD
+=======
+=======
+      "projectUniqueName": "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj",
+      "projectName": "Website_CLB_HTSV",
+      "projectPath": "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj",
+      "packagesPath": "C:\\Users\\hang24\\.nuget\\packages\\",
+      "outputPath": "D:\\JiRa\\Manage-CLB-HTSV\\obj\\",
+>>>>>>> 62c281bd3001107fc8a6fbd82b8fd8af1bcfdb49
+=======
+      "projectUniqueName": "D:\\JiRa\\Manage-CLB-HTSV\\Manage_CLB_HTSV.csproj",
+      "projectName": "Manage_CLB_HTSV",
+      "projectPath": "D:\\JiRa\\Manage-CLB-HTSV\\Manage_CLB_HTSV.csproj",
+      "packagesPath": "C:\\Users\\hang24\\.nuget\\packages\\",
+      "outputPath": "D:\\JiRa\\Manage-CLB-HTSV\\obj\\",
+>>>>>>> 0fbbffa304b2adae21a35526a32412c44636d70e
+>>>>>>> 48dfd14148e2b7dc413b4856c0901f16380616a8
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

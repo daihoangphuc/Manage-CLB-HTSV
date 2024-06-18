@@ -1,8 +1,26 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "J0G6CEwa/GBswRQr1CtOyu2c5eCfLywOSa/E5IOpNySVzGfYw2qWsfXkRgD2RC1dWlmMBn8E6GVrGCp4o3I+2w==",
   "success": true,
   "projectFilePath": "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage_CLB_HTSV\\Manage_CLB_HTSV.csproj",
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  "dgSpecHash": "J0G6CEwa/GBswRQr1CtOyu2c5eCfLywOSa/E5IOpNySVzGfYw2qWsfXkRgD2RC1dWlmMBn8E6GVrGCp4o3I+2w==",
+  "success": true,
+  "projectFilePath": "E:\\!Học Kì 6\\Công nghệ phần mềm\\Manage_CLB_HTSV\\Manage_CLB_HTSV\\Manage_CLB_HTSV.csproj",
+=======
+  "dgSpecHash": "Jc5vP/NlfAM4O3gb+8am/prsvZd8v81H3VexV/E71npx+EuGIrOhDG+GKRW/5S6+PGCsEpUJR84PTlV6IxA5xg==",
+  "success": true,
+  "projectFilePath": "D:\\JiRa\\Manage-CLB-HTSV\\Website_CLB_HTSV.csproj",
+>>>>>>> 62c281bd3001107fc8a6fbd82b8fd8af1bcfdb49
+=======
+  "dgSpecHash": "cZPtG563s/mK696FVR+cJKiCgA8YGTlGGRUEf7dkl8XvQfLKRb0QLn4WWdU4hl5nbYLyWSbsGBvD0p0AqdQvLw==",
+  "success": true,
+  "projectFilePath": "D:\\JiRa\\Manage-CLB-HTSV\\Manage_CLB_HTSV.csproj",
+>>>>>>> 0fbbffa304b2adae21a35526a32412c44636d70e
+>>>>>>> 48dfd14148e2b7dc413b4856c0901f16380616a8
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\aspnetcore.mvc.paging\\2.2.1\\aspnetcore.mvc.paging.2.2.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\csvhelper\\31.0.2\\csvhelper.31.0.2.nupkg.sha512",
