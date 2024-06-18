@@ -7,8 +7,7 @@
     <UserSecretsId>aspnet-Manage_CLB_HTSV-f849b4c9-bdf4-43ad-955e-a1620ca13966</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
-
-  <ItemGroup>
+<ItemGroup>
     <Content Remove="Views\HoatDongs\Register.cshtml" />
   </ItemGroup>
 
