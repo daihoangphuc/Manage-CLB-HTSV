@@ -60,7 +60,24 @@ WebHost.CreateDefaultBuilder(args)
        });
 
 var app = builder.Build();
+app.Use(async (context, next) =>
+{
+    // Kiểm tra các yêu cầu đến từ các thư mục cần bảo vệ
+    if (context.Request.Path.StartsWithSegments("/newsimages") ||
+        context.Request.Path.StartsWithSegments("/qrcode") ||
+        context.Request.Path.StartsWithSegments("/userimages") ||
+        context.Request.Path.StartsWithSegments("/messages"))
+    {
+        // Nếu yêu cầu nằm trong các thư mục bảo vệ, chặn truy cập và ẩn trong trình duyệt
+        context.Response.StatusCode = StatusCodes.Status404NotFound;
+        context.Response.Headers.Add("X-Content-Type-Options", "nosniff"); // Thêm header để ngăn chặn trình duyệt hiển thị nội dung
+        await context.Response.WriteAsync("404 - Not Found"); // Hoặc bạn có thể chuyển hướng đến một trang 404
+        return;
+    }
 
+    // Cho phép các yêu cầu khác đi qua middleware này
+    await next();
+});
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
