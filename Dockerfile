@@ -1,57 +1,57 @@
-﻿# Bước 1: Sử dụng image aspnet 6.0
+﻿# Step 1: Use ASP.NET 6.0 image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-# Bước 2: Thêm các tệp certificate và private key vào container
+# Step 2: Add certificate and private key files to the container
 COPY Certificates/certificate.crt /app
 COPY Certificates/private.key /app
 COPY Certificates/your_certificate.pfx /app
 
-# Bước 3: Thiết lập HTTPS cho Kestrel
+# Step 3: Set up HTTPS for Kestrel
 ENV ASPNETCORE_URLS=http://+:80;https://+:443
 RUN sed -i 's/TLSv1.2/TLSv1.0 TLSv1.1 TLSv1.2/g' /etc/ssl/openssl.cnf
 
-# Bước 4: Tạo stage mới để thực thi các lệnh dotnet dev-certs
+# Step 4: Create a new stage to execute dotnet dev-certs commands
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS certs
 WORKDIR /app
 
-# Khai báo ARG để truyền biến từ build command 
+# Declare ARG to pass variables from the build command
 ARG PFX_PASSWORD
 
-# Sử dụng biến ARG với lệnh dotnet dev-certs
+# Use the ARG variable with the dotnet dev-certs command
 RUN dotnet dev-certs https -ep /https/aspnetapp.pfx -p $PFX_PASSWORD
 RUN openssl pkcs12 -in /https/aspnetapp.pfx -out /https/aspnetapp.pem -nodes -password pass:$PFX_PASSWORD
 
-# Bước 5: Cài đặt ứng dụng
+# Step 5: Install the application
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY . .
 
-#Khai báo các biến ARG để truyền từ secret của github trong quá trình build docker images
+# Declare ARG variables to pass from GitHub secrets during the Docker images build process
 ARG DB_PASSWORD
 ARG SMTP_PASSWORD
 ARG PFX_PASSWORD
-# Bước 6: Thiết lập biến môi trường trong runtime
+
+# Step 6: Set environment variables at runtime
 ENV DB_PASSWORD=$DB_PASSWORD
 ENV SMTP_PASSWORD=$SMTP_PASSWORD
 ENV PFX_PASSWORD=$PFX_PASSWORD
 
-# Thay thế chuỗi ${secrets.DB_PASSWORD} trong tệp appsettings.json bằng giá trị của biến môi trường $DB_PASSWORD
+# Replace the ${secrets. } string in appsettings.json with the value of the environment variable
 RUN sed -i "s|\${secrets.DB_PASSWORD}|$DB_PASSWORD|g" appsettings.json
-
 RUN sed -i "s|\${secrets.SMTP_PASSWORD}|$SMTP_PASSWORD|g" appsettings.json
 RUN sed -i "s|\${secrets.PFX_PASSWORD}|$PFX_PASSWORD|g" appsettings.json
 
 RUN dotnet restore
 RUN dotnet build -c Release -o /app/build
 
-# Bước 7: Publish ứng dụng
+# Step 7: Publish the application
 FROM build AS publish
 RUN dotnet publish -c Release -o /app/publish
 
-# Bước 8: Build ứng dụng cuối cùng
+# Step 8: Build the final application
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
