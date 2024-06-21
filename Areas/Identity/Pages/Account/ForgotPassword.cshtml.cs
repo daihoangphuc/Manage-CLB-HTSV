@@ -109,7 +109,7 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
                 }
                 catch (Exception ex)
                 {
-                    // Handle error appropriately
+                   
 
                 }
 
