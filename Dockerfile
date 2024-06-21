@@ -7,7 +7,7 @@ EXPOSE 443
 # Step 2: Add certificate and private key files to the container
 COPY Certificates/certificate.crt /app
 COPY Certificates/private.key /app
-COPY Certificates/my_certificate.pfx /app
+COPY Certificates/your_certificate.pfx /app
 
 # Step 3: Set up HTTPS for Kestrel
 ENV ASPNETCORE_URLS=http://+:80;https://+:443

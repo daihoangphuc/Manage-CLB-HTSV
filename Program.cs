@@ -55,7 +55,7 @@ WebHost.CreateDefaultBuilder(args)
        {
            options.Listen(IPAddress.Any, 443, listenOptions =>
            {
-               listenOptions.UseHttps("my_certificate.crt", "your_private_key.key");
+               listenOptions.UseHttps("your_certificate.crt", "your_private_key.key");
            });
        });
 
