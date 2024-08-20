@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore;
+﻿﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -50,14 +50,14 @@ builder.Services.AddSession(options => {
 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
 WebHost.CreateDefaultBuilder(args)
-    .UseStartup<Program>()
-    .UseKestrel(options =>
-    {
-        options.Listen(IPAddress.Any, 443, listenOptions =>
-        {
-            listenOptions.UseHttps("your_certificate.pfx", "Phuc123cc@#");
-        });
-    });
+       .UseStartup<Program>()
+       .UseKestrel(options =>
+       {
+           options.Listen(IPAddress.Any, 443, listenOptions =>
+           {
+               listenOptions.UseHttps("your_certificate.crt", "your_private_key.key");
+           });
+       });
 
 var app = builder.Build();
 
