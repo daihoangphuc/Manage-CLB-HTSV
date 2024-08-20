@@ -4,7 +4,14 @@
 {
     <li id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex ml-3 text-sm bg-white rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">
         <span class="sr-only">Open user menu</span>
-        <img class="w-8 h-8 ml-2 rounded-full" src="@(Url.Content("~/userimages/" + Model.HinhAnh))" style="border: 2px solid #3ab8fd; width: 40px; height: 40px" width="40" height="40" alt="user photo">
+        @if(Model.HinhAnh != null)
+        {
+            <img class="w-8 h-8 ml-2 rounded-full" src="@(Url.Content("~/userimages/" + Model.HinhAnh))" style="border: 2px solid #3ab8fd; width: 40px; height: 40px" width="40" height="40" alt="user photo">
+        }
+        else
+        {
+            <img class="w-8 h-8 ml-2 rounded-full" src="@(Url.Content("~/userimages/c31017f7-6834-4a8c-8662-9d28e353f82d.png"))" style="border: 2px solid #3ab8fd; width: 40px; height: 40px" width="40" height="40" alt="user photo">
+        }
     </li>
 
     <!-- Dropdown menu -->

@@ -15,7 +15,6 @@ namespace Manage_CLB_HTSV.Models
         [DisplayName("Tên Hoạt Động")]
         public string? TenHoatDong { get; set; }
 
-
         [DisplayName("Mô Tả")]
         public string? MoTa { get; set; }
 
@@ -31,7 +30,6 @@ namespace Manage_CLB_HTSV.Models
 
         [DisplayName("Năm Học")]
         public int NamHoc { get; set; }
-
 
         [DisplayName("Hình Ảnh")]
         public string? HinhAnh { get; set; }
@@ -49,5 +47,10 @@ namespace Manage_CLB_HTSV.Models
         [DisplayName("Minh Chứng")]
         public string? MinhChung { get; set; }
 
+        [DisplayName("Vĩ Độ")]
+        public double? Latitude { get; set; }
+
+        [DisplayName("Kinh Độ")]
+        public double? Longitude { get; set; }
     }
 }

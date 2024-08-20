@@ -3,7 +3,7 @@ name: CI/CD
 on: 
   push: 
     branches: 
-      - demo 
+      - demo2
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -51,9 +51,8 @@ jobs:
           script: |
           
             # Pull SQL Server image and run it
-            docker pull mcr.microsoft.com/mssql/server:2017-latest 
-            docker stop sqlserver1 || true && docker rm sqlserver1 || true 
-            docker run --name sqlserver1 -d -p 1433:1433 --user=root -v mssql:/var/opt/mssql -e SA_PASSWORD=${{ secrets.DB_PASSWORD }} -e ACCEPT_EULA=Y mcr.microsoft.com/mssql/server:2017-latest 
+            docker stop mssql || true && docker rm mssql || true 
+            docker run --name mssql -d -p 1433:1433 --user=root -v mssql:/var/opt/mssql -e SA_PASSWORD=${{ secrets.DB_PASSWORD }} -e ACCEPT_EULA=Y mcr.microsoft.com/mssql/server:2017-latest 
 
             # Pull and run web app Docker  
             docker pull phuchoang1910/webapp_htsv:latest

@@ -68,7 +68,14 @@
                             @i.MaSV
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap d-flex align-items-center">
-                             <img src="@(Url.Content("~/userimages/" + i.HinhAnh))" alt="Hình ảnh sinh viên" class="img-thumbnail" style="width: 50px;height: 50px; margin-right: 15px; border-radius: 50%" />
+                        @if(i.HinhAnh != null)
+                        {
+                            <img src="@(Url.Content("~/userimages/" + i.HinhAnh))" alt="Hình ảnh sinh viên" class="img-thumbnail" style="width: 50px;height: 50px; margin-right: 15px; border-radius: 50%" />
+                        }
+                        else
+                        {
+                            <img src="@(Url.Content("~/userimages/c31017f7-6834-4a8c-8662-9d28e353f82d.png"))" alt="Hình ảnh sinh viên" class="img-thumbnail" style="width: 50px;height: 50px; margin-right: 15px; border-radius: 50%" />
+                        }
                             @i.HoTen
                         </td>
                     <td class="px-6 py-4 whitespace-nowrap">

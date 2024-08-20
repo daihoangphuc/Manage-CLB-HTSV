@@ -7,7 +7,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Dropbox.Api.Users;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -20,11 +22,12 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmailSender _emailSender;
-
-        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender, IWebHostEnvironment webHostEnvironment)
         {
             _userManager = userManager;
             _emailSender = emailSender;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         /// <summary>
@@ -70,10 +73,17 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
                     values: new { area = "Identity", code },
                     protocol: Request.Scheme);
 
+                // Đường dẫn đến file HTML template
+                string templatePath = Path.Combine(_webHostEnvironment.WebRootPath, "emailhtml", "email_forget_password.html");
+
+                // Đọc nội dung của file template
+                string htmlTemplate = System.IO.File.ReadAllText(templatePath);
+                string htmlMessage = htmlTemplate.Replace("{{reset_link}}", HtmlEncoder.Default.Encode(callbackUrl));
+
                 await _emailSender.SendEmailAsync(
                     Input.Email,
-                    "Reset Password",
-                    $"Hãy click vào đây để đặt lại mật khẩu <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Đặt lại mật khẩu</a> ");
+                    "Khôi phục mật khẩu",
+                    htmlMessage);
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }

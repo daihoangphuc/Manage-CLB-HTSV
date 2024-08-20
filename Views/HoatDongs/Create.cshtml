@@ -57,9 +57,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="TrangThai" class="control-label"></label>
-                <input asp-for="TrangThai" class="form-control" />
+                <select asp-for="TrangThai" class="form-control">
+                    <option value="Sắp diễn ra">Sắp diễn ra</option>
+                    <option value="Đã kết thúc">Đã kết thúc</option>
+                </select>
                 <span asp-validation-for="TrangThai" class="text-danger"></span>
             </div>
+
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="DaDangKi" /> @Html.DisplayNameFor(model => model.DaDangKi)
@@ -74,6 +78,11 @@
                 <label asp-for="MinhChung" class="control-label"></label>
                 <input asp-for="MinhChung" class="form-control" />
                 <span asp-validation-for="MinhChung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tọa độ</label>
+                <input name="Toado" class="form-control" placeholder="Enter coordinates as 'latitude,longitude'" />
+                <span class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

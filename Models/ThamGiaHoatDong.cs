@@ -23,7 +23,7 @@ namespace Manage_CLB_HTSV.Models
         public bool DaThamGia { get; set; }
 
         [DisplayName("Link Minh Chứng")]
-        public string? LinkMinhChung { get; set; } // Thêm thuộc tính mới để chứa link minh chứng
+        public string? LinkMinhChung { get; set; } 
 
         [ForeignKey("MaDangKy")]
         [DisplayName("Đăng Ký Hoạt Động")]

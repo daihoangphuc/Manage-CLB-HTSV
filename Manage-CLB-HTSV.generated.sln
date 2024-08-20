@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manage_CLB_HTSV", "Manage_CLB_HTSV.csproj", "{EF2E6EE2-D414-484A-9332-A37C6E8ABFB5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF2E6EE2-D414-484A-9332-A37C6E8ABFB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF2E6EE2-D414-484A-9332-A37C6E8ABFB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF2E6EE2-D414-484A-9332-A37C6E8ABFB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF2E6EE2-D414-484A-9332-A37C6E8ABFB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {74F3B8B2-7749-4BEC-8A0A-EB859B5A7AE9}
+	EndGlobalSection
+EndGlobal

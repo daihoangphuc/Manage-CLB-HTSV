@@ -73,7 +73,7 @@
                 }
          </div>
             <label asp-for="HinhAnh" class="control-label"></label>
-            <input type="file" name="newImage" class="form-control" accept="image/*" />
+            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="newImage" aria-describedby="file_input_help" id="file_input" type="file" accept="image/*">
             <span asp-validation-for="HinhAnh" class="text-danger"></span>
         </div>
         <li>Cập nhật hình ảnh (Nếu muốn)</li>

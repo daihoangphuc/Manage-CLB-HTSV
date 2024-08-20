@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using Manage_CLB_HTSV.Data;
+using Manage_CLB_HTSV.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Manage_CLB_HTSV.Data;
-using Manage_CLB_HTSV.Models;
+using System.Globalization;
 
 namespace Manage_CLB_HTSV.Controllers
 {
@@ -53,7 +45,7 @@ namespace Manage_CLB_HTSV.Controllers
                 {
                     SqlCommand command = new SqlCommand(updateQuery, connection);
                     SqlCommand command2 = new SqlCommand(xoatghd, connection);
-                    SqlCommand command3= new SqlCommand(xoadkhd, connection);
+                    SqlCommand command3 = new SqlCommand(xoadkhd, connection);
 
                     connection.Open();
                     command2.ExecuteNonQuery();
@@ -69,38 +61,15 @@ namespace Manage_CLB_HTSV.Controllers
                 TempData["ErrorMessage"] = "Đã xảy ra lỗi: " + ex.Message;
             }
 
-            return RedirectToAction("Index"); // Chuyển hướng đến action Index hoặc một action khác nếu cần
+            return RedirectToAction("Index");
         }
-        /*private int LaySoDongTrongBang(string tenbang)
-        {
-            string connectionString = _configuration.GetConnectionString("DefaultConnection");
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                string query = "SELECT COUNT(*) FROM " + tenbang;
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    int rowCount = Convert.ToInt32(command.ExecuteScalar());
-                    return rowCount;
-                }
-            }
-        }*/
-        /*        public static string Taoidtaikhoan(int sequentialNumber)
-                {
-                    return $"DK{sequentialNumber:D3}";
-                }*/
 
         [HttpPost]
         [Authorize(Roles = "Users")]
         public async Task<IActionResult> DangKy(string hoatDongId)
         {
-            /*int y = LaySoDongTrongBang("DangKyHoatDong");*/
             if (ModelState.IsValid)
             {
-                
-
                 var dangKyHoatDong = new DangKyHoatDong
                 {
                     MaHoatDong = hoatDongId,
@@ -108,69 +77,52 @@ namespace Manage_CLB_HTSV.Controllers
                     MaDangKy = "DK" + TimeZoneHelper.GetVietNamTime(DateTime.UtcNow).ToString("yyyyMMddHHmmssfff"),
                     NgayDangKy = TimeZoneHelper.GetVietNamTime(DateTime.UtcNow),
                     TrangThaiDangKy = true
-
                 };
 
                 _context.Add(dangKyHoatDong);
                 await _context.SaveChangesAsync(); // Lưu vào CSDL
 
-                // Điều hướng người dùng về trang cần thiết hoặc thông báo thành công
-                // Ví dụ: quay trở lại danh sách hoạt động
                 return RedirectToAction(nameof(Index));
             }
 
-            // Nếu không hợp lệ, quay về trang hiện tại
             return View(hoatDongId);
         }
-
-
-
-
 
         // GET: HoatDongs
         [Authorize]
         public async Task<IActionResult> Index(string searchString, int? pageNumber)
         {
-            // Kiểm tra người dùng đã đăng nhập hay chưa
             if (!User.Identity.IsAuthenticated)
             {
-                // Nếu chưa đăng nhập, đặt thông báo vào TempData
                 TempData["ErrorMessage"] = "Bạn cần đăng nhập để truy cập vào trang này.";
                 return Redirect("/Identity/Account/Login");
             }
 
-            // Lấy thông tin người dùng hiện tại
             var currentUser = await _userManager.GetUserAsync(User);
             var Mssv = User.Identity.Name.Split('@')[0];
 
-            // Lọc các hoạt động dựa trên trạng thái đăng ký của người dùng hiện tại
             var hoatdong = _context.HoatDong
                 .Where(hd => !_context.DangKyHoatDong
                     .Any(dk => dk.MaHoatDong == hd.MaHoatDong
                             && dk.MaSV == Mssv
                             && dk.TrangThaiDangKy == true) && hd.TrangThai != "Đã kết thúc");
 
-            // Lọc theo chuỗi tìm kiếm nếu có
             if (!string.IsNullOrEmpty(searchString))
             {
-                // Chuyển đổi chuỗi ngày tháng năm đầu vào sang định dạng DateTime
                 if (DateTime.TryParseExact(searchString, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime searchDate))
                 {
-                    // Nếu chuyển đổi thành công, lọc theo ngày tháng năm
                     hoatdong = hoatdong.Where(s => s.TenHoatDong.Contains(searchString)
                                                 || s.MoTa.Contains(searchString)
                                                 || s.ThoiGian.Date == searchDate.Date);
                 }
                 else
                 {
-                    // Nếu không thành công, chỉ lọc theo các trường khác (tên hoạt động, mô tả)
                     hoatdong = hoatdong.Where(s => s.TenHoatDong.Contains(searchString)
                                                 || s.MoTa.Contains(searchString));
                 }
             }
 
-
-            int pageSize = 4; // Số lượng mục trên mỗi trang
+            int pageSize = 4;
             return View(await PaginatedList<HoatDong>.CreateAsync(hoatdong.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
@@ -201,23 +153,45 @@ namespace Manage_CLB_HTSV.Controllers
         }
 
         // POST: HoatDongs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrators")]
-        public async Task<IActionResult> Create([Bind("MaHoatDong,TenHoatDong,MoTa,ThoiGian,DiaDiem,HocKy,NamHoc,HinhAnh,TrangThai,DaDangKi,DaThamGia,MinhChung")] HoatDong hoatDong)
+        public async Task<IActionResult> Create([Bind("MaHoatDong,TenHoatDong,MoTa,ThoiGian,DiaDiem,HocKy,NamHoc,HinhAnh,TrangThai,DaDangKi,DaThamGia,MinhChung")] HoatDong hoatDong, string Toado)
         {
-            hoatDong.MaHoatDong = "HD" + TimeZoneHelper.GetVietNamTime(DateTime.UtcNow).ToString("yyyyMMddHHmmssfff");
-            hoatDong.TrangThai = "Sắp diễn ra";
             if (ModelState.IsValid)
             {
+                // Tách tọa độ từ chuỗi
+                if (!string.IsNullOrEmpty(Toado))
+                {
+                    var coords = Toado.Split(',');
+                    if (coords.Length == 2 &&
+                        double.TryParse(coords[0], NumberStyles.Any, CultureInfo.InvariantCulture, out double latitude) &&
+                        double.TryParse(coords[1], NumberStyles.Any, CultureInfo.InvariantCulture, out double longitude))
+                    {
+                        hoatDong.Latitude = latitude;
+                        hoatDong.Longitude = longitude;
+                    }
+                    else
+                    {                    
+                        return View(hoatDong);
+                    }
+                }
+                else
+                {
+                    return View(hoatDong);
+                }
+
+                hoatDong.MaHoatDong = "HD" + TimeZoneHelper.GetVietNamTime(DateTime.UtcNow).ToString("yyyyMMddHHmmssfff");
+                hoatDong.TrangThai = "Sắp diễn ra";
+
                 _context.Add(hoatDong);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(hoatDong);
         }
+
 
         // GET: HoatDongs/Edit/5
         [Authorize(Roles = "Administrators")]
@@ -237,12 +211,10 @@ namespace Manage_CLB_HTSV.Controllers
         }
 
         // POST: HoatDongs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrators")]
-        public async Task<IActionResult> Edit(string id, [Bind("MaHoatDong,TenHoatDong,MoTa,ThoiGian,DiaDiem,HocKy,NamHoc,HinhAnh,TrangThai,DaDangKi,DaThamGia,MinhChung")] HoatDong hoatDong)
+        public async Task<IActionResult> Edit(string id, [Bind("MaHoatDong,TenHoatDong,MoTa,ThoiGian,DiaDiem,HocKy,NamHoc,HinhAnh,TrangThai,DaDangKi,DaThamGia,MinhChung,Latitude,Longitude")] HoatDong hoatDong)
         {
             if (id != hoatDong.MaHoatDong)
             {
@@ -306,14 +278,14 @@ namespace Manage_CLB_HTSV.Controllers
             {
                 _context.HoatDong.Remove(hoatDong);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool HoatDongExists(string id)
         {
-          return (_context.HoatDong?.Any(e => e.MaHoatDong == id)).GetValueOrDefault();
+            return (_context.HoatDong?.Any(e => e.MaHoatDong == id)).GetValueOrDefault();
         }
     }
 }

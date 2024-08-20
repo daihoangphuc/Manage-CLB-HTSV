@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using Manage_CLB_HTSV.Data;
+using Manage_CLB_HTSV.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Manage_CLB_HTSV.Data;
-using Manage_CLB_HTSV.Models;
 using OfficeOpenXml;
 namespace Manage_CLB_HTSV.Controllers
 {
@@ -25,6 +20,79 @@ namespace Manage_CLB_HTSV.Controllers
             _userManager = userManager;
             _emailSender = emailSender;
             _webHostEnvironment = webHostEnvironment;
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> DiemDanh(string mahd, double kinhdo, double vido)
+        {
+            var mssv = User.Identity.Name.Split('@')[0];
+
+            // Lấy thông tin hoạt động
+            var hoatdong = await _context.HoatDong.FirstOrDefaultAsync(h => h.MaHoatDong == mahd);
+            if (hoatdong == null)
+            {
+                return RedirectToAction(nameof(Index), new { errorMessage = "Không tìm thấy hoạt động." });
+            }
+            // Ghi lại tọa độ cho debug
+            Console.WriteLine($"Hoat dong: Latitude = {hoatdong.Latitude}, Longitude = {hoatdong.Longitude}");
+            Console.WriteLine($"User: Latitude = {vido}, Longitude = {kinhdo}");
+            // Lấy thông tin đăng ký hoạt động
+            var dangkihoatdong = await _context.DangKyHoatDong
+                .FirstOrDefaultAsync(dk => dk.MaHoatDong == mahd && dk.MaSV == mssv);
+            if (dangkihoatdong == null)
+            {
+                return RedirectToAction(nameof(Index), new { errorMessage = "Bạn chưa đăng ký hoạt động này." });
+            }
+
+            // Kiểm tra khoảng cách điểm danh
+            if (IsWithinAcceptableDistance((double)hoatdong.Latitude, (double)hoatdong.Longitude, vido, kinhdo))
+            {
+                var thamgiahoatdong = new ThamGiaHoatDong
+                {
+                    MaThamGiaHoatDong = "TG" + TimeZoneHelper.GetVietNamTime(DateTime.UtcNow).ToString("yyyyMMddHHmmssfff"),
+                    MaDangKy = dangkihoatdong.MaDangKy,
+                    DaThamGia = true,
+                    MaSV = mssv,
+                    MaHoatDong = mahd
+                };
+                _context.ThamGiaHoatDong.Add(thamgiahoatdong);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage_V_DiemDanh"] = "Điểm danh thành công.";
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["ErrorMessage_V_DiemDanh"] = $"Điểm danh thất bại. Bạn không ở gần địa điểm hoạt động.\n Tọa độ của bạn là {vido}, {kinhdo} ";
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        public bool IsWithinAcceptableDistance(double activityLatitude, double activityLongitude, double checkLatitude, double checkLongitude, double acceptableDistanceInMeters = 100)
+        {
+            const double EarthRadiusKm = 6371.0;
+
+            // Chuyển đổi độ rộng và chiều dài từ độ sang radian
+            double lat1 = ToRadians(activityLatitude);
+            double lon1 = ToRadians(activityLongitude);
+            double lat2 = ToRadians(checkLatitude);
+            double lon2 = ToRadians(checkLongitude);
+
+            // Tính khoảng cách giữa hai điểm
+            double dLat = lat2 - lat1;
+            double dLon = lon2 - lon1;
+
+            double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                       Math.Cos(lat1) * Math.Cos(lat2) *
+                       Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            double distance = EarthRadiusKm * c * 1000; // Đổi từ km sang mét
+
+            return distance <= acceptableDistanceInMeters;
+        }
+
+        private double ToRadians(double degrees)
+        {
+            return degrees * (Math.PI / 180);
         }
 
         //Cập nhật minh chứng 
@@ -330,6 +398,13 @@ namespace Manage_CLB_HTSV.Controllers
 
             // Tạo danh sách phân trang từ danh sách đăng ký hoạt động
             var paginatedDangKyHoatDongs = await PaginatedList<DangKyHoatDong>.CreateAsync(hoatdong.AsNoTracking(), pageNumber ?? 1, pageSize);
+            // Lấy trạng thái "Đã Tham Gia" của mỗi hoạt động
+            var thamGiaHoatDong = _context.ThamGiaHoatDong
+                .Where(tg => tg.MaSV == Mssv)
+                .ToDictionary(tg => tg.MaHoatDong, tg => tg.DaThamGia);
+
+            // Truyền danh sách trạng thái "Đã Tham Gia" vào ViewBag
+            ViewBag.ThamGiaStatuses = thamGiaHoatDong;
 
             return View(paginatedDangKyHoatDongs);
         }
