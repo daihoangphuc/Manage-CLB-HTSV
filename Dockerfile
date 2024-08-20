@@ -1,60 +1,31 @@
-﻿# Step 1: Use ASP.NET 6.0 image
+﻿# Step 1: Base image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-# Step 2: Add certificate and private key files to the container
-COPY Certificates/certificate.crt /app
-COPY Certificates/private.key /app
-COPY Certificates/your_certificate.pfx /app
-
-# Step 3: Set up HTTPS for Kestrel
-ENV ASPNETCORE_URLS=http://+:80;https://+:443
-RUN sed -i 's/TLSv1.2/TLSv1.0 TLSv1.1 TLSv1.2/g' /etc/ssl/openssl.cnf
-
-# Step 4: Create a new stage to execute dotnet dev-certs commands
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS certs
-WORKDIR /app
-
-# Declare ARG to pass variables from the build command
-ARG PFX_PASSWORD
-
-# Use the ARG variable with the dotnet dev-certs command
-RUN dotnet dev-certs https -ep /https/aspnetapp.pfx -p $PFX_PASSWORD
-RUN openssl pkcs12 -in /https/aspnetapp.pfx -out /https/aspnetapp.pem -nodes -password pass:$PFX_PASSWORD
-
-# Step 5: Install the application
+# Step 2: Build stage
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY . .
 
-# Declare ARG variables to pass from GitHub secrets during the Docker images build process
-ARG DB_PASSWORD
-ARG SMTP_PASSWORD
-ARG PFX_PASSWORD
+# Restore, build, and publish
+RUN dotnet restore "Manage_CLB_HTSV.csproj"
+RUN dotnet build "Manage_CLB_HTSV.csproj" -c Release -o /app/build
+RUN dotnet publish "Manage_CLB_HTSV.csproj" -c Release -o /app/publish
 
-# Step 6: Set environment variables at runtime
-ENV DB_PASSWORD=$DB_PASSWORD
-ENV SMTP_PASSWORD=$SMTP_PASSWORD
-ENV PFX_PASSWORD=$PFX_PASSWORD
-
-# Replace the ${secrets. } string in appsettings.json with the value of the environment variable
-RUN sed -i "s|\${secrets.DB_PASSWORD}|$DB_PASSWORD|g" appsettings.json
-RUN sed -i "s|\${secrets.SMTP_PASSWORD}|$SMTP_PASSWORD|g" appsettings.json
-RUN sed -i "s|\${secrets.PFX_PASSWORD}|$PFX_PASSWORD|g" appsettings.json
-
-RUN dotnet restore Manage_CLB_HTSV.csproj
-RUN dotnet build Manage_CLB_HTSV.csproj -c Release -o /app/build
-
-# Step 7: Publish the application
-FROM build AS publish
-RUN dotnet publish Manage_CLB_HTSV.csproj -c Release -o /app/publish
-
-# Step 8: Build the final application
+# Step 3: Final stage
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
-COPY --from=certs /https/aspnetapp.pem /https/aspnetapp.pem
+COPY --from=build /app/publish .
+
+# Copy certificates
+COPY Certificates/your_certificate.pfx /app
+COPY Certificates/private.key /app
+
+# Setting up environment variables
+ENV ASPNETCORE_URLS="http://+:80;https://+:443"
+ENV ASPNETCORE_Kestrel__Certificates__Default__Path="/app/your_certificate.pfx"
+ENV ASPNETCORE_Kestrel__Certificates__Default__Password="${PFX_PASSWORD}"
 
 ENTRYPOINT ["dotnet", "Manage_CLB_HTSV.dll"]
