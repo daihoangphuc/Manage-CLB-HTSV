@@ -50,14 +50,14 @@ builder.Services.AddSession(options => {
 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
 WebHost.CreateDefaultBuilder(args)
-       .UseStartup<Program>()
-       .UseKestrel(options =>
-       {
-           options.Listen(IPAddress.Any, 443, listenOptions =>
-           {
-               listenOptions.UseHttps("certificate.crt", "private.key");
-           });
-       });
+    .UseStartup<Program>()
+    .UseKestrel(options =>
+    {
+        options.Listen(IPAddress.Any, 443, listenOptions =>
+        {
+            listenOptions.UseHttps("your_certificate.pfx", "Phuc123cc@#");
+        });
+    });
 
 var app = builder.Build();
 
