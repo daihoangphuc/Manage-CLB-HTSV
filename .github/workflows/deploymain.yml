@@ -21,10 +21,10 @@ jobs:
         run: dotnet restore Manage_CLB_HTSV.csproj
 
       - name: Build project
-        run: dotnet build --configuration Release
+        run: dotnet build Manage_CLB_HTSV.csproj --configuration Release
 
       - name: Test project
-        run: dotnet test
+        run: dotnet test Manage_CLB_HTSV.csproj
 
       - name: Build Docker image
         run: |
