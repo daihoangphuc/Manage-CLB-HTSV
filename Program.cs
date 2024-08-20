@@ -15,9 +15,13 @@ using static Dropbox.Api.TeamLog.EventCategory;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+// var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+// builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//     options.UseSqlServer(connectionString));
+var connectionString = $"Server=74.63.202.70,1433;Database=Website_CLB_HTSV;User Id=sa;Password={Environment.GetEnvironmentVariable("DB_PASSWORD")};MultipleActiveResultSets=true";
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
