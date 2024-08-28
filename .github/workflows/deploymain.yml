@@ -18,13 +18,13 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore Manage-CLB-HTSV.generated.sln
 
       - name: Build project
-        run: dotnet build --configuration Release
+        run: dotnet build Manage-CLB-HTSV.generated.sln --configuration Release
 
       - name: Test project
-        run: dotnet test
+        run: dotnet test Manage-CLB-HTSV.generated.sln
 
       - name: Build Docker image
         run: |
