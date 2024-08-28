@@ -44,12 +44,12 @@ RUN sed -i "s|\${secrets.DB_PASSWORD}|$DB_PASSWORD|g" appsettings.json
 RUN sed -i "s|\${secrets.SMTP_PASSWORD}|$SMTP_PASSWORD|g" appsettings.json
 RUN sed -i "s|\${secrets.PFX_PASSWORD}|$PFX_PASSWORD|g" appsettings.json
 
-RUN dotnet restore Manage_CLB_HTSV.csproj
-RUN dotnet build Manage_CLB_HTSV.csproj -c Release -o /app/build
+RUN dotnet restore
+RUN dotnet build -c Release -o /app/build
 
 # Step 7: Publish the application
 FROM build AS publish
-RUN dotnet publish Manage_CLB_HTSV.csproj -c Release -o /app/publish
+RUN dotnet publish -c Release -o /app/publish
 
 # Step 8: Build the final application
 FROM base AS final

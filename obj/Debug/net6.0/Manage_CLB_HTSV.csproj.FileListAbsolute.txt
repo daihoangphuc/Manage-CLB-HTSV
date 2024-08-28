@@ -690,6 +690,10 @@ D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\appsettings.Development.jso
 D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\appsettings.json
 D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\Manage_CLB_HTSV.staticwebassets.runtime.json
 D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\Manage_CLB_HTSV.exe
+D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\Manage_CLB_HTSV.deps.json
+D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\Manage_CLB_HTSV.runtimeconfig.json
+D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\Manage_CLB_HTSV.dll
+D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\Manage_CLB_HTSV.pdb
 D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Paging.dll
 D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\CsvHelper.dll
 D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\DinkToPdf.dll
@@ -1024,9 +1028,5 @@ D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Manage_C.3444A733.Up2Date
 D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Manage_CLB_HTSV.dll
 D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\refint\Manage_CLB_HTSV.dll
 D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Manage_CLB_HTSV.pdb
-D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\Manage_CLB_HTSV.deps.json
-D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\Manage_CLB_HTSV.runtimeconfig.json
-D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\Manage_CLB_HTSV.dll
-D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\bin\Debug\net6.0\Manage_CLB_HTSV.pdb
 D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\Manage_CLB_HTSV.genruntimeconfig.cache
 D:\@Manage_CLB_HTSV\Manage-CLB-HTSV\obj\Debug\net6.0\ref\Manage_CLB_HTSV.dll

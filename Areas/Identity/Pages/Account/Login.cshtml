@@ -16,8 +16,8 @@
         return true; // Cho phép gửi form
     }
 </script> *@
-
-    <link rel="stylesheet" href="~/Login_Register/src/assets/css/styles.min.css" />
+@* 
+    <link rel="stylesheet" href="~/Login_Register/src/assets/css/styles.min.css" /> *@
 
 @{
     <!-- Tailwind CSS -->
@@ -70,51 +70,49 @@
 }
 
     <!--  Body Wrapper -->
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-         data-sidebar-position="fixed" data-header-position="fixed">
-        <div class="position-relative overflow-hidden min-vh-100 d-flex align-items-center justify-content-center">
-            <div class="d-flex align-items-center justify-content-center w-100">
-                <div class="row justify-content-center w-100">
-                <div class="col-md-8 col-lg-6 col-xxl-3" style="width: 500px; margin-top: -180px">
-                        <div class="card mb-0">
-                            <div class="card-body">
-                                <a href="/Home" class="text-nowrap logo-img text-center d-flex py-3 w-100" style="justify-content: center">
-                                <img src="~/Login_Register/src/assets/images/logos/logo_clb.png" width="180" alt="">
-                                </a>
-                                <p class="text-center mb-3">Hi! I'm Hanh Trinh Sinh Vien Club</p>
-                                <form id="account" method="post">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                    <div class="mb-3">
-                                        <label asp-for="Input.Email" for="exampleInputEmail1" class="form-label">Email (mssv@st.tvu.edu.vn)</label>
-                                        <input type="email" asp-for="Input.Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" aria-required="true" required>
-                                        <span asp-validation-for="Input.Email" class="text-danger"></span>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label asp-for="Input.Password" for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-                                        <input asp-for="Input.Password" type="password" class="form-control" id="exampleInputPassword1" aria-required="true">
-                                        <span asp-validation-for="Input.Password" class="text-danger"></span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
-                                            <label class="form-check-label text-dark" for="flexCheckChecked">
-                                                Nhớ mật khẩu
-                                            </label>
-                                        </div>
-                                        <a class="text-primary fw-bold" id="forgot-password" asp-page="./ForgotPassword">Bạn quên mật khẩu?</a>
-                                    </div>
-                                    <button id="login-submit" type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Đăng nhập</button>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <a class="text-primary fw-bold ms-2" asp-page="./Register">Đăng kí tài khoản mới.</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+<div class="flex items-center justify-center">
+    <div class="w-full mt-3 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-sm">
+        <div class="text-center">
+            <a href="/Home" class="inline-flex justify-center items-center">
+                <img src="~/Login_Register/src/assets/images/logos/logo_clb.png" alt="Logo CLB" class="w-44 mx-auto">
+            </a>
+            <p class="mt-4 text-lg font-semibold text-gray-700">Hi! I'm Hanh Trinh Sinh Vien Club</p>
+        </div>
+        <form id="account" method="post" class="space-y-6">
+            <div>
+                <label for="exampleInputEmail1" class="block text-sm font-medium text-gray-700">Email (mssv@st.tvu.edu.vn)</label>
+                <input type="email" id="exampleInputEmail1" required aria-required="true"
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                       asp-for="Input.Email">
+                <span asp-validation-for="Input.Email" class="text-sm text-red-600"></span>
+            </div>
+            <div>
+                <label for="exampleInputPassword1" class="block text-sm font-medium text-gray-700">Mật khẩu</label>
+                <input type="password" id="exampleInputPassword1" required aria-required="true"
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                       asp-for="Input.Password">
+                <span asp-validation-for="Input.Password" class="text-sm text-red-600"></span>
+            </div>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <input id="flexCheckChecked" style="color: #399cff" type="checkbox" checked
+                           class="h-4 w-4 border-gray-300 rounded">
+                    <label for="flexCheckChecked" class="ml-2 block text-sm text-gray-900">Nhớ mật khẩu</label>
+                </div>
+                <div class="text-sm">
+                    <a href="./ForgotPassword" style="color: #399cff" class="font-medium">Bạn quên mật khẩu?</a>
                 </div>
             </div>
-        </div>
+            <button type="submit" style="background: #399cff; border-radius: 20px"
+                    class="w-full flex justify-center py-2 px-4 mt-4 bg-blue-600 text-white font-medium rounded-md focus:outline-none focus:ring-2 ">Đăng nhập
+            </button>
+            <div class="text-sm text-center">
+                <a href="./Register" style="color: #399cff" class="font-medium">Đăng kí tài khoản mới.</a>
+            </div>
+        </form>
     </div>
+</div>
+
     <script src="~/Login_Register/src/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="~/Login_Register/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 

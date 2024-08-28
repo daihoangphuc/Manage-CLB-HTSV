@@ -1,0 +1,212 @@
+﻿/* Phạm vi CSS chỉ áp dụng cho phần tử bên trong view hiện tại */
+
+.custom-container {
+    margin-top: 190px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.custom-card {
+    width: 500px;
+    height: 300px;
+    background-color: #ffffff;
+    background-image: url('../img/thethanhvien_empty.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.custom-content {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.custom-title {
+    color: #00a2e9;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 28px;
+    padding-bottom: 10px;
+}
+
+.custom-name {
+    font-weight: bold;
+}
+
+.custom-info {
+    margin-top: 5px;
+    margin-left: 170px;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    color: #000000;
+    line-height: 0.8;
+}
+
+.custom-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 23.5%;
+    margin-left: 40px;
+    width: 110px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #00a2e9;
+}
+
+.custom-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 5px;
+    margin-left: 1.5%;
+    width: 85px;
+    height: 80px;
+}
+
+.custom-qr-code {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 20px;
+    margin-left: 84%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.custom-actions {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.club-name {
+    margin-left: 120px;
+    margin-top: 33px;
+}
+
+.sub-club-name {
+    font-size: 16px;
+}
+/* Download Button Container */
+.download-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Adjust margin as needed */
+}
+
+/* Button Styling */
+#downloadImage {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #009cff;
+    color: white;
+    border-radius: 30px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-content {
+    display: flex;
+}
+
+#downloadImage:hover {
+    background-color: #005d98;
+}
+
+/* Icon inside the button */
+.download-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+/* Responsive CSS */
+@media only screen and (max-width: 600px) {
+    .custom-card {
+        width: 315px;
+        height: 200px;
+    }
+
+    .custom-title {
+        font-size: 14px;
+        margin-top: 20px;
+        margin-left: 29px;
+        padding-bottom: 0;
+    }
+
+
+    .club-name {
+        margin-left: 89px;
+        margin-top: 16px;
+    }
+
+    .sub-club-name {
+        font-size: 9.5px;
+    }
+
+    .custom-content {
+        width: 160px;
+    }
+
+    .custom-name, .custom-role, .custom-class, .custom-phone, .custom-email {
+        font-size: 10px;
+    }
+
+    .custom-info {
+        line-height: 0.4;
+        margin-left: 40px;
+        margin-top: 10px;
+    }
+
+    .custom-image {
+        width: 80px;
+        height: 90px;
+        margin-top: 23%;
+        margin-left: 22px;
+    }
+
+    .custom-logo {
+        width: 45px;
+        height: 45px;
+        margin-top: 8px;
+        margin-left: 3%;
+    }
+
+    .custom-qr-code {
+        width: 40px;
+        height: 40px;
+        margin-top: 12px;
+        margin-left: 83%;
+    }
+
+    .custom-actions {
+        font-size: 12px;
+    }
+}
+
+#downloadImage {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.download-icon {
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+}

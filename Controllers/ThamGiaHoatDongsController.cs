@@ -44,7 +44,7 @@ namespace Manage_CLB_HTSV.Controllers
         [Authorize(Roles = "Administrators")]
         public async Task<IActionResult> XuatDS(string hoatDongId)
         {
-            var activityList = await _context.HoatDong
+/*            var activityList = await _context.HoatDong
                                              .Select(a => new SelectListItem
                                              {
                                                  Value = a.MaHoatDong.ToString(),
@@ -52,7 +52,7 @@ namespace Manage_CLB_HTSV.Controllers
                                              })
                                              .ToListAsync();
 
-            ViewBag.ActivityList = activityList;
+            ViewBag.ActivityList = activityList;*/
 
             // Lấy danh sách sinh viên tham gia hoạt động được chọn
             var danhSachSinhVien = from s in _context.ThamGiaHoatDong
@@ -103,13 +103,10 @@ namespace Manage_CLB_HTSV.Controllers
                 return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
             }
         }
-
-
-
-
         // GET: ThamGiaHoatDongs
         public async Task<IActionResult> Index(string searchString, int? pageNumber)
         {
+            // Lấy danh sách tham gia hoạt động với các liên kết cần thiết
             IQueryable<ThamGiaHoatDong> danhSachThamGiaHoatDong = _context.ThamGiaHoatDong
                 .Include(t => t.DangKyHoatDong)
                 .Include(h => h.DangKyHoatDong.HoatDong)
@@ -118,7 +115,9 @@ namespace Manage_CLB_HTSV.Controllers
             // Lọc theo chuỗi tìm kiếm nếu có
             if (!string.IsNullOrEmpty(searchString))
             {
-                danhSachThamGiaHoatDong = danhSachThamGiaHoatDong.Where(tg => tg.DangKyHoatDong.HoatDong.MaHoatDong.Contains(searchString) || tg.DangKyHoatDong.HoatDong.TenHoatDong.Contains(searchString) || tg.MaSV.Contains(searchString));
+                danhSachThamGiaHoatDong = danhSachThamGiaHoatDong.Where(tg => tg.DangKyHoatDong.HoatDong.MaHoatDong.Contains(searchString)
+                                                                           || tg.DangKyHoatDong.HoatDong.TenHoatDong.Contains(searchString)
+                                                                           || tg.MaSV.Contains(searchString));
             }
 
             // Kiểm tra người dùng đã đăng nhập hay chưa
@@ -136,27 +135,28 @@ namespace Manage_CLB_HTSV.Controllers
                 // Kiểm tra vai trò của người dùng
                 if (User.IsInRole("Administrators"))
                 {
-                    // Nếu là quản trị viên, trả về view với toàn bộ danh sách phân trang
+                    // Nếu là quản trị viên, sắp xếp theo thời gian gần nhất và phân trang
+                    danhSachThamGiaHoatDong = danhSachThamGiaHoatDong
+                        .OrderByDescending(tg => tg.DangKyHoatDong.HoatDong.ThoiGian); // Sắp xếp theo thời gian giảm dần
+
                     var paginatedDanhSachThamGiaHoatDong = await PaginatedList<ThamGiaHoatDong>.CreateAsync(danhSachThamGiaHoatDong.AsNoTracking(), pageNumber.Value, 10); // 10 là kích thước trang
                     return View(paginatedDanhSachThamGiaHoatDong);
                 }
                 else
                 {
-                    // Nếu không phải là quản trị viên, lọc theo mã số sinh viên và trả về view với danh sách phân trang
+                    // Nếu không phải là quản trị viên, lọc theo mã số sinh viên, sắp xếp theo thời gian gần nhất và phân trang
                     var mssv = User.Identity.Name.Split('@')[0];
                     danhSachThamGiaHoatDong = danhSachThamGiaHoatDong.Where(h => h.MaSV == mssv);
+
+                    // Sắp xếp theo thời gian gần nhất
+                    danhSachThamGiaHoatDong = danhSachThamGiaHoatDong
+                        .OrderByDescending(tg => tg.DangKyHoatDong.HoatDong.ThoiGian);
+
                     var paginatedDanhSachThamGiaHoatDong = await PaginatedList<ThamGiaHoatDong>.CreateAsync(danhSachThamGiaHoatDong.AsNoTracking(), pageNumber.Value, 10); // 10 là kích thước trang
                     return View(paginatedDanhSachThamGiaHoatDong);
                 }
             }
         }
-
-
-
-
-
-
-
 
         // GET: ThamGiaHoatDongs/Details/5
         public async Task<IActionResult> Details(string id)

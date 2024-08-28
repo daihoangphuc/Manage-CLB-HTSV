@@ -29,13 +29,14 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-
+        private readonly IWebHostEnvironment _webHostEnvironment;
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IWebHostEnvironment webHostEnvironment)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -43,6 +44,7 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         /// <summary>
@@ -70,34 +72,25 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
             [StringLength(100, ErrorMessage = "{0} phải dài ít nhất là {2} và tối đa {1} ký tự.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
+            [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&#])[A-Za-z\\d@$!%*?&#]{6,}$", ErrorMessage = "Mật khẩu phải có ký tự viết hoa, viết thường, chữ số và kí tự đặc biệt. Ví dụ: Abc123!!")]
             public string Password { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "Mật khẩu và nhập lại mật khẩu không khớp")]
             public string ConfirmPassword { get; set; }
         }
+
+
 
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -122,7 +115,7 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
                 {// Tạo user thành công, bây giờ set role mặc định là "User"
                     _logger.LogInformation("User created a new account with password.");
 
-                    await _userManager.AddToRoleAsync(user, "User");
+                    await _userManager.AddToRoleAsync(user, "Users");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -133,9 +126,17 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Xác nhận đăng ký",
-                        $"Hãy click vào đây để xác nhận Email <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Xác nhận đăng kí.</a>.");
+                    // Đường dẫn đến file HTML template
+                    string templatePath = Path.Combine(_webHostEnvironment.WebRootPath, "emailhtml", "confirm_register_account.html");
 
+                    // Đọc nội dung của file template
+                    string htmlTemplate = System.IO.File.ReadAllText(templatePath);
+                    string htmlMessage = htmlTemplate.Replace("{{confirmation_link}}", HtmlEncoder.Default.Encode(callbackUrl));
+
+                    await _emailSender.SendEmailAsync(
+                        Input.Email,
+                        "Xác nhận đăng ký tài khoản",
+                        htmlMessage);
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });

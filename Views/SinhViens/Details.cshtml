@@ -1,162 +1,82 @@
 ﻿@model Manage_CLB_HTSV.Models.SinhVien
-
-
-<div class="container-the">
-    <div class="cardsv">
-        <div class="content">
-            <h1 class="ttv" > THẺ THÀNH VIÊN</h1>
-            <div class="info">
-                <p class="ht">@Model.HoTen</p>
-                <p class="tt" >Chức vụ: @Model.ChucVu.TenChucVu</p>
-                <p class="tt">Lớp: @Model.LopHoc.MaLop</p>
-                <p class="tt">Số điện thoại: @Model.DienThoai</p>
-                <p class="tt">Email: @Model.Email</p>
+<link rel="stylesheet" href="~/assets/css/student_card.css" />
+<div class="custom-container">
+    <div class="custom-card">
+        <div class="custom-content">
+            <h1 class="custom-title">THẺ THÀNH VIÊN</h1>
+            <div class="custom-info">
+                <p class="custom-name">@Model.HoTen</p>
+                <p class="custom-role">Chức vụ: @Model.ChucVu.TenChucVu</p>
+                <p class="custom-class">Lớp: @Model.LopHoc.MaLop</p>
+                <p class="custom-phone">Số điện thoại: @Model.DienThoai</p>
+                <p class="custom-email">Email: @Model.Email</p>
             </div>
-            <!-- Các phần tử khác bạn muốn thêm vào đây -->
         </div>
-        <img src="@(Url.Content("~/userimages/" + Model.HinhAnh))" class="overlay-image">
-        <img src="@(Url.Content("~/qrcode/" + @Model.DuongdanQR))" class="overlay-image2" alt="Qr Code" />
+        <img src="@(Url.Content("~/assets/img/logo_clb.png"))" class="custom-logo" alt="Logo" />
+        <div class="club-name">
+            <span class="sub-club-name" id="subclubname1" style="color: #00a2e9;margin-left: -33px;font-weight: bold">CÂU LẠC BỘ</span>
+            <span class="sub-club-name" id="subclubname2" style="color: #ff66c4;font-weight: bold">HÀNH TRÌNH SINH VIÊN</span>
+        </div>
+        <img src="@(Url.Content("~/userimages/" + Model.HinhAnh))" class="custom-image">
+        <img src="@(Url.Content("~/qrcode/" + @Model.DuongdanQR))" class="custom-qr-code" alt="Qr Code" />
     </div>
+    @if (User.IsInRole("Administrators"))
+    {   
+        <div class="custom-actions">
+            <a asp-action="Edit" asp-route-id="@Model?.MaSV">Edit</a> |
+            <a href="/SinhViens">Back to List</a>
+        </div>
+    }
 </div>
+<div class="download-button-container">
+    <button id="downloadImage" class="btn btn-success" data-filename="@Model.MaSV">
+        <div class="button-content">
+            Tải thẻ
+            <svg class="download-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z" />
+                <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
+            </svg>
+        </div>
+    </button>
+</div>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const downloadImageButton = document.getElementById('downloadImage');
+
+            if (downloadImageButton) {
+                downloadImageButton.addEventListener('click', function () {
+                    const fileName = downloadImageButton.getAttribute('data-filename');
+
+                    html2canvas(document.querySelector('.custom-card'), {
+                        backgroundColor: null,
+                        scrollX: 0,
+                        scrollY: -window.scrollY,
+                        width: document.querySelector('.custom-card').offsetWidth,
+                        height: document.querySelector('.custom-card').offsetHeight,
+                        scale: 2,
+                        onclone: function (clonedDoc) {
+                            // Điều chỉnh CSS trong bản sao để tải xuống
+                            clonedDoc.querySelector('.club-name').style.transform = 'translateY(-5.5px)';
+                            clonedDoc.querySelector('.custom-title').style.transform = 'translateY(-7px)'; // Điều chỉnh giá trị theo nhu cầu
+                        }
+                    }).then(canvas => {
+                        // Tải ảnh xuống
+                        const imgData = canvas.toDataURL('image/png');
+                        const link = document.createElement('a');
+                        link.href = imgData;
+                        link.download = `${fileName}.png`;
+                        link.click();
+                    }).catch(error => {
+                        console.error('Error generating image:', error);
+                    });
+                });
+            }
+        });
+    </script>
+}
 <style>
-    .container-the {
-        width: 500px;
-        height: 300px;
-        display: flex;
-        margin-left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .cardsv {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-color: rgb(255, 255, 255);
-        background-image: url('@Url.Content("~/assets/img/thethanhvienclb.png")');
-        background-size: cover;
-        background-position: center;
-        border-radius: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Đổ bóng với màu đen và độ mờ là 0.2 */
-    }
-
-
-    .content {
-        width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-15%, -40%);
-        text-align: center;
-        color: white;
-    }
-    .ttv{
-        color: #00a2e9;
-        font-size: 20px;
-        font-weight: bold;
-        margin-top: -20px;
-        padding-bottom: 15px;
-        transform: translateX(-35%)
-    }
-    .ht {
-        font-weight:bold;
-
-    }
-    .info {
-        width: 70%;
-        height: 100%;
-        text-align: left;
-        color: #000000;
-        margin-left: 0;
-        line-height: 0.7;
-    }
-
-    .overlay-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin-top: 22%;
-        margin-left: 40px;
-        width: 110px;
-        height: 130px;
-        object-fit: cover;
-        border-radius: 10px;
-        border: 3px solid #00a2e9;
-    }
-
-    .overlay-image2 {
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin-top: 20px;
-        margin-left: 84%;
-        width: 60px;
-        height: 60px;
-        object-fit: cover;
-        border-radius: 10px;
-    }
-
-
-    /* Responsive CSS */
-    @@media only screen and (max-width: 600px) {
-        .container-the {
-            width: 300px;
-            height: 200px;
-        }
-        .ttv{
-            color: #00a2e9;
-            font-size: 10px;
-            font-weight: bold;
-            margin-top: 60px;
-            padding-bottom: 0;
-        }
-        .ht{
-            font-size: 10px;
-        }
-        .tt {
-            font-size: 9px;
-        }
-        .content {
-            padding: 10px; /* Giảm khoảng cách giữa nội dung và mép của thẻ khi trên điện thoại */
-            margin-top: -40px;
-        }
-        .overlay-image {
-            width: 80px;
-            height: 90px;
-            margin-top: 24%;
-            margin-left: 20px;
-        }
-
-        .overlay-image2 {
-            width: 40px;
-            height: 40px;
-            margin-top: 12px;
-            margin-left: 83%;
-        }
-        .info{
-            margin-top: 15px;
-            margin-left: 0;
-            line-height: 0.3;
-        }
-        .content {
-            height: 200px;  
-            width: 100%;
-            position: absolute;
-            margin-left: 0px;
-            text-align: center;
-            color: white;
-        }
-
-      
-
-    }
-
 
 </style>
-@if (User.IsInRole("Administrators"))
-{
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model?.MaSV">Edit</a> |
-        <a href="/SinhViens">Back to List</a>
-    </div>
-}

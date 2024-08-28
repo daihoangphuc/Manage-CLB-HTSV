@@ -21,7 +21,26 @@ namespace Manage_CLB_HTSV.Controllers
             _userManager = userManager;
             _configuration = configuration;
         }
+        public async Task<IActionResult> UpdateTrangThaiHoatDong()
+        {
+            var hoatDongs = await _context.HoatDong
+                .Where(hd => hd.TrangThai != "Đã kết thúc")
+                .ToListAsync(); // Truy xuất dữ liệu từ CSDL
 
+            var currentTime = TimeZoneHelper.GetVietNamTime(DateTime.UtcNow);
+
+            foreach (var hoatDong in hoatDongs)
+            {
+                if (hoatDong.ThoiGian < currentTime)
+                {
+                    hoatDong.TrangThai = "Đã kết thúc";
+                }
+            }
+
+            _context.UpdateRange(hoatDongs);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
         public string GetIDFromEmail(string email)
         {
             if (string.IsNullOrEmpty(email))
@@ -92,39 +111,66 @@ namespace Manage_CLB_HTSV.Controllers
         [Authorize]
         public async Task<IActionResult> Index(string searchString, int? pageNumber)
         {
+            // Cập nhật trạng thái của các hoạt động trước khi hiển thị danh sách
+            await UpdateTrangThaiHoatDong();
+
+            // Kiểm tra xem người dùng đã đăng nhập hay chưa
             if (!User.Identity.IsAuthenticated)
             {
                 TempData["ErrorMessage"] = "Bạn cần đăng nhập để truy cập vào trang này.";
                 return Redirect("/Identity/Account/Login");
             }
 
+            // Lấy thông tin người dùng hiện tại
             var currentUser = await _userManager.GetUserAsync(User);
             var Mssv = User.Identity.Name.Split('@')[0];
 
-            var hoatdong = _context.HoatDong
-                .Where(hd => !_context.DangKyHoatDong
-                    .Any(dk => dk.MaHoatDong == hd.MaHoatDong
-                            && dk.MaSV == Mssv
-                            && dk.TrangThaiDangKy == true) && hd.TrangThai != "Đã kết thúc");
+            IQueryable<HoatDong> hoatdongQuery;
 
+            // Kiểm tra quyền của người dùng
+            if (User.IsInRole("Administrators"))
+            {
+                // Quản trị viên thấy tất cả các hoạt động chưa kết thúc
+                hoatdongQuery = _context.HoatDong;
+            }
+            else
+            {
+                // Người dùng bình thường thấy các hoạt động chưa đăng ký và chưa kết thúc
+                hoatdongQuery = _context.HoatDong
+                    .Where(hd => !_context.DangKyHoatDong
+                        .Any(dk => dk.MaHoatDong == hd.MaHoatDong
+                                && dk.MaSV == Mssv
+                                && dk.TrangThaiDangKy == true)
+                        && hd.TrangThai != "Đã kết thúc");
+            }
+
+            // Xử lý tìm kiếm nếu có
             if (!string.IsNullOrEmpty(searchString))
             {
                 if (DateTime.TryParseExact(searchString, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime searchDate))
                 {
-                    hoatdong = hoatdong.Where(s => s.TenHoatDong.Contains(searchString)
-                                                || s.MoTa.Contains(searchString)
-                                                || s.ThoiGian.Date == searchDate.Date);
+                    hoatdongQuery = hoatdongQuery.Where(s => s.ThoiGian.Date == searchDate.Date);
                 }
                 else
                 {
-                    hoatdong = hoatdong.Where(s => s.TenHoatDong.Contains(searchString)
-                                                || s.MoTa.Contains(searchString));
+                    hoatdongQuery = hoatdongQuery.Where(s => s.TenHoatDong.Contains(searchString)
+                                                        || s.MoTa.Contains(searchString));
                 }
             }
 
+            // Sắp xếp theo ThoiGian gần nhất lên đầu tiên
+            hoatdongQuery = hoatdongQuery
+                .OrderBy(hd => hd.ThoiGian); // Thay đổi thành OrderByDescending nếu muốn sắp xếp theo thứ tự giảm dần
+
             int pageSize = 4;
-            return View(await PaginatedList<HoatDong>.CreateAsync(hoatdong.AsNoTracking(), pageNumber ?? 1, pageSize));
+
+            // Tạo danh sách phân trang
+            var hoatdongList = await PaginatedList<HoatDong>.CreateAsync(hoatdongQuery.AsNoTracking(), pageNumber ?? 1, pageSize);
+
+            return View(hoatdongList);
         }
+
+
 
         // GET: HoatDongs/Details/5
         [Authorize]

@@ -1,30 +1,82 @@
 ﻿@page
 @model RegisterConfirmationModel
+
 @{
     ViewData["Title"] = "Xác nhận Email";
 }
 
-<h1>@ViewData["Title"]</h1>
-@{
-    if (@Model.DisplayConfirmAccountLink)
-    {
-<p>
+<div class="min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg max-w-md w-full">
+        <div class="text-center mb-6">
+            <h1 class="text-2xl font-semibold text-gray-800">@ViewData["Title"]</h1>
+        </div>
+        @if (Model.DisplayConfirmAccountLink)
+        {
+            <p class="text-center text-gray-700">
+                Vui lòng kiểm tra trong hộp thư của Email @Model.Email để xác thực tài khoản.
+            </p>
+        }
+        else
+        {
+            <p class="text-center text-gray-700">
+                Please check your email to confirm your account.
+            </p>
+        }
+    </div>
+</div>
 
-            @* @{
-
-    This app does not currently have a real email sender registered, see < a href = "https://aka.ms/aspaccountconf" > these docs </ a > for how to configure a real email sender.
-    Normally this would be emailed: < a id = "confirm-link" href = "@Model.EmailConfirmationUrl" > Click here to confirm your account </ a >
-    } *@
-
-
-    Vui lòng kiểm tra Email để xác thực tài khoản.
-</p>
+<style>
+    .min-h-screen {
+        min-height: 60vh;
     }
-    else
-    {
-<p>
-        Please check your email to confirm your account.
-</p>
+
+    .bg-gray-100 {
+        background-color: #f7fafc;
     }
-}
+
+    .bg-white {
+        background-color: #ffffff;
+    }
+
+    .p-8 {
+        padding: 2rem;
+    }
+
+    .rounded-lg {
+        border-radius: 0.5rem;
+    }
+
+    .shadow-md {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .max-w-md {
+        max-width: 28rem;
+    }
+
+    .w-full {
+        width: 100%;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-2xl {
+        font-size: 1.5rem;
+    }
+
+    .font-semibold {
+        font-weight: 600;
+    }
+
+    .text-gray-800 {
+        color: #2d3748;
+    }
+
+    .text-gray-700 {
+        color: #4a5568;
+    }
+</style>
+
 

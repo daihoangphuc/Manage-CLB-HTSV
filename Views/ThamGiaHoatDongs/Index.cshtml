@@ -13,16 +13,16 @@
         <a asp-action="Create">Tạo mới</a>
     </p>
 }
-    <form asp-controller="ThamGiaHoatDongs" asp-action="Index" class="search-form justify-center mb-2">
-        <div class="search-container">
-            <input type="text" class="search-input w-full md:w-80 mb-2 md:mb-0" placeholder="Tìm kiếm" name="searchString">
-            <button  class="search-button ml-2">
-                <i class="bi bi-search"></i>
-            </button>
-        </div>
-    </form>
-<h2 class="text-2xl font-semibold mb-4 overflow-y-auto" style="max-height: calc(3 * (3.5rem + 1rem));">Hoạt động đã tham gia</h2>
 
+<h2 class="text-2xl font-semibold mb-3 text-center overflow-y-auto" style="max-height: calc(3 * (3.5rem + 1rem));color: #00a2e9" ">Hoạt động đã tham gia</h2>
+<form asp-controller="ThamGiaHoatDongs" asp-action="Index" class="search-form justify-center mb-3">
+    <div class="search-container">
+        <input type="text" class="search-input w-full md:w-80 mb-2 md:mb-0" placeholder="Tìm kiếm" name="searchString">
+        <button class="search-button ml-2">
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+</form>
 @{
     int count = (10 * (Model.PageIndex - 1)) + 1;   
 }
@@ -172,7 +172,7 @@
 
 <!-- Pagination -->
 <nav aria-label="Page navigation" class="mt-3">
-    <ul class="pagination">
+    <ul class="ml-3 pagination">
         <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
             <a class="page-link" asp-controller="ThamGiaHoatDongs" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
         </li>

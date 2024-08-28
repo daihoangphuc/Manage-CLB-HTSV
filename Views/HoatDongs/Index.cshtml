@@ -6,33 +6,34 @@
         Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
 }
-
-<h1></h1>
 @if (User.IsInRole("Administrators"))
 {
     <p>
-        <a asp-action="Create">Tạo mới</a>
+        <a asp-action="Create">
+            <button class="btn btn-primary mb-2">Tạo mới</button>
+        </a>
     </p>
     @using (Html.BeginForm("UpdateTrangThai", "HoatDongs", FormMethod.Post))
     {
-        <button type="submit" class="btn btn-danger my-3">Cập nhật Trạng thái</button>
+        <button type="submit" class="btn btn-danger">Cập nhật Trạng thái</button>
     }
 }
-<form asp-controller="HoatDongs" asp-action="Index" class="search-form justify-center mb-2">
-        <div class="search-container">
-            <input type="text" class="search-input w-full md:w-80 mb-2 md:mb-0" placeholder="Tìm kiếm" name="SearchString">
-            <button class="search-button ml-2">
-                <i class="bi bi-search"></i>
-            </button>
-        </div>
-</form>
-<main class="container mx-auto py-8" >
-    <section class="bg-white shadow-md p-6 rounded-md">
-        <h2 class="text-2xl font-semibold mb-4 overflow-y-auto" style="max-height: calc(3 * (3.5rem + 1rem));">Hoạt động sắp tới</h2>
+
+<main class=" " >
+    <section class="bg-white p-6 rounded-md">
+        <h2 class="text-2xl font-semibold text-center mb-3 p-2 overflow-y-auto" style="max-height: calc(3 * (3.5rem + 1rem));color: #00a2e9; margin-top: -35px">Hoạt động sắp tới</h2>
+        <form asp-controller="HoatDongs" asp-action="Index" class="search-form justify-center">
+            <div class="search-container">
+                <input type="text" class="search-input w-full md:w-80 mb-2 md:mb-0" placeholder="Tìm kiếm" name="SearchString">
+                <button class="search-button ml-2">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </form>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             @foreach (var i in Model.Items)
             {
-                <div class="flex flex-col md:flex-row bg-gradient-to-r from-pink-50 to-blue-100 p-4 items-center" style="border-radius: 10px">
+                <div class="flex flex-col md:flex-row bg-gradient-to-r from-pink-50 to-blue-100 p-3 items-center" style="border-radius: 10px">
                     <div class="md:w-3/4">
                         <h3 class="text-xl font-semibold mb-2">@i.TenHoatDong</h3>
                         <p class="activity-description text-sm md:text-base">@i.MoTa<br>Thời Gian: <span class="font-semibold">@i.ThoiGian.ToString("HH:mm")</span> ngày <span class="font-semibold">@i.ThoiGian.ToString("dd/MM/yyyy")</span><br>Địa Điểm: <span class="font-semibold">@i.DiaDiem</span><br>Trạng Thái: <span class="font-semibold">@i.TrangThai</span></p>
@@ -40,17 +41,27 @@
                         
                         @if (!User.IsInRole("Administrators"))
                         {
-                        <button class="bg-blue-500 text-white font-semibold px-4 py-2 mt-4 rounded hover:bg-blue-600 register-btn" onclick="prepareRegistration('@i.MaHoatDong')">Đăng ký</button>
+                        <button class="bg-blue-500 text-white font-semibold px-4 py-2 mt-2 rounded hover:bg-blue-600 register-btn" onclick="prepareRegistration('@i.MaHoatDong')">Đăng ký</button>
+                        }else{
+                            <a asp-action="Edit" asp-route-id="@i.MaHoatDong" style="text-decoration: none">
+                                <button class="bg-yellow-500 text-white font-semibold px-4 py-2 mt-2 rounded hover:bg-yellow-600 register-btn">Sửa</button>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@i.MaHoatDong" style="text-decoration: none">
+                                <button class="bg-red-500 text-white font-semibold px-4 py-2 mt-2 rounded hover:bg-red-600 register-btn">Xóa</button>
+                            </a>
                         }
                     </div>
-                    @if (User.IsInRole("Administrators"))
+@*                     @if (User.IsInRole("Administrators"))
                     {
-                        <div>
-                            <a asp-action="Edit" asp-route-id="@i.MaHoatDong">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@i.MaHoatDong">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@i.MaHoatDong">Delete</a>
-                        </div>
-                    }
+                        <!-- Chỉ hiển thị các nút Edit/Delete nếu hoạt động chưa kết thúc -->
+                        @if (i.TrangThai != "Đã kết thúc")
+                        {
+                            <div>
+                                <a asp-action="Edit" asp-route-id="@i.MaHoatDong">Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@i.MaHoatDong">Delete</a>
+                            </div>
+                        }
+                    } *@
                 </div>
 
             }
@@ -295,7 +306,7 @@
 }
 <main class="container mx-auto">
     <nav class="flex justify-between">
-        <ul class="pagination">
+        <ul class="ml-3 pagination">
             <!-- Liên kết trang trước -->
             <li class="page-item @prevDisabled">
                 <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageIndex - 1 })">Previous</a>

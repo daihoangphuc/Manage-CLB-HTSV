@@ -60,7 +60,7 @@ namespace Manage_CLB_HTSV.Controllers
 
         public IActionResult UpdateProfile()
         {
-            if (!User.IsInRole("Administrators"))
+            if (!User.IsInRole("Administrators"))   
             {
                 var currentUserId = User.Identity.Name.Split('@')[0];
                 var sinhVien = _context.SinhVien.Find(currentUserId);

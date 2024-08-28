@@ -2649,6 +2649,10 @@
       "PackagePath": "staticwebassets\\assets\\css\\argon-dashboard.css"
     },
     {
+      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\assets\\css\\student_card.css",
+      "PackagePath": "staticwebassets\\assets\\css\\student_card.css"
+    },
+    {
       "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\assets\\css\\style.css",
       "PackagePath": "staticwebassets\\assets\\css\\style.css"
     },
@@ -2715,6 +2719,10 @@
     {
       "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\assets\\img\\logo.png",
       "PackagePath": "staticwebassets\\assets\\img\\logo.png"
+    },
+    {
+      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\assets\\img\\logo_clb.png",
+      "PackagePath": "staticwebassets\\assets\\img\\logo_clb.png"
     },
     {
       "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\assets\\img\\logoclb.png",
@@ -2821,12 +2829,16 @@
       "PackagePath": "staticwebassets\\assets\\img\\testimonials\\testimonials-5.jpg"
     },
     {
-      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\assets\\img\\thethanhvien.png",
-      "PackagePath": "staticwebassets\\assets\\img\\thethanhvien.png"
+      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\assets\\img\\thethanhvien1.png",
+      "PackagePath": "staticwebassets\\assets\\img\\thethanhvien1.png"
     },
     {
-      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\assets\\img\\thethanhvienclb.png",
-      "PackagePath": "staticwebassets\\assets\\img\\thethanhvienclb.png"
+      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\assets\\img\\thethanhvien_empty.png",
+      "PackagePath": "staticwebassets\\assets\\img\\thethanhvien_empty.png"
+    },
+    {
+      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\assets\\img\\thethanhvien_old.png",
+      "PackagePath": "staticwebassets\\assets\\img\\thethanhvien_old.png"
     },
     {
       "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\assets\\js\\argon-dashboard.min.js",
@@ -3201,6 +3213,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\emailhtml\\confirm_register_account.html",
+      "PackagePath": "staticwebassets\\emailhtml\\confirm_register_account.html"
+    },
+    {
       "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\emailhtml\\email_forget_password.html",
       "PackagePath": "staticwebassets\\emailhtml\\email_forget_password.html"
     },
@@ -3557,6 +3573,10 @@
       "PackagePath": "staticwebassets\\userimages\\1d0897d2-3dbf-426f-8cc8-53f18ed05ded.png"
     },
     {
+      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\userimages\\24c7fc9d-5e22-48e4-9eb7-a1fb1369236e.jpg",
+      "PackagePath": "staticwebassets\\userimages\\24c7fc9d-5e22-48e4-9eb7-a1fb1369236e.jpg"
+    },
+    {
       "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\userimages\\29a30a50-5bbe-4245-b64a-1a6879446088.png",
       "PackagePath": "staticwebassets\\userimages\\29a30a50-5bbe-4245-b64a-1a6879446088.png"
     },
@@ -3589,12 +3609,12 @@
       "PackagePath": "staticwebassets\\userimages\\980fc182-22f9-44f0-826d-9085ce37114f.png"
     },
     {
-      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\userimages\\a4363e8c-2c5d-4c20-bb0d-217d37aec59a.jpg",
-      "PackagePath": "staticwebassets\\userimages\\a4363e8c-2c5d-4c20-bb0d-217d37aec59a.jpg"
+      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\userimages\\b785cf64-a5f4-474f-aecc-1ea05c0b5551.png",
+      "PackagePath": "staticwebassets\\userimages\\b785cf64-a5f4-474f-aecc-1ea05c0b5551.png"
     },
     {
-      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\userimages\\c31017f7-6834-4a8c-8662-9d28e353f82d.png",
-      "PackagePath": "staticwebassets\\userimages\\c31017f7-6834-4a8c-8662-9d28e353f82d.png"
+      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\userimages\\c7c9095c-43b8-4deb-8b8d-0d706aae2728.png",
+      "PackagePath": "staticwebassets\\userimages\\c7c9095c-43b8-4deb-8b8d-0d706aae2728.png"
     },
     {
       "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\userimages\\e3caed16-1e02-4dcf-924b-5eb9e9c7fb79.png",

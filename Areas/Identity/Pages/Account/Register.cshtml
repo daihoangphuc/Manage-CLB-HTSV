@@ -1,12 +1,5 @@
 ﻿@page
 @model RegisterModel
-@* @{
-    ViewData["Title"] = "Register";
-}
-
-<h1>@ViewData["Title"]</h1> *@
-
-
 
 @section Scripts {
     <script>
@@ -14,7 +7,7 @@
             var emailInput = document.getElementById('Input_Email');
             var emailPattern = /[A-Za-z0-9._%+-]+@@st\.tvu\.edu\.vn/;
             if (!emailPattern.test(emailInput.value)) {
-                alert('Vui lòng nhập địa chỉ email đúng định dạng theo email sinh viên (Mssv@@st.tvu.edu.vn)');
+                alert('Vui lòng nhập địa chỉ email đúng định dạng theo email sinh viên (mssv@@st.tvu.edu.vn)');
                 return false; // Ngăn chặn gửi form
             }
             return true; // Cho phép gửi form
@@ -23,57 +16,65 @@
     <partial name="_ValidationScriptsPartial" />
 }
 
-    <link rel="stylesheet" href="~/Login_Register/src/assets/css/styles.min.css" />
-
-    <!--  Body Wrapper -->
-    <div class="page-wrapper" id="main-wrapper"data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-         data-sidebar-position="fixed" data-header-position="fixed">
-        <div class="position-relative overflow-hidden  min-vh-100 d-flex align-items-center justify-content-center" >
-            <div class="d-flex align-items-center justify-content-center w-100">
-                <div class="row justify-content-center w-100">
-                <div class="col-md-8 col-lg-6 col-xxl-3" style="width: 500px; margin-top: -180px">
-                        <div class="card mb-0">
-                            <div class="card-body" >
-                                <a href="/Home" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                <img src="~/Login_Register/src/assets/images/logos/logo_clb.png" width="180" style="margin-left: 50%; transform:translateX(-50%)" alt="">
-                                </a>
-                                <p class="text-center">Hi! I'm Hanh Trinh Sinh Vien Club</p>
-                                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" onsubmit="return validateEmail()">
-                                    <div class="mb-3">
-                                        <label asp-for="Input.Email" for="exampleInputtext1" class="form-label">Email (mssv@st.tvu.edu.vn)</label>
-                                        <input asp-for="Input.Email" type="email" id="Input_Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" aria-required="true" required>
-                                        <span asp-validation-for="Input.Email" class="text-danger"></span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label asp-for="Input.Password" for="exampleInputEmail1" class="form-label">Mật khẩu</label>
-                                        <input asp-for="Input.Password" type="password" class="form-control" id="exampleInputPassword1" aria-describedby="textHelp" aria-required="true" required>
-                                        <span asp-validation-for="Input.Password" class="text-danger"></span>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label asp-for="Input.ConfirmPassword" for="exampleInputPassword1" class="form-label">Nhập lại mật khẩu</label>
-                                        <input asp-for="Input.ConfirmPassword" type="password" class="form-control" id="exampleInputPassword1" aria-required="true" required>
-                                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                                    </div>
-                                    <button id="registerSubmit" type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Đăng ký</button>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        Nếu đã có tài khoản
-                                        <a class="text-primary fw-bold ms-2" href="/Identity/Account/Login">Đăng nhập</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-sm p-6 space-y-6">
+        <div class="text-center">
+            <a href="/Home">
+                <img src="~/Login_Register/src/assets/images/logos/logo_clb.png" alt="Logo CLB" class="w-44 mx-auto">
+            </a>
+            <p class="mt-4 text-lg font-semibold text-gray-700">Hi! I'm Hanh Trinh Sinh Vien Club</p>
         </div>
+        <form id="registerForm" method="post" asp-route-returnUrl="@Model.ReturnUrl" onsubmit="return validateEmail()" class="space-y-4">
+            <div>
+                <label for="Input_Email" class="block text-sm font-medium text-gray-700">Email (mssv@st.tvu.edu.vn)</label>
+                <input type="email" id="Input_Email" asp-for="Input.Email" required
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                <span asp-validation-for="Input.Email" class="text-sm text-red-600"></span>
+            </div>
+            <div>
+                <label for="Input_Password" class="block text-sm font-medium text-gray-700">Mật khẩu</label>
+                <input type="password" id="Input_Password" asp-for="Input.Password" required
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                <span asp-validation-for="Input.Password" class="text-sm text-red-600"></span>
+            </div>
+            <div>
+                <label for="Input_ConfirmPassword" class="block text-sm font-medium text-gray-700">Nhập lại mật khẩu</label>
+                <input type="password" id="Input_ConfirmPassword" asp-for="Input.ConfirmPassword" required
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                <span asp-validation-for="Input.ConfirmPassword" class="text-sm text-red-600"></span>
+            </div>
+            <button id="registerSubmit" type="submit" style="background: #399cff; border-radius: 20px"
+                    class="w-full flex justify-center py-2 px-4 mt-4 bg-blue-600 text-white font-medium rounded-md focus:outline-none focus:ring-2 ">
+                Đăng ký
+            </button>
+            <div class="text-center mt-3 text-sm text-gray-600">
+                Nếu đã có tài khoản
+                <a href="/Identity/Account/Login" style="text-decoration: none; color: #399cff" class="hover:underline ml-1">Đăng nhập</a>
+            </div>
+        </form>
     </div>
-    <script src="~/Login_Register/src/assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="~/Login_Register/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</div>
 
+<style>
+    .min-h-screen {
+        min-height: 60vh;
+    }
 
+    .flex {
+        display: flex;
+    }
 
+    .items-center {
+        align-items: center;
+    }
 
+    .justify-center {
+        justify-content: center;
+    }
+</style>
 
+<script src="~/Login_Register/src/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/Login_Register/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 
 

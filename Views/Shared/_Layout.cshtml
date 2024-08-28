@@ -65,7 +65,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="dropdown">
-                            <a href="#"><span>Chức năng</span> <i class="bi bi-chevron-down"></i></a>
+                            <a href="/"><span>Chức năng</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="/HoatDongs">Hoạt Động</a></li>
                                 <li><a href="/DangKyHoatDongs">Hoạt Động Đã Đăng Ký</a></li>
@@ -73,6 +73,7 @@
                                 @if (User.IsInRole("Users"))
                                 {
                                     <li><a href="/Sinhviens/UpdateProfile">Cập nhật thông tin</a></li>
+                                    <li><a href="/SinhViens/Details/?id=@User.Identity.Name.Split('@')[0]">Thẻ thành viên</a></li>
                                 }
                                 <li><a href="/Chat">Diễn đàn</a></li>
 
@@ -124,9 +125,9 @@
         </div>
     </header><!-- End Header -->
   @* Hero *@
- <section>
+ <div style="margin-top: 100px">
 
-  </section> 
+  </div> 
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -141,13 +142,12 @@
             <div class="row d-flex align-items-center">
                 <div class="col-lg-6 text-lg-left text-center">
                     <div class="copyright">
-                        &copy; Copyright <strong>CLB Hành Trình Sinh Viên</strong>.  Designed by <a href="https://www.facebook.com/iamphuc19/">Nguyễn Đại Hoàng Phúc</a>
+                        &copy; Copyright <strong>Câu lạc bộ Hành Trình Sinh Viên</strong>.  Designed by <a href="https://www.facebook.com/iamphuc19/">Nguyễn Đại Hoàng Phúc</a>
                     </div>
                     <div class="credits">
                        
                     </div>
                 </div>
-              
             </div>
         </div>
     </footer><!-- End Footer -->
@@ -175,8 +175,35 @@
 
 </html>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var header = document.getElementById("header");
+        var lastScrollTop = 0;
+
+        window.addEventListener("scroll", function () {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                // Cuộn xuống, ẩn header
+                header.style.top = "-100px"; // Điều chỉnh giá trị này nếu cần thiết
+            } else {
+                // Cuộn lên, hiển thị header
+                header.style.top = "0";
+            }
+
+            lastScrollTop = scrollTop;
+        });
+    });
+</script>
 
 <style>
+    #header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        transition: top 0.3s ease-in-out;
+        z-index: 999; /* Đảm bảo header nằm trên các thành phần khác */
+    }
     html {
         position: relative;
         min-height: 100%;

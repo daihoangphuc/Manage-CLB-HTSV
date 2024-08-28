@@ -1,5 +1,5 @@
 ﻿@{
-    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
     {
         Layout = parentLayout.ToString();
     }
@@ -9,12 +9,12 @@
     }
 }
 
-<h1>Quản lý tài khoản</h1>
+<h1 class="text-center mt-4" style="color: #00a2e9">Quản lý tài khoản</h1>
 
-<div>
-    <h2>Thay đổi thông tin tài khoản</h2>
+<div class="container mt-5">
+@*     <h2 class="text-center text-secondary">Thay đổi thông tin tài khoản</h2> *@
     <hr />
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-md-3">
             <partial name="_ManageNav" />
         </div>
@@ -27,3 +27,22 @@
 @section Scripts {
     @RenderSection("Scripts", required: false)
 }
+
+<style>
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    h1 {
+        font-weight: 600;
+    }
+
+    h2 {
+        font-weight: 500;
+    }
+
+    hr {
+        border-top: 2px solid #ddd;
+    }
+</style>

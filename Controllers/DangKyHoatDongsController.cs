@@ -62,22 +62,21 @@ namespace Manage_CLB_HTSV.Controllers
             }
             else
             {
-                TempData["ErrorMessage_V_DiemDanh"] = $"Điểm danh thất bại. Bạn không ở gần địa điểm hoạt động.\n Tọa độ của bạn là {vido}, {kinhdo} ";
+                TempData["ErrorMessage_V_DiemDanh"] = $"Điểm danh thất bại. Bạn không ở gần địa điểm hoạt động.";
+                //\n Tọa độ của bạn là {vido}, {kinhdo} 
                 return RedirectToAction(nameof(Index));
             }
         }
 
-        public bool IsWithinAcceptableDistance(double activityLatitude, double activityLongitude, double checkLatitude, double checkLongitude, double acceptableDistanceInMeters = 100)
+        public bool IsWithinAcceptableDistance(double activityLatitude, double activityLongitude, double checkLatitude, double checkLongitude, double acceptableDistanceInMeters = 200)
         {
             const double EarthRadiusKm = 6371.0;
 
-            // Chuyển đổi độ rộng và chiều dài từ độ sang radian
             double lat1 = ToRadians(activityLatitude);
             double lon1 = ToRadians(activityLongitude);
             double lat2 = ToRadians(checkLatitude);
             double lon2 = ToRadians(checkLongitude);
 
-            // Tính khoảng cách giữa hai điểm
             double dLat = lat2 - lat1;
             double dLon = lon2 - lon1;
 
@@ -87,8 +86,12 @@ namespace Manage_CLB_HTSV.Controllers
             double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
             double distance = EarthRadiusKm * c * 1000; // Đổi từ km sang mét
 
+            // Log khoảng cách để debug
+            Console.WriteLine($"Khoảng cách tính toán: {distance} mét. Khoảng cách chấp nhận được: {acceptableDistanceInMeters} mét.");
+
             return distance <= acceptableDistanceInMeters;
         }
+
 
         private double ToRadians(double degrees)
         {
@@ -355,8 +358,6 @@ namespace Manage_CLB_HTSV.Controllers
         }
 
 
-
-
         // GET: DangKyHoatDongs
         [Authorize]
         public async Task<IActionResult> Index(string searchString, int? pageNumber)
@@ -379,25 +380,37 @@ namespace Manage_CLB_HTSV.Controllers
             if (!User.IsInRole("Administrators"))
             {
                 // Lọc danh sách hoạt động theo người dùng hiện tại
-                hoatdong = _context.DangKyHoatDong.Include(s => s.HoatDong).Include(s => s.SinhVien).Where(dk => dk.MaSV == Mssv && dk.TrangThaiDangKy == true);
+                hoatdong = _context.DangKyHoatDong
+                    .Include(s => s.HoatDong)
+                    .Include(s => s.SinhVien)
+                    .Where(dk => dk.MaSV == Mssv && dk.TrangThaiDangKy == true);
             }
             else
             {
                 // Lấy tất cả các đăng ký hoạt động nếu là quản trị viên
-                hoatdong = _context.DangKyHoatDong.Include(s => s.HoatDong).Include(s => s.SinhVien).Where(dk => dk.TrangThaiDangKy == true);
+                hoatdong = _context.DangKyHoatDong
+                    .Include(s => s.HoatDong)
+                    .Include(s => s.SinhVien)
+                    .Where(dk => dk.TrangThaiDangKy == true);
             }
 
             // Lọc theo chuỗi tìm kiếm nếu có
             if (!string.IsNullOrEmpty(searchString))
             {
-                hoatdong = hoatdong.Where(s => s.MaHoatDong.Contains(searchString) || s.MaSV.Contains(searchString));
+                hoatdong = hoatdong
+                    .Where(s => s.MaHoatDong.Contains(searchString) || s.MaSV.Contains(searchString));
             }
+
+            // Sắp xếp theo NgàyĐăngKý gần nhất lên đầu tiên
+            hoatdong = hoatdong
+                .OrderByDescending(dk => dk.NgayDangKy);
 
             // Số lượng mục trên mỗi trang
             int pageSize = 10;
 
             // Tạo danh sách phân trang từ danh sách đăng ký hoạt động
             var paginatedDangKyHoatDongs = await PaginatedList<DangKyHoatDong>.CreateAsync(hoatdong.AsNoTracking(), pageNumber ?? 1, pageSize);
+
             // Lấy trạng thái "Đã Tham Gia" của mỗi hoạt động
             var thamGiaHoatDong = _context.ThamGiaHoatDong
                 .Where(tg => tg.MaSV == Mssv)
@@ -408,6 +421,7 @@ namespace Manage_CLB_HTSV.Controllers
 
             return View(paginatedDangKyHoatDongs);
         }
+
 
         // GET: DangKyHoatDongs/Details/5
         [Authorize]
