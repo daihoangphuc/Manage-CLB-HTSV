@@ -44,7 +44,7 @@ RUN sed -i "s|\${secrets.DB_PASSWORD}|$DB_PASSWORD|g" appsettings.json
 RUN sed -i "s|\${secrets.SMTP_PASSWORD}|$SMTP_PASSWORD|g" appsettings.json
 RUN sed -i "s|\${secrets.PFX_PASSWORD}|$PFX_PASSWORD|g" appsettings.json
 
-RUN dotnet restore
+RUN dotnet restore Manage-CLB-HTSV.generated.sln
 RUN dotnet build Manage-CLB-HTSV.generated.sln -c Release -o /app/build
 
 # Step 7: Publish the application
