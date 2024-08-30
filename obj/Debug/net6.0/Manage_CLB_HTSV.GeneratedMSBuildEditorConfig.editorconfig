@@ -254,6 +254,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5SG9hdERvbmdzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/@Manage_CLB_HTSV/Manage-CLB-HTSV/Views/DiemDanh/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllbURhbmhcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/@Manage_CLB_HTSV/Manage-CLB-HTSV/Views/HoatDongs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9hdERvbmdzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
