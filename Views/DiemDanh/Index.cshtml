@@ -157,15 +157,17 @@
                     const imageData = canvas.toDataURL('image/jpeg');
 
                     try {
-                        const predictResponse = await fetch('https://127.0.0.1:5000/predict', {
+                        const predictResponse = await fetch(' https://b79a-2402-800-63e5-2ab3-7c5e-663f-6add-e5b0.ngrok-free.app/predict', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ image: imageData })
                         });
 
+
                         if (!predictResponse.ok) {
                             throw new Error('Không nhận diện được khuôn mặt.');
                         }
+
 
                         const predictData = await predictResponse.json();
 

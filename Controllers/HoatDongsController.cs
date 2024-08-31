@@ -27,11 +27,11 @@ namespace Manage_CLB_HTSV.Controllers
                 .Where(hd => hd.TrangThai != "Đã kết thúc")
                 .ToListAsync(); // Truy xuất dữ liệu từ CSDL
 
-            var currentTime = TimeZoneHelper.GetVietNamTime(DateTime.UtcNow);
+            var currentTime = TimeZoneHelper.GetVietNamTime(DateTime.UtcNow).Date; // Chỉ lấy phần ngày
 
             foreach (var hoatDong in hoatDongs)
             {
-                if (hoatDong.ThoiGian < currentTime)
+                if (hoatDong.ThoiGian.Date < currentTime)
                 {
                     hoatDong.TrangThai = "Đã kết thúc";
                 }
@@ -41,6 +41,7 @@ namespace Manage_CLB_HTSV.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
         public string GetIDFromEmail(string email)
         {
             if (string.IsNullOrEmpty(email))
