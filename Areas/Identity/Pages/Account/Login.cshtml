@@ -71,7 +71,7 @@
 
     <!--  Body Wrapper -->
 <div class="flex items-center justify-center">
-    <div class="w-full mt-3 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-sm">
+    <div class="w-full mt-3 max-w-md p-6 space-y-6 bg-white rounded-lg shadow-sm">
         <div class="text-center">
             <a href="/Home" class="inline-flex justify-center items-center">
                 <img src="~/Login_Register/src/assets/images/logos/logo_clb.png" alt="Logo CLB" class="w-44 mx-auto">
@@ -79,6 +79,7 @@
             <p class="mt-4 text-lg font-semibold text-gray-700">Hi! I'm Hanh Trinh Sinh Vien Club</p>
         </div>
         <form id="account" method="post" class="space-y-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
                 <label for="exampleInputEmail1" class="block text-sm font-medium text-gray-700">Email (mssv@st.tvu.edu.vn)</label>
                 <input type="email" id="exampleInputEmail1" required aria-required="true"

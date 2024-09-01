@@ -30,33 +30,37 @@ namespace Manage_CLB_HTSV.Controllers
         [Authorize(Roles = "Administrators")]
         public async Task<IActionResult> RecordAttendance([FromBody] AttendanceRecord model)
         {
+            if (!ModelState.IsValid)
+            {
+                return Json(new { success = false, message = "Dữ liệu không hợp lệ." });
+            }
+
             var nameParts = model.Name.Split('_');
             var mssv = nameParts.Last();
 
-            // Kiểm tra xem hoạt động có tồn tại không
-            var hoatdong = await _context.HoatDong.FirstOrDefaultAsync(h => h.MaHoatDong == model.MaHoatDong);
+            var hoatdong = await _context.HoatDong.AsNoTracking().FirstOrDefaultAsync(h => h.MaHoatDong == model.MaHoatDong);
             if (hoatdong == null)
             {
                 return Json(new { success = false, message = "Không tìm thấy hoạt động." });
             }
 
-            // Kiểm tra xem sinh viên có đăng ký hoạt động không
-            var dangkihoatdong = await _context.DangKyHoatDong
+            var dangkihoatdong = await _context.DangKyHoatDong.AsNoTracking()
                 .FirstOrDefaultAsync(dk => dk.MaHoatDong == model.MaHoatDong && dk.MaSV == mssv);
             if (dangkihoatdong == null)
             {
                 return Json(new { success = false, message = $"Người dùng {mssv} chưa đăng ký hoạt động {model.MaHoatDong}." });
             }
 
-            // Kiểm tra xem sinh viên đã điểm danh cho hoạt động này chưa
-            var existed = await _context.ThamGiaHoatDong
-                .AnyAsync(tg => tg.MaDangKy == dangkihoatdong.MaDangKy && tg.MaHoatDong == model.MaHoatDong && tg.MaSV == mssv);
-            if (existed)
+            var existingRecords = await _context.ThamGiaHoatDong.AsNoTracking()
+                .Where(tg => tg.MaHoatDong == dangkihoatdong.MaHoatDong && tg.MaDangKy == dangkihoatdong.MaDangKy && tg.MaSV == mssv)
+                .ToListAsync();
+
+            if (existingRecords.Any())
             {
-                return Json(new { success = false, message = $"Người dùng {dangkihoatdong.MaSV} đã điểm danh." });
+                return Json(new { success = false, message = "Người dùng đã điểm danh cho hoạt động này." });
             }
 
-            // Thực hiện điểm danh
+
             var thamgiahoatdong = new ThamGiaHoatDong
             {
                 MaThamGiaHoatDong = "TG" + TimeZoneHelper.GetVietNamTime(DateTime.UtcNow).ToString("yyyyMMddHHmmssfff"),
@@ -66,10 +70,17 @@ namespace Manage_CLB_HTSV.Controllers
                 MaHoatDong = model.MaHoatDong
             };
 
-            _context.ThamGiaHoatDong.Add(thamgiahoatdong);
-            await _context.SaveChangesAsync();
-
-            return Json(new { success = true, message = "Điểm danh thành công." });
+            try
+            {
+                _context.ThamGiaHoatDong.Add(thamgiahoatdong);
+                await _context.SaveChangesAsync();
+                return Json(new { success = true, message = "Điểm danh thành công." });
+            }
+            catch (DbUpdateException ex)
+            {
+                // Xử lý lỗi khi lưu vào cơ sở dữ liệu
+                return Json(new { success = false, message = "Đã xảy ra lỗi khi lưu dữ liệu. Vui lòng thử lại." });
+            }
         }
     }
 }

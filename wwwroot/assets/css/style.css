@@ -153,12 +153,12 @@ h6 {
   margin-left: 5px;
 }
 
-.navbar a:hover,
-.navbar .active,
-.navbar .active:focus,
-.navbar li:hover>a {
-  color: #3498db;
-}
+    .navbar a:hover,
+    .navbar .active,
+    .navbar .active:focus,
+    .navbar li:hover > a {
+        color: #399cff;
+    }
 
 .navbar .getstarted,
 .navbar .getstarted:focus {

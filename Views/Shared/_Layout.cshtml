@@ -59,22 +59,16 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="/">Trang chủ</a></li>
-                    <li><a class="nav-link scrollto " href="https://zalo.me/g/dqqnrd829">Nhóm hổ trợ</a></li>
                     <li><a class="nav-link scrollto " href="#">Hướng dẫn sử dụng</a></li>
-               
+                    <li><a class="nav-link scrollto" href="https://zalo.me/g/dqqnrd829">Nhóm hổ trợ</a></li>
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="dropdown">
-                            <a href="/"><span>Chức năng</span> <i class="bi bi-chevron-down"></i></a>
+                            <a class="getstarted text-white" href="/"><span>Chức năng</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="/HoatDongs">Hoạt Động</a></li>
                                 <li><a href="/DangKyHoatDongs">Hoạt Động Đã Đăng Ký</a></li>
                                  <li><a href="/ThamGiaHoatDongs">Hoạt Động Đã Tham Gia</a></li>
-                                @if (User.IsInRole("Users"))
-                                {
-                                    <li><a href="/Sinhviens/UpdateProfile">Cập nhật thông tin</a></li>
-                                    <li><a href="/SinhViens/Details/?id=@User.Identity.Name.Split('@')[0]">Thẻ thành viên</a></li>
-                                }
                                 <li><a href="/Chat">Diễn đàn</a></li>
 
                                 @if (User.IsInRole("Administrators"))
@@ -85,12 +79,12 @@
 
                             </ul>
                         </li>
-                    }
 
+                    }
                     @* <li><a class="nav-link scrollto" href="/ThanhViens">Thành viên</a></li> *@
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <li><a class="getstarted scrollto" asp-area="Identity" asp-page="/Account/Manage/Index">Tài khoản của tôi</a></li>
+@*                         <li><a class="getstarted scrollto" asp-area="Identity" asp-page="/Account/Manage/Index">Tài khoản của tôi</a></li> *@
                         @*    <li class="nav-item">
                             <a class="nav-link scrollto" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
 
@@ -137,12 +131,12 @@
 
 
     <!-- ======= Footer ======= -->
-    <footer id="footer">
+    <footer id="footer" style="height: 80px;">
         <div class="container">
             <div class="row d-flex align-items-center">
                 <div class="col-lg-6 text-lg-left text-center">
                     <div class="copyright">
-                        &copy; Copyright <strong>Câu lạc bộ Hành Trình Sinh Viên</strong>.  Designed by <a href="https://www.facebook.com/iamphuc19/">Nguyễn Đại Hoàng Phúc</a>
+                        &copy; Copyright <strong>Câu Bạc Bộ Hành Trình Sinh Viên</strong>.  Designed by <a href="https://www.facebook.com/iamphuc19/">Nguyễn Đại Hoàng Phúc</a>
                     </div>
                     <div class="credits">
                        
@@ -150,7 +144,8 @@
                 </div>
             </div>
         </div>
-    </footer><!-- End Footer -->
+    </footer>
+    <!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

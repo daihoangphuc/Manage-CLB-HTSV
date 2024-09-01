@@ -8,15 +8,17 @@
 }
 @if (User.IsInRole("Administrators"))
 {
-    <p>
-        <a asp-action="Create">
-            <button class="btn btn-primary mb-2">Tạo mới</button>
-        </a>
-    </p>
-    @using (Html.BeginForm("UpdateTrangThai", "HoatDongs", FormMethod.Post))
-    {
-        <button type="submit" class="btn btn-danger">Cập nhật Trạng thái</button>
-    }
+    <div style="display: flex; justify-content: left; margin-bottom: 10px ;">
+        <p>
+            <a asp-action="Create">
+                <button class="btn ml-4 btn-primary mb-4">Tạo mới</button>
+            </a>
+        </p>
+        @using (Html.BeginForm("UpdateTrangThai", "HoatDongs", FormMethod.Post))
+        {
+            <button type="submit" class="btn btn-danger ml-4">Cập nhật Trạng thái</button>
+        }
+    </div>
 }
 
 <main class=" " >

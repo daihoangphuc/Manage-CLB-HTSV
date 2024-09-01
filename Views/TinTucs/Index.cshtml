@@ -6,12 +6,12 @@
          Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
 }
-<h1>Index</h1>
-
 @if (User.IsInRole("Administrators"))
 {
     <p>
-        <a asp-action="Create">Tạo mới</a>
+        <a asp-action="Create">
+            <button class="btn btn-primary mb-4">Tạo mới</button>
+        </a>
     </p>
 }
 <form asp-controller="TinTucs" asp-action="Index" class="search-form justify-center mb-2">

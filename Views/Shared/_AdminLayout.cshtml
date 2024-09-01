@@ -22,7 +22,7 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="/Home" class="text-nowrap logo-img">
+                    <a href="/Admin" class="text-nowrap logo-img">
                         <img src="\assets\img\banner-club.png" width="180" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -222,7 +222,7 @@
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <header class="app-header">
+            <header class="app-header" id="navbar">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <ul class="navbar-nav">
                         <li class="nav-item d-block d-xl-none">
@@ -243,8 +243,9 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                                    aria-expanded="false">
-                                    <img src="@(Url.Content("~/userimages/067a1d39-5f1f-4bb0-8911-30ec44118a32.jpg"))" alt="" width="35" height="35" class="rounded-circle" style="border: 2px solid #49b6f3">
+                                    <img src="@(Url.Content("~/userimages/067a1d39-5f1f-4bb0-8911-30ec44118a32.jpg"))" alt="" width="35" height="35" class="rounded-circle-avt" style="border: 2px solid #49b6f3; object-fit: cover;">
                                 </a>
+
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                     <div class="message-body">
                                        @*  <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
@@ -284,8 +285,43 @@
     <script src="~/Login_Register/src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="~/Login_Register/src/assets/libs/simplebar/dist/simplebar.js"></script>
     <script src="~/Login_Register/src/assets/js/dashboard.js"></script>
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById("navbar");
+
+        window.addEventListener("scroll", function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                // Lướt lên, ẩn navbar
+                navbar.style.top = "-100px";
+            } else {
+                // Lướt xuống, hiện navbar
+                navbar.style.top = "0";
+            }
+
+            lastScrollTop = scrollTop;
+        });
+    </script>
     @RenderSection("Scripts", required: false)
 
 </body>
 
 </html>
+<style>
+    .rounded-circle-avt {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #49b6f3;
+    }
+
+    .app-header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: top 0.3s ease-in-out;
+    }
+</style>

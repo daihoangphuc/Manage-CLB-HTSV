@@ -8,81 +8,86 @@
     <title>Điểm Danh</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-.border-green-500 {
-        border-color: #48bb78;
-    }
+        .border-green-500 {
+            border-color: #48bb78;
+        }
 
-    .border-red-500 {
-        border-color: #f56565;
-    }
+        .border-red-500 {
+            border-color: #f56565;
+        }
 
-    .border-yellow-500 {
-        border-color: #ecc94b;
-    }
+        .border-yellow-500 {
+            border-color: #ecc94b;
+        }
 
-    .text-green-500 {
-        color: #48bb78;
-    }
+        .text-green-500 {
+            color: #48bb78;
+        }
 
-    .text-red-500 {
-        color: #f56565;
-    }
+        .text-red-500 {
+            color: #f56565;
+        }
 
-    .text-yellow-500 {
-        color: #ecc94b;
-    }
+        .text-yellow-500 {
+            color: #ecc94b;
+        }
 
-    .camera-frame {
-        border-width: 8px;
-        border-style: solid;
-    }
+        .camera-frame {
+            border-width: 8px;
+            border-style: solid;
+        }
 
-    .loader {
-        border: 8px solid rgba(0, 0, 0, 0.1);
-        border-left: 8px solid #3498db;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        animation: spin 1s linear infinite;
-    }
+        .loader {
+            border: 8px solid rgba(0, 0, 0, 0.1);
+            border-left: 8px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
 
-    @@keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
+        @@keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
 
-    .notification {
-        padding: 12px 16px;
-        border-radius: 8px;
-        font-size: 1rem; /* Chỉnh sửa kích thước chữ */
-        font-weight: bold;
-        text-align: center;
-        max-width: 100%;
-        margin: 0 auto;
-        border-width: 1px;
-        border-style: solid;
-    }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
-    .notification-success {
+        .notification {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 1rem; /* Chỉnh sửa kích thước chữ */
+            font-weight: bold;
+            text-align: center;
+            max-width: 100%;
+            margin: 0 auto;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        .notification-success {
             font-weight: bold;
             text-align: center;
             margin-top: 12px;
             color: #48bb78;
-    }
+        }
 
-    .notification-error {
+        .notification-error {
             font-weight: bold;
             text-align: center;
             margin-top: 12px;
             color: #f56565;
-    }
+        }
 
-    .notification-warning {
+        .notification-warning {
             font-weight: bold;
             text-align: center;
             margin-top: 12px;
             color: #ecc94b;
-    }
+        }
     </style>
 </head>
 <body class=" text-gray-800">
@@ -110,9 +115,15 @@
             <div id="cameraFrame" class="relative w-full h-72 rounded-full border-8 border-gray-200 overflow-hidden flex items-center justify-center camera-frame">
                 <video id="video" class="rounded-full w-full h-full object-cover" autoplay></video>
             </div>
-            <button id="snap" class="mt-4 w-full bg-green-500 text-white py-2 rounded-lg shadow hover:bg-green-600 transition duration-300">
-                Xác thực
-            </button>
+            <div style="display: flex; justify-content: space-evenly">
+                <button id="snap" class="mt-4 bg-green-500 text-white py-2 rounded-lg shadow hover:bg-green-600 transition duration-300" style="width: 40%;">
+                    Xác thực
+                </button>
+                <button id="confirm" class="mt-4 bg-blue-500 text-white py-2 rounded-lg shadow hover:bg-blue-600 transition duration-300" style="width: 40%;display:none;">
+                    Xác nhận
+                </button>
+            </div>
+
             <canvas id="canvas" class="hidden"></canvas>
             <div id="result" class="notification mt-4"></div>
         </div>
@@ -127,15 +138,16 @@
         let currentActivityId = null;
         let stream = null;
         let isProcessing = false; // Biến kiểm tra trạng thái xử lý
+        let detectedName = null; // Biến lưu tên nhận diện được
+        let isConfirming = false; // Biến kiểm tra trạng thái xác nhận
 
         async function startAttendance(mahd) {
             resetState(); // Reset tất cả trạng thái trước khi bắt đầu điểm danh cho hoạt động mới
             currentActivityId = mahd;
             document.getElementById('attendanceSection').style.display = 'flex';
             const video = document.getElementById('video');
-            const cameraFrame = document.getElementById('cameraFrame');
-            const resultDiv = document.getElementById('result');
             const snapButton = document.getElementById('snap');
+            const confirmButton = document.getElementById('confirm');
             const loadingIndicator = document.getElementById('loading');
 
             try {
@@ -144,6 +156,9 @@
 
                 snapButton.removeEventListener('click', handleSnapClick);
                 snapButton.addEventListener('click', handleSnapClick);
+
+                confirmButton.removeEventListener('click', handleConfirmClick);
+                confirmButton.addEventListener('click', handleConfirmClick);
 
                 async function handleSnapClick() {
                     if (isProcessing) return; // Ngăn chặn nhiều yêu cầu cùng lúc
@@ -157,36 +172,22 @@
                     const imageData = canvas.toDataURL('image/jpeg');
 
                     try {
-                        const predictResponse = await fetch(' https://b79a-2402-800-63e5-2ab3-7c5e-663f-6add-e5b0.ngrok-free.app/predict', {
+                        const predictResponse = await fetch('https://f342-2402-800-63e5-2ab3-3d09-bacc-87fb-b40d.ngrok-free.app//predict', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ image: imageData })
                         });
 
-
                         if (!predictResponse.ok) {
                             throw new Error('Không nhận diện được khuôn mặt.');
                         }
 
-
                         const predictData = await predictResponse.json();
 
                         if (predictData.name) {
-                            const recordResponse = await fetch('@Url.Action("RecordAttendance", "DiemDanh")', {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({
-                                    name: predictData.name,
-                                    MaHoatDong: currentActivityId
-                                })
-                            });
-
-                            if (!recordResponse.ok) {
-                                throw new Error(`HTTP error! Status: ${recordResponse.status}`);
-                            }
-
-                            const recordResult = await recordResponse.json();
-                            updateUI(recordResult.success, recordResult.message);
+                            detectedName = predictData.name; // Lưu tên nhận diện được
+                            updateUI(true, `Nhận diện thành công! Tên: ${detectedName}`); // Hiển thị thông báo thành công
+                            confirmButton.style.display = 'block'; // Hiện nút xác nhận
                         } else {
                             updateUI(false, 'Không nhận diện được khuôn mặt.');
                         }
@@ -198,6 +199,42 @@
                         isProcessing = false; // Đặt lại trạng thái xử lý
                     }
                 }
+
+                async function handleConfirmClick() {
+                    if (isConfirming || !detectedName || !currentActivityId) return; // Kiểm tra nếu đang xác nhận hoặc không có tên được nhận diện hoặc hoạt động hiện tại
+
+                    isConfirming = true; // Đặt trạng thái xác nhận
+                    confirmButton.disabled = true; // Vô hiệu hóa nút xác nhận
+                    loadingIndicator.style.display = 'flex'; // Hiển thị chỉ báo tải
+
+                    try {
+                        const recordResponse = await fetch('@Url.Action("RecordAttendance", "DiemDanh")', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                name: detectedName,
+                                MaHoatDong: currentActivityId
+                            })
+                        });
+
+                        if (!recordResponse.ok) {
+                            throw new Error(`HTTP error! Status: ${recordResponse.status}`);
+                        }
+
+                        const recordResult = await recordResponse.json();
+                        updateUI(recordResult.success, recordResult.message);
+
+                        // Ẩn nút "Xác nhận" sau khi xử lý hoàn tất
+                        confirmButton.style.display = 'none';
+                    } catch (error) {
+                        updateUI(false, `Lỗi: ${error.message}`);
+                    } finally {
+                        loadingIndicator.style.display = 'none'; // Ẩn chỉ báo tải
+                        confirmButton.disabled = false; // Kích hoạt lại nút xác nhận nếu cần
+                        isConfirming = false; // Đặt lại trạng thái xác nhận
+                    }
+                }
+
             } catch (error) {
                 console.error('Error accessing camera:', error);
                 // Handle camera access errors
@@ -237,14 +274,27 @@
             resultDiv.textContent = message;
         }
 
-
-
         function resetState() {
             const cameraFrame = document.getElementById('cameraFrame');
             cameraFrame.classList.remove('border-green-500', 'border-red-500', 'border-yellow-500');
-            document.getElementById('result').className = '';
-            document.getElementById('result').textContent = '';
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = '';
+            resultDiv.textContent = '';
+
+            document.getElementById('confirm').style.display = 'none'; // Ẩn nút xác nhận
+
+            // Reset trạng thái các biến
+            detectedName = null; // Reset tên nhận diện
+            currentActivityId = null; // Reset ID hoạt động hiện tại
+
+            // Dừng stream camera nếu có
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+            }
         }
+
     </script>
 </body>
 </html>

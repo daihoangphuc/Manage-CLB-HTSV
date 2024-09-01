@@ -1,10 +1,8 @@
-﻿@model Manage_CLB_HTSV.Models.SinhVien
-
-@if (Model != null)
+﻿@if (Model != null)
 {
     <li id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex ml-3 text-sm bg-white rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">
         <span class="sr-only">Open user menu</span>
-        @if(Model.HinhAnh != null)
+        @if (Model.HinhAnh != null)
         {
             <img class="w-8 h-8 ml-2 rounded-full" src="@(Url.Content("~/userimages/" + Model.HinhAnh))" style="border: 2px solid #3ab8fd; width: 40px; height: 40px" width="40" height="40" alt="user photo">
         }
@@ -15,40 +13,42 @@
     </li>
 
     <!-- Dropdown menu -->
-    <li id="dropdownAvatar" style="width: 210px; " class="z-10 hidden bg-white p-lg-2 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-        <a href="/Sinhviens/Details?id=@Model.MaSV" class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-            <div>@Model.HoTen</div>  
+    <li id="dropdownAvatar" style="width: 210px;" class="z-10 hidden bg-white p-lg-2 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 custom-dropdown">
+        <a href="/Sinhviens/Details?id=@Model.MaSV" class="custom-dropdown-item dropdown-item px-4 py-2 text-sm text-gray-900 dark:text-white">
+            <div>Thẻ thành viên</div>
         </a>
-@*         <ul class="d-block py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
-            <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-            </li>
-            <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-            </li>
-            <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-            </li>
-        </ul> *@
-        <div class="py-2 d-flex">
-            <form class="form-inline d-flex" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <li class="hv">
-                    <button type="submit" href="#" class="hv block px-4 py-2 text-sm text-gray-700">Đăng xuất</button>
-                    <button type="submit" style="margin-left: -20px; padding-top: 5px; font-size: 20px;border: none" class="fa-solid fa-right-from-bracket bg-transparent" title="Đăng xuất"></button>
-                </li>
-                @*  <button type="submit" class="nav-link scrollto" style="padding-left: 10px">Logout</button> *@
+        <a href="/Sinhviens/UpdateProfile" class="custom-dropdown-item dropdown-item px-4 py-2 text-sm text-gray-900 dark:text-white">
+            <div>Cập nhật thông tin</div>
+        </a>
+        <a href="/Identity/Account/Manage/ChangePassword" class="custom-dropdown-item dropdown-item px-4 py-2 text-sm text-gray-900 dark:text-white">
+            <div>Đổi mật khẩu</div>
+        </a>
+
+        <a class="d-flex">
+            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" href="#" class="custom-dropdown-item dropdown-item px-4 py-2 text-sm text-gray-900 dark:text-white">
+                    Đăng xuất
+                    <i class="fa-solid fa-right-from-bracket bg-transparent" title="Đăng xuất"></i>
+                </button>
             </form>
-        </div>
+        </a>
     </li>
-
-
 }
 
 <style>
-    .hv{
-        display: flex;
+    /* Đảm bảo CSS chỉ áp dụng cho dropdown này bằng cách sử dụng các selector cụ thể hơn */
+    .custom-dropdown .custom-dropdown-item {
+        border-radius: 20px;
+        display: block;
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        color: black; /* Màu chữ mặc định là đen */
     }
-    .hv:hover{
-        color: #3c9cdc;
-    }
+
+        /* Thay đổi màu nền và màu chữ khi hover */
+        .custom-dropdown .custom-dropdown-item:hover {
+            background-color: #00a2e9;
+            color: white; /* Thay đổi màu chữ thành trắng khi hover */
+        }
 </style>
