@@ -172,7 +172,7 @@
                     const imageData = canvas.toDataURL('image/jpeg');
 
                     try {
-                        const predictResponse = await fetch('https://f342-2402-800-63e5-2ab3-3d09-bacc-87fb-b40d.ngrok-free.app//predict', {
+                        const predictResponse = await fetch(' https://e9be-27-71-99-78.ngrok-free.app/predict', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ image: imageData })
