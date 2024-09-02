@@ -172,7 +172,7 @@
                     const imageData = canvas.toDataURL('image/jpeg');
 
                     try {
-                        const predictResponse = await fetch(' https://e9be-27-71-99-78.ngrok-free.app/predict', {
+                        const predictResponse = await fetch('https://api-detect-face-88e525469972.herokuapp.com/predict', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ image: imageData })
