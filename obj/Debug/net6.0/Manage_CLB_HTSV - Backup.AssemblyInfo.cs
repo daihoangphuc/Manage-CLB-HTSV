@@ -10,11 +10,12 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-Manage_CLB_HTSV-f849b4c9-bdf4-43ad-955e-a1620ca13966")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Manage_CLB_HTSV - Backup")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f63bee4bee03187e75096c2130ccb57971c27ab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81c2b75523303087f59e0fbb6a6fb95bf5a00bcf")]
 [assembly: System.Reflection.AssemblyProductAttribute("Manage_CLB_HTSV - Backup")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Manage_CLB_HTSV - Backup")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

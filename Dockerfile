@@ -33,16 +33,22 @@ COPY . .
 ARG DB_PASSWORD
 ARG SMTP_PASSWORD
 ARG PFX_PASSWORD
+ARG MICROSOFT_CLIENT_ID
+ARG MICROSOFT_CLIENT_SECRET
 
 # Step 6: Set environment variables at runtime
 ENV DB_PASSWORD=$DB_PASSWORD
 ENV SMTP_PASSWORD=$SMTP_PASSWORD
 ENV PFX_PASSWORD=$PFX_PASSWORD
+ENV MICROSOFT_CLIENT_ID=$MICROSOFT_CLIENT_ID
+ENV MICROSOFT_CLIENT_SECRET=$MICROSOFT_CLIENT_SECRET
 
 # Replace the ${secrets. } string in appsettings.json with the value of the environment variable
 RUN sed -i "s|\${secrets.DB_PASSWORD}|$DB_PASSWORD|g" appsettings.json
 RUN sed -i "s|\${secrets.SMTP_PASSWORD}|$SMTP_PASSWORD|g" appsettings.json
 RUN sed -i "s|\${secrets.PFX_PASSWORD}|$PFX_PASSWORD|g" appsettings.json
+RUN sed -i "s|\${secrets.MICROSOFT_CLIENT_ID}|$MICROSOFT_CLIENT_ID|g" appsettings.json
+RUN sed -i "s|\${secrets.MICROSOFT_CLIENT_SECRET}|$MICROSOFT_CLIENT_SECRET|g" appsettings.json
 
 RUN dotnet restore Manage-CLB-HTSV.generated.sln
 RUN dotnet build Manage-CLB-HTSV.generated.sln -c Release -o /app/build
