@@ -67,15 +67,13 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Account/AccessDenied";
 });
 
-WebHost.CreateDefaultBuilder(args)
-       .UseStartup<Program>()
-       .UseKestrel(options =>
-       {
-           options.Listen(IPAddress.Any, 443, listenOptions =>
-           {
-               listenOptions.UseHttps("your_certificate.crt", "your_private_key.key");
-           });
-       });
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Listen(IPAddress.Any, 443, listenOptions =>
+    {
+        listenOptions.UseHttps("your_certificate.pfx", "Phuc123cc@#");
+    });
+});
 
 var app = builder.Build();
 
