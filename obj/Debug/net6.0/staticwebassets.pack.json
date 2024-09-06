@@ -3217,6 +3217,10 @@
       "PackagePath": "staticwebassets\\emailhtml\\confirm_register_account.html"
     },
     {
+      "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\emailhtml\\confirm_register_external_account.html",
+      "PackagePath": "staticwebassets\\emailhtml\\confirm_register_external_account.html"
+    },
+    {
       "Id": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\emailhtml\\email_forget_password.html",
       "PackagePath": "staticwebassets\\emailhtml\\email_forget_password.html"
     },

@@ -44,6 +44,29 @@ builder.Services.AddSession(options => {
 // Thiết lập giấy phép cho EPPlus
 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
+// Thêm cấu hình xác thực bằng Microsoft Account
+builder.Services.AddAuthentication()
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Identity/Account/Login";
+        options.LogoutPath = "/Identity/Account/Logout";
+    })
+    .AddMicrosoftAccount(options =>
+    {
+        options.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"];
+        options.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"];
+    });
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.Name = "AspNetCore.Identity.Application";
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    options.SlidingExpiration = true;
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+});
+
 WebHost.CreateDefaultBuilder(args)
        .UseStartup<Program>()
        .UseKestrel(options =>

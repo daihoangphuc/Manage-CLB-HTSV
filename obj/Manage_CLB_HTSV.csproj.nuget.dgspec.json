@@ -74,6 +74,10 @@
               "target": "Package",
               "version": "[2.4.3, )"
             },
+            "Microsoft.AspNetCore.Authentication.MicrosoftAccount": {
+              "target": "Package",
+              "version": "[6.0.28, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.21, )"
@@ -143,6 +147,14 @@
             "SendGrid": {
               "target": "Package",
               "version": "[9.29.2, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[6.0.0, )"
             },
             "SixLabors.ImageSharp": {
               "target": "Package",

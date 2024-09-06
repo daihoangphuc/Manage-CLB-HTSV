@@ -17,10 +17,7 @@ RUN sed -i 's/TLSv1.2/TLSv1.0 TLSv1.1 TLSv1.2/g' /etc/ssl/openssl.cnf
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS certs
 WORKDIR /app
 
-# Declare ARG to pass variables from the build command
 ARG PFX_PASSWORD
-
-# Use the ARG variable with the dotnet dev-certs command
 RUN dotnet dev-certs https -ep /https/aspnetapp.pfx -p $PFX_PASSWORD
 RUN openssl pkcs12 -in /https/aspnetapp.pfx -out /https/aspnetapp.pem -nodes -password pass:$PFX_PASSWORD
 
@@ -29,29 +26,32 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY . .
 
-# Declare ARG variables to pass from GitHub secrets during the Docker images build process
 ARG DB_PASSWORD
 ARG SMTP_PASSWORD
 ARG PFX_PASSWORD
+ARG MICROSOFT_CLIENT_ID
+ARG MICROSOFT_CLIENT_SECRET
 
-# Step 6: Set environment variables at runtime
 ENV DB_PASSWORD=$DB_PASSWORD
 ENV SMTP_PASSWORD=$SMTP_PASSWORD
 ENV PFX_PASSWORD=$PFX_PASSWORD
+ENV MICROSOFT_CLIENT_ID=$MICROSOFT_CLIENT_ID
+ENV MICROSOFT_CLIENT_SECRET=$MICROSOFT_CLIENT_SECRET
 
-# Replace the ${secrets. } string in appsettings.json with the value of the environment variable
 RUN sed -i "s|\${secrets.DB_PASSWORD}|$DB_PASSWORD|g" appsettings.json
 RUN sed -i "s|\${secrets.SMTP_PASSWORD}|$SMTP_PASSWORD|g" appsettings.json
 RUN sed -i "s|\${secrets.PFX_PASSWORD}|$PFX_PASSWORD|g" appsettings.json
+RUN sed -i "s|\${secrets.MICROSOFT_CLIENT_ID}|$MICROSOFT_CLIENT_ID|g" appsettings.json
+RUN sed -i "s|\${secrets.MICROSOFT_CLIENT_SECRET}|$MICROSOFT_CLIENT_SECRET|g" appsettings.json
 
 RUN dotnet restore Manage-CLB-HTSV.generated.sln
 RUN dotnet build Manage-CLB-HTSV.generated.sln -c Release -o /app/build
 
-# Step 7: Publish the application
+# Step 6: Publish the application
 FROM build AS publish
 RUN dotnet publish Manage-CLB-HTSV.generated.sln -c Release -o /app/publish
 
-# Step 8: Build the final application
+# Step 7: Build the final application
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .

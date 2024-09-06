@@ -1,9 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
-
-using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -17,6 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
 {
@@ -29,13 +26,14 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly IEmailSender _emailSender;
         private readonly ILogger<ExternalLoginModel> _logger;
-
+        private readonly IWebHostEnvironment _webHostEnvironment;
         public ExternalLoginModel(
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             ILogger<ExternalLoginModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IWebHostEnvironment webHostEnvironment)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -43,54 +41,30 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
             _emailStore = GetEmailStore();
             _logger = logger;
             _emailSender = emailSender;
+            _webHostEnvironment = webHostEnvironment;
         }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [BindProperty]
         public InputModel Input { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public string ProviderDisplayName { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public string ReturnUrl { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [TempData]
         public string ErrorMessage { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
             [EmailAddress]
             public string Email { get; set; }
         }
-        
+
         public IActionResult OnGet() => RedirectToPage("./Login");
 
         public IActionResult OnPost(string provider, string returnUrl = null)
         {
-            // Request a redirect to the external login provider.
             var redirectUrl = Url.Page("./ExternalLogin", pageHandler: "Callback", values: new { returnUrl });
             var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
             return new ChallengeResult(provider, properties);
@@ -104,6 +78,7 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
                 ErrorMessage = $"Error from external provider: {remoteError}";
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
+
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
@@ -111,8 +86,14 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
-            // Sign in the user with this external login provider if the user already has a login.
-            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            if (string.IsNullOrEmpty(email) || !email.EndsWith("@st.tvu.edu.vn"))
+            {
+                ErrorMessage = "Lưu ý: Hãy dùng Email của sinh viên (***@st.tvu.edu.vn)";
+                return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
+            }
+
+            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false);
             if (result.Succeeded)
             {
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
@@ -124,16 +105,12 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
             }
             else
             {
-                // If the user does not have an account, then ask the user to create an account.
                 ReturnUrl = returnUrl;
                 ProviderDisplayName = info.ProviderDisplayName;
-                if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
+                Input = new InputModel
                 {
-                    Input = new InputModel
-                    {
-                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
-                    };
-                }
+                    Email = email
+                };
                 return Page();
             }
         }
@@ -141,7 +118,6 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostConfirmationAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
-            // Get the information about the user from the external login provider
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
@@ -149,10 +125,15 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
+            if (!Input.Email.EndsWith("@st.tvu.edu.vn"))
+            {
+                ErrorMessage = "Lưu ý: Hãy dùng Email của sinh viên (***@st.tvu.edu.vn)";
+                return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
+            }
+
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
 
@@ -162,8 +143,9 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
-                        _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
-
+                        _logger.LogInformation("Người dùng đã tạo tài khoản bằng nhà cung cấp {Name}.", info.LoginProvider);
+                        //Add user to role
+                        await _userManager.AddToRoleAsync(user, "Users");
                         var userId = await _userManager.GetUserIdAsync(user);
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -173,10 +155,18 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
                             values: new { area = "Identity", userId = userId, code = code },
                             protocol: Request.Scheme);
 
-                        await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                            $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                        // Đường dẫn đến file HTML template
+                        string templatePath = Path.Combine(_webHostEnvironment.WebRootPath, "emailhtml", "confirm_register_external_account.html");
 
-                        // If account confirmation is required, we need to show the link if we don't have a real email sender
+                        // Đọc nội dung của file template
+                        string htmlTemplate = System.IO.File.ReadAllText(templatePath);
+                        string htmlMessage = htmlTemplate.Replace("{{confirmation_link}}", HtmlEncoder.Default.Encode(callbackUrl));
+
+                        await _emailSender.SendEmailAsync(
+                            Input.Email,
+                            "Xác nhận đăng ký tài khoản",
+                            htmlMessage);
+
                         if (_userManager.Options.SignIn.RequireConfirmedAccount)
                         {
                             return RedirectToPage("./RegisterConfirmation", new { Email = Input.Email });
@@ -186,6 +176,14 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
                         return LocalRedirect(returnUrl);
                     }
                 }
+
+                // Nếu tên người dùng đã tồn tại, chuyển hướng về trang đăng nhập và truyền thông báo lỗi
+                if (result.Errors.Any(e => e.Code == "DuplicateUserName"))
+                {
+                    TempData["ErrorMessage"] = $"Tài khoản {Input.Email} đã tồn tại! Hãy ấn quên mật khẩu nếu bạn không nhớ mật khẩu!";
+                    return RedirectToPage("/Account/Login");
+                }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
@@ -197,6 +195,7 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
             return Page();
         }
 
+
         private IdentityUser CreateUser()
         {
             try
@@ -206,8 +205,7 @@ namespace Manage_CLB_HTSV.Areas.Identity.Pages.Account
             catch
             {
                 throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
-                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
-                    $"override the external login page in /Areas/Identity/Pages/Account/ExternalLogin.cshtml");
+                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor.");
             }
         }
 

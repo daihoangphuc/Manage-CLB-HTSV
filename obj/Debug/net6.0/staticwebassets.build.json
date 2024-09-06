@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Y147ch0UG4KYtoWeSQW71KL+UEVkcGx/KiFnCSF0xB4=",
+  "Hash": "0H//DYDOK9MeUIRAoCpCYh6klt+FBgW6XYuXQoyzPZg=",
   "Source": "Manage_CLB_HTSV",
   "BasePath": "_content/Manage_CLB_HTSV",
   "Mode": "Default",
@@ -3910,6 +3910,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\emailhtml\\confirm_register_account.html"
+    },
+    {
+      "Identity": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\emailhtml\\confirm_register_external_account.html",
+      "SourceId": "Manage_CLB_HTSV",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\",
+      "BasePath": "_content/Manage_CLB_HTSV",
+      "RelativePath": "emailhtml/confirm_register_external_account.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\emailhtml\\confirm_register_external_account.html"
     },
     {
       "Identity": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\wwwroot\\emailhtml\\email_forget_password.html",

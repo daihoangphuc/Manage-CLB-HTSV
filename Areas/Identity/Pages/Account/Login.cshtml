@@ -70,7 +70,7 @@
 }
 
     <!--  Body Wrapper -->
-<div class="flex items-center justify-center">
+<div class="flex items-center justify-center wrapper-login">
     <div class="w-full mt-3 max-w-md p-6 space-y-6 bg-white rounded-lg shadow-sm">
         <div class="text-center">
             <a href="/Home" class="inline-flex justify-center items-center">
@@ -107,17 +107,38 @@
             <button type="submit" style="background: #399cff; border-radius: 20px"
                     class="w-full flex justify-center py-2 px-4 mt-4 bg-blue-600 text-white font-medium rounded-md focus:outline-none focus:ring-2 ">Đăng nhập
             </button>
-            <div class="text-sm text-center">
-                <a href="./Register" style="color: #399cff" class="font-medium">Đăng kí tài khoản mới.</a>
+        </form>
+        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+            <div>
+                <p>
+                    @foreach (var provider in Model.ExternalLogins!)
+                    {
+                        <button type="submit" class="w-full flex justify-center py-2 px-4 mt-4 font-medium rounded-md focus:outline-none focus:ring-2 text-white" style="border: 1px solid #399cff;border-radius: 20px; padding: 2px; cursor: pointer" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                            <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="0" y="0" width="11" height="11" fill="#F25022" />
+                                <rect x="13" y="0" width="11" height="11" fill="#7FBA00" />
+                                <rect x="0" y="13" width="11" height="11" fill="#00A4EF" />
+                                <rect x="13" y="13" width="11" height="11" fill="#FFB900" />
+                            </svg>
+                            <span style="color: #399cff; font-size: 15px">Sử dụng tài khoản @provider.DisplayName</span>
+                        </button>
+                    }
+                </p>
             </div>
         </form>
+        <div class="text-sm text-center" style="margin-top: -13px">
+            <a href="./Register" style="color: #399cff" class="w-full flex justify-center py-2 px-4 mt-4 font-medium rounded-md focus:outline-none focus:ring-2 ">Đăng kí tài khoản mới.</a>
+        </div>
     </div>
 </div>
 
     <script src="~/Login_Register/src/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="~/Login_Register/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-
-
-
-
+<style>
+@@media (max-width: 768px) {
+        .wrapper-login{
+            margin-top: -50px;
+        }
+}
+</style>
