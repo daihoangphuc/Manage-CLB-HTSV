@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1B8ht8a1t4g=",
+  "dgSpecHash": "P8gRFFuHdZQ=",
   "success": true,
-  "projectFilePath": "D:\\HocKy7\\Manage-CLB-HTSV\\Manage_CLB_HTSV.csproj",
+  "projectFilePath": "D:\\HocKy7\\cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc\\Manage-CLB-HTSV\\Manage_CLB_HTSV.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\aspnetcore.mvc.paging\\2.2.1\\aspnetcore.mvc.paging.2.2.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\csvhelper\\31.0.2\\csvhelper.31.0.2.nupkg.sha512",

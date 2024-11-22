@@ -45,7 +45,7 @@ builder.Services.AddSession(options => {
 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
 // Thêm cấu hình xác thực bằng Microsoft Account
-builder.Services.AddAuthentication()
+/*builder.Services.AddAuthentication()
     .AddCookie(options =>
     {
         options.LoginPath = "/Identity/Account/Login";
@@ -55,7 +55,7 @@ builder.Services.AddAuthentication()
     {
         options.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"];
         options.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"];
-    });
+    });*/
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -66,7 +66,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LoginPath = "/Account/Login";
     options.AccessDeniedPath = "/Account/AccessDenied";
 });
-
+/*
 WebHost.CreateDefaultBuilder(args)
        .UseStartup<Program>()
        .UseKestrel(options =>
@@ -75,7 +75,7 @@ WebHost.CreateDefaultBuilder(args)
            {
                listenOptions.UseHttps("your_certificate.crt", "your_private_key.key");
            });
-       });
+       });*/
 
 var app = builder.Build();
 

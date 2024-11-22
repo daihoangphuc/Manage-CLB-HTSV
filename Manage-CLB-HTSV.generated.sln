@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manage_CLB_HTSV - Backup", "Manage_CLB_HTSV - Backup.csproj", "{F4EF32AE-6719-45B5-9309-F15DADD25CCA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manage_CLB_HTSV", "Manage_CLB_HTSV.csproj", "{35E3B281-A26D-4DDF-9B5E-60AA15DDA228}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F4EF32AE-6719-45B5-9309-F15DADD25CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4EF32AE-6719-45B5-9309-F15DADD25CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4EF32AE-6719-45B5-9309-F15DADD25CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4EF32AE-6719-45B5-9309-F15DADD25CCA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{35E3B281-A26D-4DDF-9B5E-60AA15DDA228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{35E3B281-A26D-4DDF-9B5E-60AA15DDA228}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35E3B281-A26D-4DDF-9B5E-60AA15DDA228}.Release|Any CPU.ActiveCfg = Release|Any CPU

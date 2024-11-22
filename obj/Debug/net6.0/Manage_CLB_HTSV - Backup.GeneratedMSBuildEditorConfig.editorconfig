@@ -9,471 +9,471 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Manage_CLB_HTSV_-_Backup
 build_property.RootNamespace = Manage_CLB_HTSV_-_Backup
-build_property.ProjectDir = D:\HocKy7\Manage-CLB-HTSV\
+build_property.ProjectDir = D:\HocKy7\cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc\Manage-CLB-HTSV\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\HocKy7\Manage-CLB-HTSV
+build_property.MSBuildProjectDirectory = D:\HocKy7\cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc\Manage-CLB-HTSV
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Components/ListBCN.razor]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Components/ListBCN.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMaXN0QkNOLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWxDaGFuZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Lockout.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Lockout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Login.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGgyZmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGhSZWNvdmVyeUNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Logout.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGVsZXRlUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGlzYWJsZTJmYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRG93bmxvYWRQZXJzb25hbERhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/Email.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRXh0ZXJuYWxMb2dpbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcR2VuZXJhdGVSZWNvdmVyeUNvZGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2hvd1JlY292ZXJ5Q29kZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1N0YXR1c01lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Register.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNlbmRFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ResetPassword.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/Error.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/_ViewImports.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Areas/Identity/Pages/_ViewStart.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Admin/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Admin/ResetPassword.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Admin/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVzZXRQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Admin/ResetPasswordConfirmation.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Admin/ResetPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVzZXRQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Chat/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Chat/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/ChucVus/Create.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/ChucVus/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2h1Y1Z1c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/ChucVus/Delete.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/ChucVus/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2h1Y1Z1c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/ChucVus/Details.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/ChucVus/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2h1Y1Z1c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/ChucVus/Edit.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/ChucVus/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2h1Y1Z1c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/ChucVus/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/ChucVus/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2h1Y1Z1c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/DangKyHoatDongs/CapNhatMinhChung.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/DangKyHoatDongs/CapNhatMinhChung.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5SG9hdERvbmdzXENhcE5oYXRNaW5oQ2h1bmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/DangKyHoatDongs/Create.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/DangKyHoatDongs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5SG9hdERvbmdzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/DangKyHoatDongs/Delete.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/DangKyHoatDongs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5SG9hdERvbmdzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/DangKyHoatDongs/Details.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/DangKyHoatDongs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5SG9hdERvbmdzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/DangKyHoatDongs/Edit.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/DangKyHoatDongs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5SG9hdERvbmdzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/DangKyHoatDongs/HuydangKy.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/DangKyHoatDongs/HuydangKy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5SG9hdERvbmdzXEh1eWRhbmdLeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/DangKyHoatDongs/ImportDiemDanh.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/DangKyHoatDongs/ImportDiemDanh.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5SG9hdERvbmdzXEltcG9ydERpZW1EYW5oLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/DangKyHoatDongs/ImportExcel.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/DangKyHoatDongs/ImportExcel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5SG9hdERvbmdzXEltcG9ydEV4Y2VsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/DangKyHoatDongs/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/DangKyHoatDongs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5SG9hdERvbmdzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/DiemDanh/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/DiemDanh/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllbURhbmhcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/HoatDongs/Create.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/HoatDongs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9hdERvbmdzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/HoatDongs/DangKy.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/HoatDongs/DangKy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9hdERvbmdzXERhbmdLeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/HoatDongs/Delete.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/HoatDongs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9hdERvbmdzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/HoatDongs/Details.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/HoatDongs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9hdERvbmdzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/HoatDongs/Edit.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/HoatDongs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9hdERvbmdzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/HoatDongs/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/HoatDongs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9hdERvbmdzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Home/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Home/Privacy.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Khoas/Create.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Khoas/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvYXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Khoas/Delete.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Khoas/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvYXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Khoas/Details.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Khoas/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvYXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Khoas/Edit.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Khoas/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvYXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Khoas/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Khoas/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvYXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/LopHocs/Create.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/LopHocs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9wSG9jc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/LopHocs/Delete.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/LopHocs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9wSG9jc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/LopHocs/Details.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/LopHocs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9wSG9jc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/LopHocs/Edit.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/LopHocs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9wSG9jc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/LopHocs/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/LopHocs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9wSG9jc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Role/Create.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Role/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Role/Delete.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Role/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Role/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Role/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Shared/Components/Avatar/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Shared/Components/Avatar/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQXZhdGFyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Shared/Components/Chart/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Shared/Components/Chart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2hhcnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Shared/Components/ListBanChuNhiem/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Shared/Components/ListBanChuNhiem/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTGlzdEJhbkNodU5oaWVtXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Shared/Components/ListTinTuc/Default.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Shared/Components/ListTinTuc/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTGlzdFRpblR1Y1xEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Shared/Error.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Shared/_AdminLayout.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Shared/_LoginPartial.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/SinhViens/BanChuNhiem.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/SinhViens/BanChuNhiem.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXEJhbkNodU5oaWVtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/SinhViens/Create.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/SinhViens/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/SinhViens/Delete.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/SinhViens/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/SinhViens/Details.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/SinhViens/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/SinhViens/Edit.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/SinhViens/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/SinhViens/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/SinhViens/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/SinhViens/UpdateProfile.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/SinhViens/UpdateProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXFVwZGF0ZVByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Statistic/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Statistic/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGlzdGljXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/ThamGiaHoatDongs/Create.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/ThamGiaHoatDongs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhhbUdpYUhvYXREb25nc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/ThamGiaHoatDongs/Delete.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/ThamGiaHoatDongs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhhbUdpYUhvYXREb25nc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/ThamGiaHoatDongs/Details.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/ThamGiaHoatDongs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhhbUdpYUhvYXREb25nc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/ThamGiaHoatDongs/Edit.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/ThamGiaHoatDongs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhhbUdpYUhvYXREb25nc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/ThamGiaHoatDongs/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/ThamGiaHoatDongs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhhbUdpYUhvYXREb25nc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/ThamGiaHoatDongs/XuatDS.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/ThamGiaHoatDongs/XuatDS.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhhbUdpYUhvYXREb25nc1xYdWF0RFMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/TinTucs/Create.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/TinTucs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGluVHVjc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/TinTucs/Delete.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/TinTucs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGluVHVjc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/TinTucs/Details.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/TinTucs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGluVHVjc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/TinTucs/Edit.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/TinTucs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGluVHVjc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/TinTucs/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/TinTucs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGluVHVjc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/TinTucs/_NewPasrtialList.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/TinTucs/_NewPasrtialList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGluVHVjc1xfTmV3UGFzcnRpYWxMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/User/AddRole.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/User/AddRole.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBZGRSb2xlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/User/EditRole.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/User/EditRole.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0Um9sZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/User/Index.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/_ViewImports.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/_ViewStart.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocKy7/Manage-CLB-HTSV/Views/Shared/_Layout.cshtml]
+[D:/HocKy7/cn-da21ttb-nguyendaihoangphuc-manageclbhtsv-netmvc/Manage-CLB-HTSV/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-6bsjli2fj0
