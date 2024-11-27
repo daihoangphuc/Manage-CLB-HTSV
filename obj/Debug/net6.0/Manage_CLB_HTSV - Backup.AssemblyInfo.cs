@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Manage_CLB_HTSV - Backup")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d97a89508bb97d1d54d190d673c41359f97997d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9bd2daa6a954c74290dc8febd854cab5fa62a01")]
 [assembly: System.Reflection.AssemblyProductAttribute("Manage_CLB_HTSV - Backup")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Manage_CLB_HTSV - Backup")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
