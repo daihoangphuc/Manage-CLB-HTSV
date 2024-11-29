@@ -64,3 +64,4 @@ COPY --from=publish /app/publish .
 COPY --from=certs /https/aspnetapp.pem /https/aspnetapp.pem
 
 ENTRYPOINT ["dotnet", "Manage_CLB_HTSV.dll"]
+# Tét demo
