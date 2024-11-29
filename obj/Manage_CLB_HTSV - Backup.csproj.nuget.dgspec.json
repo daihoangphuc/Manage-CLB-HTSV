@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\Manage_CLB_HTSV - Backup.csproj": {}
+    "D:\\HocKy7\\DemoCICD\\Manage-CLB-HTSV\\Manage_CLB_HTSV - Backup.csproj": {}
   },
   "projects": {
-    "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\Manage_CLB_HTSV - Backup.csproj": {
+    "D:\\HocKy7\\DemoCICD\\Manage-CLB-HTSV\\Manage_CLB_HTSV - Backup.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\Manage_CLB_HTSV - Backup.csproj",
+        "projectUniqueName": "D:\\HocKy7\\DemoCICD\\Manage-CLB-HTSV\\Manage_CLB_HTSV - Backup.csproj",
         "projectName": "Manage_CLB_HTSV - Backup",
-        "projectPath": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\Manage_CLB_HTSV - Backup.csproj",
+        "projectPath": "D:\\HocKy7\\DemoCICD\\Manage-CLB-HTSV\\Manage_CLB_HTSV - Backup.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\@Manage_CLB_HTSV\\Manage-CLB-HTSV\\obj\\",
+        "outputPath": "D:\\HocKy7\\DemoCICD\\Manage-CLB-HTSV\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
