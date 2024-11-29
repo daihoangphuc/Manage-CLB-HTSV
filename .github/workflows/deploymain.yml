@@ -52,6 +52,7 @@ jobs:
           port: ${{ secrets.VPS_SSH_PORT }}
           script: |
 
+
             # Pull SQL Server image and run it     tesst stetstsdtafasfafoa
             #docker pull mcr.microsoft.com/mssql/server:2017-latest 
             #docker stop sqlserver1 || true && docker rm sqlserver1 || true 
