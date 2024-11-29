@@ -51,6 +51,7 @@ RUN sed -i "s|\${secrets.MICROSOFT_CLIENT_ID}|$MICROSOFT_CLIENT_ID|g" appsetting
 RUN sed -i "s|\${secrets.MICROSOFT_CLIENT_SECRET}|$MICROSOFT_CLIENT_SECRET|g" appsettings.json
 
 RUN dotnet restore Manage-CLB-HTSV.generated.sln
+RUN rm -rf bin obj
 RUN dotnet build Manage-CLB-HTSV.generated.sln -c Release -o /app/build
 
 # Step 7: Publish the application
