@@ -8,7 +8,7 @@ namespace Manage_CLB_HTSV.Models
         [Key]
         [StringLength(20)]
         public string? MaChucVu { get; set; }
-
+        // commit
         [Required]
         [StringLength(255)]
         [DisplayName("Tên Chức Vụ")]
